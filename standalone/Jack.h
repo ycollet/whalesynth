@@ -1,5 +1,5 @@
 /**
- * File name: Synthesizer.h
+ * File name: Jack.h
  * Project: GeonSynth (A software synthesizer)
  *
  * Copyright (C) 2020 Iurie Nistor <http://iuriepage.wordpress.com>
@@ -21,26 +21,37 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-#include "GeonSynth.h"
-#include "SynthesizerVoice.h"
+#ifndef GEONSYNTH_JACK_H
+#define GEONSYNTH_JACK_H
 
-#ifndef GEONSYNTH_SYNTHESIZER_H
-#define GEONSYNTH_SYNTHESIZER_H
+#include "Synthesizer.h"
 
-class Synthesizer {
+#include <jack/jack.h>
+
+class Jack {
  public:
-        Synthesizer();
-        void setNumberOfChannels(size_t n);
-        void numberOfChannels() const;
-        void setNote(const Note &note);
-        void process(float** out, size_t size);
+        Jack();
+        ~Jack();
+        bool start();
+        void stop();
+        bool isActive() const;
+        size_t channels() const;
+        unsigned int sampleRate() const;
 
  protected:
-        void addVoice(std::unique_ptr<SynthesizerVoice> voice);
+        bool createJackClient();
+        void createOutputPorts();
 
  private:
-        std::vector<std::unique_ptr<SynthesizerVoice>> synthVoices;
-        size_t channelsNumber;
+        void updateBufferSize(jack_nframes_t nframes);
+        void processAudio(jack_nframes_t nframes);
+        static int jackBufferSizeCallback(jack_nframes_t nframes, void *arg);
+        static int jackProcessCallback(jack_nframes_t nframes, void *arg);
+
+        jack_client_t *jackClient;
+        std::vector<std::pair<jack_port_t*, jack_port_t*>> outputChannels;
+        bool jackCreated;
+	std::vector<ReductionBuffer<float>> audioBuffers;
 };
 
-#endif // GEONSYNTH_SYNTHESIZER_H
+#endif // JACK_AUDIO_INTERFACE_H

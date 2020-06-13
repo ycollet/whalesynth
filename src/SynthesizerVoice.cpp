@@ -1,5 +1,5 @@
 /**
- * File name: Synthesizer.h
+ * File name: SynthesizerVoice.cpp
  * Project: GeonSynth (A software synthesizer)
  *
  * Copyright (C) 2020 Iurie Nistor <http://iuriepage.wordpress.com>
@@ -21,26 +21,19 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-#include "GeonSynth.h"
 #include "SynthesizerVoice.h"
 
-#ifndef GEONSYNTH_SYNTHESIZER_H
-#define GEONSYNTH_SYNTHESIZER_H
+SynthesizerVoice::SynthesizerVoice()
+{
+}
 
-class Synthesizer {
- public:
-        Synthesizer();
-        void setNumberOfChannels(size_t n);
-        void numberOfChannels() const;
-        void setNote(const Note &note);
-        void process(float** out, size_t size);
+void SynthesizerVoice::setNote(const Note &note)
+{
+        GEONSYNTH_UNUSED(note);
+}
 
- protected:
-        void addVoice(std::unique_ptr<SynthesizerVoice> voice);
-
- private:
-        std::vector<std::unique_ptr<SynthesizerVoice>> synthVoices;
-        size_t channelsNumber;
-};
-
-#endif // GEONSYNTH_SYNTHESIZER_H
+void SynthesizerVoice::process(float** out, size_t size)
+{
+        GEONSYNTH_UNUSED(out);
+        GEONSYNTH_UNUSED(size);
+}

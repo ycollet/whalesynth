@@ -41,18 +41,16 @@ size_t Synthesizer::numberOfChannels() const
         return channelsNumber;
 }
 
-void Synthesizer::addNote(Note &note)
+void Synthesizer::setNote(const Note &note)
 {
-        auto res = synthVoices.find(note->midiKeyId());
-        if (res != synthVoices.end())
-                res.second->addNote(note);
+        if (static_cast<size_t>(note->midiKeyId) < synthVoices.size())
+                synthVoices[static_cast<size_t>(note->midiKeyId)]->setNote(note);
 }
 
-void Synthesizer::process(float* out, size_t size, ChannelId channel)
+void Synthesizer::process(float** out, size_t size)
 {
-        GEONSYNTH_UNUSED(out);
-        GEONSYNTH_UNUSED(size);
-        GEONSYNTH_UNUSED(channel);
+        for (auto &voice: synthVoices)
+                voice->process(out, size);
 }
 
 void Synthesizer::addVoice(std::unique_ptr<SynthesizerVoice> voice)

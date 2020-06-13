@@ -1,5 +1,5 @@
 /**
- * File name: Synthesizer.h
+ * File name: main.cpp
  * Project: GeonSynth (A software synthesizer)
  *
  * Copyright (C) 2020 Iurie Nistor <http://iuriepage.wordpress.com>
@@ -21,26 +21,22 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-#include "GeonSynth.h"
-#include "SynthesizerVoice.h"
+#include "Synthesizer.h"
+#include "Jack.h"
 
-#ifndef GEONSYNTH_SYNTHESIZER_H
-#define GEONSYNTH_SYNTHESIZER_H
+#include <RkMain.h>
 
-class Synthesizer {
- public:
-        Synthesizer();
-        void setNumberOfChannels(size_t n);
-        void numberOfChannels() const;
-        void setNote(const Note &note);
-        void process(float** out, size_t size);
+int main(int argc, char *argv[])
+{
+        RkMain app(argc, argv);
 
- protected:
-        void addVoice(std::unique_ptr<SynthesizerVoice> voice);
+        Synthesizer synthesizer;
+        Jack jack(&synthesizer);
 
- private:
-        std::vector<std::unique_ptr<SynthesizerVoice>> synthVoices;
-        size_t channelsNumber;
-};
+        auto widget = new RkWidget(&app);
+        widget->setTitle("GeonSynth");
+        widget->show();
 
-#endif // GEONSYNTH_SYNTHESIZER_H
+        auto res = app.exec();
+        return res;
+}

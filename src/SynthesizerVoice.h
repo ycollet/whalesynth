@@ -1,5 +1,5 @@
 /**
- * File name: GeonSynth.h
+ * File name: SynthesizerVoice.h
  * Project: GeonSynth (A software synthesizer)
  *
  * Copyright (C) 2020 Iurie Nistor <http://iuriepage.wordpress.com>
@@ -21,38 +21,20 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-#ifndef GEONSYNTH_H
-#define GEONSYNTH_H
+#ifndef SYNTHESIZER_VOICE_H
+#define SYNTHESIZER_VOICE_H
 
-#include <string>
+#include "GeonSynth.h"
 
-constexpr unsigned int GEONSYNTH_VERSION = 0x010000;
-constexpr std::string GEONSYNTH_NAME = "GeonSynth";
-constexpr std::string GEONSYNTH_APP_NAME = "geonsynth";
-constexpr std::string GEONSYNTH_VERSION_STRING = "1.0.0";
+class SynthesizerVoice {
+ public:
+        SynthesizerVoice();
+        void setNote(const Note &note);
+        void process(float** out, size_t size);
 
-using AudioFrame = int;
-using MIDIKeyId = char;
-using MIDIKeyVelocity = char;
-enum class MIDIKeyState : char {
-        MIDIKeyStateOff = 0,
-        MIDIKeyStateOn  = 1
+ protected:
+
+ private:
 };
 
-using ChannelId = int;
-
-namspace GeonSynth {
-constexpr AudioFrame NoAudioFrame = -1;
-constexpr ChannelId AllChannels = -1;
-constexpr MIDIKeyId MaxMidiKeyId = 127;
-constexpr MIDIKeyId NoMIDIKey = -1;
-constexpr MIDIKeyVelocity MaxMIDIKeyVelocity = 127;
-
-// Default stereo channels number.
-constexpr size_t defaultChannelsNumber = 1;
-
-constexpr unsigned int defaultSampleRate = 48000;
-
-};
-
-#endif // GEONSYNTH_H
+#endif // SYNTHESIZER_VOICE_H

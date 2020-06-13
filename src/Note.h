@@ -1,5 +1,5 @@
 /**
- * File name: Synthesizer.h
+ * File name: Note.h
  * Project: GeonSynth (A software synthesizer)
  *
  * Copyright (C) 2020 Iurie Nistor <http://iuriepage.wordpress.com>
@@ -21,26 +21,16 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
+#ifndef GEONSYNTH_NOTE_H
+#define GEONSYNTH_NOTE_H
+
 #include "GeonSynth.h"
-#include "SynthesizerVoice.h"
 
-#ifndef GEONSYNTH_SYNTHESIZER_H
-#define GEONSYNTH_SYNTHESIZER_H
-
-class Synthesizer {
- public:
-        Synthesizer();
-        void setNumberOfChannels(size_t n);
-        void numberOfChannels() const;
-        void setNote(const Note &note);
-        void process(float** out, size_t size);
-
- protected:
-        void addVoice(std::unique_ptr<SynthesizerVoice> voice);
-
- private:
-        std::vector<std::unique_ptr<SynthesizerVoice>> synthVoices;
-        size_t channelsNumber;
+struct Note {
+        AudioFrame noteFrame;
+        MIDIKeyID midiKeyId;
+        MIDIKeyVelocity midiKeyVelocity;
+        MIDIKeyState midiKeyState;
 };
 
-#endif // GEONSYNTH_SYNTHESIZER_H
+#endif // GEONSYNTH_NOTE_H
