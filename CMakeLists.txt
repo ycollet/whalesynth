@@ -6,7 +6,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/")
 include(FindRedkite)
 
 option(GSYNTH_STANDALONE "Enable build for standalone" ON)
-option(GSYNTH_PLUGIN "Enable build for plugin" ON)
+option(GSYNTH_PLUGIN "Enable build for plugin" OFF)
 if (GSYNTH_PLUGIN)
   option(GSYNTH_PLUGIN_LV2 "Enable build LV2 plugin" ON)
   if (GSYNTH_VST_SDK_PATH)

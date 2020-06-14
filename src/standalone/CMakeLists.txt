@@ -6,20 +6,21 @@ if (GSYNTH_STANDALONE)
   list(APPEND GSYNTH_API_FLAGS "-DGEONSYNTH_AUDIO_JACK")
 endif()
 
+set(GSYNTH_STANDALONE_HEADERS
+  ${GSYNTH_STANDALONE_DIR}/Jack.cpp
+  ${GSYNTH_STANDALONE_DIR}/main.cpp)
+
 set(GSYNTH_STANDALONE_SOURCES
   ${GSYNTH_STANDALONE_DIR}/Jack.cpp
   ${GSYNTH_STANDALONE_DIR}/main.cpp)
 
-set(GSYNTH_TARGET_NAME "geonsynth");
+set(GSYNTH_TARGET_NAME "geonsynth")
 
-add_executable(geonkick
-  ${GSYNTH_COMMON_HEADERS}
-  ${GSYNTH_COMMON_RESOURCES}
+add_executable(${GSYNTH_TARGET_NAME}
+  ${GSYNTH_STANDALONE_HEADERS}
   ${GSYNTH_STANDALONE_SOURCES})
 
-add_dependencies(GSYNTH_TARGET_NAME api_standalone)
-target_link_libraries(GSYNTH_TARGET_NAME  geonkick_common api_standalone)
-target_link_libraries(GSYNTH_TARGET_NAME "-lstdc++fs")
-target_link_libraries(GSYNTH_TARGET_NAME "-lredkite -lX11 -ljack -lsndfile -lrt -lm -ldl -lpthread -lcairo")
+add_dependencies(${GSYNTH_TARGET_NAME} synth)
+target_link_libraries(${GSYNTH_TARGET_NAME} "-ljack -lrt -lm -ldl -lpthread")
 
-install(TARGETS GSYNTH_TARGET_NAME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+install(TARGETS ${GSYNTH_TARGET_NAME} DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
