@@ -25,9 +25,10 @@
 #include "Synthesizer.h"
 
 Jack::Jack(Synthesizer *synthesizer)
-        : jackClient{nullptr}
+        : geonSynth{synthesizer}
+        , jackClient{nullptr}
+        , midiInPort{nullptr}
         , jackCreated{false}
-        , geonSynth{synthesizer}
 {
         createJackClient();
 }
@@ -55,9 +56,20 @@ bool Jack::createJackClient()
         jack_set_process_callback(jackClient,
                                   jackProcessCallback,
                                   this);
+        createMidiInPot();
         createOutputPorts();
         jackCreated = true;
         return jackCreated;
+}
+
+void Jack::createMidiInPot()
+{
+        midiInPort = jack_port_register(jackClient, "MidiIn",
+                                        JACK_DEFAULT_MIDI_TYPE,
+                                        JackPortIsInput, 0);
+        if (midiInPort == NULL) {
+                GSYNTH_LOG_ERROR("can't create MidiIn port");
+        }
 }
 
 void Jack::createOutputPorts()
@@ -114,6 +126,28 @@ unsigned int Jack::sampleRate() const
         return GeonSynth::defaultSampleRate;
 }
 
+bool Jack::isNote(const jack_midi_event_t *event) const
+{
+        return (((*(event->buffer) & 0xf0)) == 0x90) || (((*(event->buffer) & 0xf0)) == 0x80);
+}
+
+Note Jack::getNote(const jack_midi_event_t *event) const
+{
+        Note note = {GeonSynth::NoMIDIKey,
+                     GeonSynth::MaxMIDIKeyVelocity,
+                     MIDIKeyState::MIDIKeyStateOff};
+
+        if (((*(event->buffer) & 0xf0)) == 0x90) {
+                note.midiKeyState    = MIDIKeyState::MIDIKeyStateOn;
+                note.midiKeyId       = event->buffer[1];
+                note.midiKeyVelocity = event->buffer[2];
+        } else if(((*(event->buffer) & 0xf0)) == 0x80) {
+                note.midiKeyId       = event->buffer[1];
+                note.midiKeyVelocity = event->buffer[2];
+        }
+        return note;
+}
+
 void Jack::processAudio(jack_nframes_t nframes)
 {
         float *buffer[2 * GeonSynth::defaultChannelsNumber];
@@ -124,7 +158,35 @@ void Jack::processAudio(jack_nframes_t nframes)
                 buffer[2 * ch + 1] = static_cast<jack_default_audio_sample_t*>(jack_port_get_buffer(channel.second,
                                                                                                     nframes));
         }
-        geonSynth->process(buffer, nframes);
+
+        auto midiBuffer = jack_port_get_buffer(midiInPort, nframes);
+	jack_nframes_t eventsCount = jack_midi_get_event_count(midiBuffer);
+        jack_nframes_t eventIndex  = 0;
+        size_t currentFrame = 0;
+        while (eventIndex < eventsCount) {
+                jack_midi_event_t event;
+                jack_midi_event_get(&event, midiBuffer, eventIndex++);
+                auto eventFrame = event.time;
+
+                // Process before the event.
+                geonSynth->process(buffer, eventFrame - currentFrame);
+
+                // Set event
+                if (isNote(&event))
+                        geonSynth->setNote(getNote(&event));
+
+                // Set all events that have occured in the same frame.
+                while (eventIndex < eventsCount && eventFrame == event.time) {
+                        jack_midi_event_get(&event, midiBuffer, eventIndex++);
+                        if (isNote(&event) && eventFrame == event.time)
+                                geonSynth->setNote(getNote(&event));
+                }
+                currentFrame = eventFrame;
+        }
+
+        // Process the rest of the buffer after the last event.
+        if (currentFrame < nframes)
+                geonSynth->process(buffer, nframes - currentFrame);
 }
 
 int Jack::jackProcessCallback(jack_nframes_t nframes, void *arg)

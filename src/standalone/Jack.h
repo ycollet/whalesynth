@@ -25,8 +25,10 @@
 #define GEONSYNTH_JACK_H
 
 #include "GeonSynth.h"
+#include "Note.h"
 
 #include <jack/jack.h>
+#include <jack/midiport.h>
 
 class Synthesizer;
 
@@ -42,16 +44,20 @@ class Jack {
 
  protected:
         bool createJackClient();
+        void createMidiInPot();
         void createOutputPorts();
+        bool isNote(const jack_midi_event_t *event) const;
+        Note getNote(const jack_midi_event_t *event) const;
 
  private:
         void processAudio(jack_nframes_t nframes);
         static int jackProcessCallback(jack_nframes_t nframes, void *arg);
 
-        jack_client_t *jackClient;
-        std::vector<std::pair<jack_port_t*, jack_port_t*>> outputChannels;
-        bool jackCreated;
         Synthesizer *geonSynth;
+        jack_client_t *jackClient;
+        jack_port_t* midiInPort;
+        bool jackCreated;
+        std::vector<std::pair<jack_port_t*, jack_port_t*>> outputChannels;
 };
 
 #endif // GEONSYNTH_JACK_H

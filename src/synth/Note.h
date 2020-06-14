@@ -27,7 +27,6 @@
 #include "GeonSynth.h"
 
 struct Note {
-        AudioFrame noteFrame;
         MIDIKeyId midiKeyId;
         MIDIKeyVelocity midiKeyVelocity;
         MIDIKeyState midiKeyState;
