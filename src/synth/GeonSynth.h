@@ -25,11 +25,16 @@
 #define GEONSYNTH_H
 
 #include <string>
+#include <memory>
+#include <vector>
+#include <iostream>
+
+#define GSYNTH_UNUSED(expr) (void)expr
 
 constexpr unsigned int GEONSYNTH_VERSION = 0x010000;
-constexpr std::string GEONSYNTH_NAME = "GeonSynth";
-constexpr std::string GEONSYNTH_APP_NAME = "geonsynth";
-constexpr std::string GEONSYNTH_VERSION_STRING = "1.0.0";
+constexpr char GEONSYNTH_NAME[] = "GeonSynth";
+constexpr char GEONSYNTH_APP_NAME[] = "geonsynth";
+constexpr char GEONSYNTH_VERSION_STRING[] = "1.0.0";
 
 using AudioFrame = int;
 using MIDIKeyId = char;
@@ -41,18 +46,27 @@ enum class MIDIKeyState : char {
 
 using ChannelId = int;
 
-namspace GeonSynth {
-constexpr AudioFrame NoAudioFrame = -1;
-constexpr ChannelId AllChannels = -1;
-constexpr MIDIKeyId MaxMidiKeyId = 127;
-constexpr MIDIKeyId NoMIDIKey = -1;
-constexpr MIDIKeyVelocity MaxMIDIKeyVelocity = 127;
+namespace GeonSynth {
+        constexpr AudioFrame NoAudioFrame = -1;
+        constexpr ChannelId AllChannels = -1;
+        constexpr MIDIKeyId MaxMidiKeyId = 127;
+        constexpr MIDIKeyId NoMIDIKey = -1;
+        constexpr MIDIKeyVelocity MaxMIDIKeyVelocity = 127;
 
-// Default stereo channels number.
-constexpr size_t defaultChannelsNumber = 1;
+        // Default stereo channels number.
+        constexpr size_t defaultChannelsNumber = 1;
 
-constexpr unsigned int defaultSampleRate = 48000;
-
+        constexpr unsigned int defaultSampleRate = 48000;
 };
+
+#ifdef GEONSYNTH_DEBUG
+#define GSYNTH_LOG_INFO(msg) std::cout << __PRETTY_FUNCTION__ << "[INFO] " << msg << std::endl;
+#define GSYNTH_LOG_ERROR(msg) std::cout << __PRETTY_FUNCTION__ << "[ERROR] " << msg << std::endl;
+#define GSYNTH_LOG_DEBUG(msg) std::cout << __PRETTY_FUNCTION__ << "[DEBUG] " << msg << std::endl;
+#else
+#define GSYNTH_LOG_INFO(msg) std::cout << "[INFO] " << msg << std::endl;
+#define GSYNTH_LOG_ERROR(msg) std::cout << "[ERROR] " << msg << std::endl;
+#define GSYNTH_LOG_DEBUG(msg)
+#endif // GEONSYNTH_DEBUG
 
 #endif // GEONSYNTH_H

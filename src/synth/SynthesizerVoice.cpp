@@ -23,17 +23,28 @@
 
 #include "SynthesizerVoice.h"
 
-SynthesizerVoice::SynthesizerVoice()
+SynthesizerVoice::SynthesizerVoice(MIDIKeyId keyId)
+        : midiKey{keyId}
 {
+}
+
+MIDIKeyId SynthesizerVoice::midiKeyId() const
+{
+        return midiKey;
 }
 
 void SynthesizerVoice::setNote(const Note &note)
 {
-        GEONSYNTH_UNUSED(note);
+        GSYNTH_UNUSED(note);
 }
 
 void SynthesizerVoice::process(float** out, size_t size)
 {
-        GEONSYNTH_UNUSED(out);
-        GEONSYNTH_UNUSED(size);
+        for (size_t ch = 0; ch < GeonSynth::defaultChannelsNumber; ch++) {
+                auto frameId = 2 * ch;
+                for (size_t i = 0; i < size; i++) {
+                        out[frameId][i]     += (float)i / size;
+                        out[frameId + 1][i] += (float)i / size;
+                }
+        }
 }

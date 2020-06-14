@@ -22,13 +22,13 @@
  */
 
 #include "Synthesizer.h"
+#include "Note.h"
 
 Synthesizer::Synthesizer()
         : channelsNumber{1}
-        , maxVoiceNumber{128}
 {
-        for (decltype(GeonSynth::MaxMidiKeyId) i = 0; i < GeonSynth::MaxMidiKeyId; i++)
-                addVoice(std::make_unique<SynthesizerVoice(i)>);
+        for (size_t i = 0; i < GeonSynth::MaxMidiKeyId; i++)
+                addVoice(std::make_unique<SynthesizerVoice>(static_cast<MIDIKeyId>(i)));
 }
 
 void Synthesizer::setNumberOfChannels(size_t n)
@@ -43,8 +43,8 @@ size_t Synthesizer::numberOfChannels() const
 
 void Synthesizer::setNote(const Note &note)
 {
-        if (static_cast<size_t>(note->midiKeyId) < synthVoices.size())
-                synthVoices[static_cast<size_t>(note->midiKeyId)]->setNote(note);
+        if (static_cast<size_t>(note.midiKeyId) < synthVoices.size())
+                synthVoices[static_cast<size_t>(note.midiKeyId)]->setNote(note);
 }
 
 void Synthesizer::process(float** out, size_t size)
@@ -55,6 +55,6 @@ void Synthesizer::process(float** out, size_t size)
 
 void Synthesizer::addVoice(std::unique_ptr<SynthesizerVoice> voice)
 {
-        if (synthVoices.size() < statics_cast<decltype(synthVoices.size())>(GeonSynth::MaxMidiKeyId))
-                synthVoices.insert({voice->midKeyId(), std::move(voice)});
+        if (synthVoices.size() < static_cast<decltype(synthVoices.size())>(GeonSynth::MaxMidiKeyId))
+                synthVoices.push_back(std::move(voice));
 }

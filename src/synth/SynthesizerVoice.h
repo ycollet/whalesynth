@@ -26,15 +26,17 @@
 
 #include "GeonSynth.h"
 
+class Note;
+
 class SynthesizerVoice {
  public:
-        SynthesizerVoice();
+        SynthesizerVoice(MIDIKeyId keyId = GeonSynth::NoMIDIKey);
+        MIDIKeyId midiKeyId() const;
         void setNote(const Note &note);
         void process(float** out, size_t size);
 
- protected:
-
  private:
+        MIDIKeyId midiKey;
 };
 
 #endif // SYNTHESIZER_VOICE_H

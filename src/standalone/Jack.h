@@ -24,13 +24,15 @@
 #ifndef GEONSYNTH_JACK_H
 #define GEONSYNTH_JACK_H
 
-#include "Synthesizer.h"
+#include "GeonSynth.h"
 
 #include <jack/jack.h>
 
+class Synthesizer;
+
 class Jack {
  public:
-        Jack();
+        Jack(Synthesizer *synthesizer);
         ~Jack();
         bool start();
         void stop();
@@ -43,15 +45,13 @@ class Jack {
         void createOutputPorts();
 
  private:
-        void updateBufferSize(jack_nframes_t nframes);
         void processAudio(jack_nframes_t nframes);
-        static int jackBufferSizeCallback(jack_nframes_t nframes, void *arg);
         static int jackProcessCallback(jack_nframes_t nframes, void *arg);
 
         jack_client_t *jackClient;
         std::vector<std::pair<jack_port_t*, jack_port_t*>> outputChannels;
         bool jackCreated;
-	std::vector<ReductionBuffer<float>> audioBuffers;
+        Synthesizer *geonSynth;
 };
 
-#endif // JACK_AUDIO_INTERFACE_H
+#endif // GEONSYNTH_JACK_H

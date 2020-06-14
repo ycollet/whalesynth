@@ -39,6 +39,7 @@ endif()
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_FLAGS "-Wall ${CMAKE_CXX_FLAGS} -fvisibility=hidden")
+set(CMAKE_C_FLAGS "-Wall ${CMAKE_C_FLAGS} -fvisibility=hidden")
 
 if (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
   set (CMAKE_INSTALL_PREFIX "/usr/local" CACHE PATH "default install path" FORCE)
@@ -50,10 +51,12 @@ if (NOT CMAKE_INSTALL_FULL_DATADIR)
 endif()
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DGEONSYNTH_DATA_DIR=\\\"${CMAKE_INSTALL_FULL_DATADIR}\\\"")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DGEONSYNTH_DATA_DIR=\\\"${CMAKE_INSTALL_FULL_DATADIR}\\\"")
 
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
   message(STATUS "Enable application logging")
-  option(GSYNTH_ENABLE_LOGGING    "Enable logging" ON)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DGEONSYNTH_DEBUG")
+  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DGEONSYNTH_DEBUG")
 endif()
 
 find_package(PkgConfig REQUIRED)
@@ -80,12 +83,14 @@ else(GSYNTH_PLUGIN_VST)
   message(STATUS "VST plugin: no")
 endif(GSYNTH_PLUGIN_VST)
 
-if (ENABLE_LOGGING)
+if (CMAKE_BUILD_TYPE STREQUAL "Debug")
   message(STATUS "Debug enabled: yes" )
-else(ENABLE_LOGGING)
+else()
   message(STATUS "Debug enabled: no" )
-endif(ENABLE_LOGGING)
+endif()
 message(STATUS "------------------------------")
+
+add_subdirectory(${GSYNTH_SYNTH_DIR})
 
 if (GSYNTH_STANDALONE)
   add_subdirectory(${GSYNTH_STANDALONE_DIR})

@@ -31,7 +31,7 @@ class Synthesizer {
  public:
         Synthesizer();
         void setNumberOfChannels(size_t n);
-        void numberOfChannels() const;
+        size_t numberOfChannels() const;
         void setNote(const Note &note);
         void process(float** out, size_t size);
 

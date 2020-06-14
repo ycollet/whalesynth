@@ -28,7 +28,7 @@
 
 struct Note {
         AudioFrame noteFrame;
-        MIDIKeyID midiKeyId;
+        MIDIKeyId midiKeyId;
         MIDIKeyVelocity midiKeyVelocity;
         MIDIKeyState midiKeyState;
 };

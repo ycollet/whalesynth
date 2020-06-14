@@ -22,12 +22,12 @@
  */
 
 #include "Jack.h"
+#include "Synthesizer.h"
 
 Jack::Jack(Synthesizer *synthesizer)
-        :
-        , geonSynth{synthesizer}
-        , jackClient{nullptr}
+        : jackClient{nullptr}
         , jackCreated{false}
+        , geonSynth{synthesizer}
 {
         createJackClient();
 }
@@ -36,8 +36,10 @@ Jack::~Jack()
 {
         if (jackClient) {
                 jack_deactivate(jackClient);
-                for (auto &port : jackOutputPorts)
-                        jack_port_unregister(jackClient, port);
+                for (auto &ch : outputChannels) {
+                        jack_port_unregister(jackClient, ch.first);
+                        jack_port_unregister(jackClient, ch.second);
+                }
                 jack_client_close(jackClient);
         }
 }
@@ -46,13 +48,9 @@ bool Jack::createJackClient()
 {
         jackClient = jack_client_open(GEONSYNTH_NAME, JackNoStartServer, NULL);
         if (jackClient == nullptr) {
-                GeonSynth::logError("can't create jack client");
+                GSYNTH_LOG_ERROR("can't create jack client");
                 return false;
         }
-
-        jack_set_buffer_size_callback(jackClient,
-                                      jackBufferSizeCallback,
-                                      this);
 
         jack_set_process_callback(jackClient,
                                   jackProcessCallback,
@@ -65,7 +63,7 @@ bool Jack::createJackClient()
 void Jack::createOutputPorts()
 {
         for (decltype(channels()) i = 0; i < channels(); i++) {
-                auto name = "AudioOut [" + std::to_string(i) + "]";
+                auto name = "AudioOut" + ((channels() > 1) ? "-" + std::to_string(i) : "");
                 auto portL = jack_port_register(jackClient, (name + "_L").c_str(),
                                                 JACK_DEFAULT_AUDIO_TYPE,
                                                 JackPortIsOutput, 0);
@@ -73,7 +71,7 @@ void Jack::createOutputPorts()
                                                 JACK_DEFAULT_AUDIO_TYPE,
                                                 JackPortIsOutput, 0);
                 if (!portL || !portR) {
-                        GeonSynth::logError("can't create jack audio output port " << name);
+                        GSYNTH_LOG_ERROR("can't create jack audio output port " << name);
                 } else {
                         outputChannels.push_back({portL, portR});
                 }
@@ -83,15 +81,15 @@ void Jack::createOutputPorts()
 bool Jack::start()
 {
         if (!jackClient) {
-                GeonSynth::logError("Jack client was not created");
+                GSYNTH_LOG_ERROR("Jack client was not created");
                 return false;
         }
 
         if (jack_activate(jackClient) != 0) {
-                GeonSynth::logError("can't active Jack client");
+                GSYNTH_LOG_ERROR("can't active Jack client");
                 return false;
         } else {
-                GeonSynth::logDebug("Jack client activated");
+                GSYNTH_LOG_DEBUG("Jack client activated");
         }
 
         return true;
@@ -99,11 +97,6 @@ bool Jack::start()
 
 void Jack::stop()
 {
-}
-
-bool Jack::restart()
-{
-        return false;
 }
 
 bool Jack::isActive() const
@@ -123,14 +116,15 @@ unsigned int Jack::sampleRate() const
 
 void Jack::processAudio(jack_nframes_t nframes)
 {
-        for (size_t i = 0; i < jackOutputPorts.size(); i++) {
-		auto port = jackOutputPorts[i][0];
-                buffer[0] = static_cast<jack_default_audio_sample_t*>(jack_port_get_buffer(outputChannels[i].first,
-                                                                                           nframes));
-                buffer[1] = static_cast<jack_default_audio_sample_t*>(jack_port_get_buffer(outputChannels[i].second,
-                                                                                           nframes));
-                geonSynth->process(buffer, nframes);
+        float *buffer[2 * GeonSynth::defaultChannelsNumber];
+        for (size_t ch = 0; ch < GeonSynth::defaultChannelsNumber; ch++) {
+                auto channel = outputChannels[ch];
+                buffer[2 * ch] = static_cast<jack_default_audio_sample_t*>(jack_port_get_buffer(channel.first,
+                                                                                                nframes));
+                buffer[2 * ch + 1] = static_cast<jack_default_audio_sample_t*>(jack_port_get_buffer(channel.second,
+                                                                                                    nframes));
         }
+        geonSynth->process(buffer, nframes);
 }
 
 int Jack::jackProcessCallback(jack_nframes_t nframes, void *arg)

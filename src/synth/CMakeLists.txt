@@ -10,3 +10,8 @@ set(GSYNTH_SYNTH_HEADERS
   ${GSYNTH_SYNTH_DIR}/GeonSynth.h
   ${GSYNTH_SYNTH_DIR}/Synthesizer.cpp
   ${GSYNTH_SYNTH_DIR}/SynthesizerVoice.cpp)
+
+add_library(synth STATIC
+  ${GSYNTH_SYNTH_HEADERS}
+  ${GSYNTH_SYNTH_SOURCES})
+

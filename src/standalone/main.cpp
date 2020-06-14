@@ -21,22 +21,22 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-#include "Synthesizer.h"
 #include "Jack.h"
+#include "Synthesizer.h"
 
-#include <RkMain.h>
+// TEMP
+#include <unistd.h>
 
 int main(int argc, char *argv[])
 {
-        RkMain app(argc, argv);
-
+        GSYNTH_LOG_DEBUG("called");
         Synthesizer synthesizer;
         Jack jack(&synthesizer);
+        jack.start();
 
-        auto widget = new RkWidget(&app);
-        widget->setTitle("GeonSynth");
-        widget->show();
-
-        auto res = app.exec();
-        return res;
+        // TEMP
+        while (jack.isActive()) {
+                sleep(1);
+        }
+        return 0;
 }
