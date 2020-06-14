@@ -21,11 +21,11 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-#include "GeonSynth.h"
-#include "SynthesizerVoice.h"
-
 #ifndef GEONSYNTH_SYNTHESIZER_H
 #define GEONSYNTH_SYNTHESIZER_H
+
+#include "GeonSynth.h"
+#include "SynthesizerVoice.h"
 
 class Synthesizer {
  public:

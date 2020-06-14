@@ -24,6 +24,8 @@
 #include "Jack.h"
 #include "Synthesizer.h"
 
+#include <string.h>
+
 Jack::Jack(Synthesizer *synthesizer)
         : geonSynth{synthesizer}
         , jackClient{nullptr}
@@ -155,8 +157,10 @@ void Jack::processAudio(jack_nframes_t nframes)
                 auto channel = outputChannels[ch];
                 buffer[2 * ch] = static_cast<jack_default_audio_sample_t*>(jack_port_get_buffer(channel.first,
                                                                                                 nframes));
+                memset(buffer[2 * ch], 0, nframes * sizeof(float));
                 buffer[2 * ch + 1] = static_cast<jack_default_audio_sample_t*>(jack_port_get_buffer(channel.second,
                                                                                                     nframes));
+                memset(buffer[2 * ch + 1], 0, nframes * sizeof(float));
         }
 
         auto midiBuffer = jack_port_get_buffer(midiInPort, nframes);
@@ -167,20 +171,11 @@ void Jack::processAudio(jack_nframes_t nframes)
                 jack_midi_event_t event;
                 jack_midi_event_get(&event, midiBuffer, eventIndex++);
                 auto eventFrame = event.time;
-
-                // Process before the event.
-                geonSynth->process(buffer, eventFrame - currentFrame);
-
-                // Set event
+                auto size = eventFrame - currentFrame;
+                if (size > 0)
+                        geonSynth->process(buffer, size);
                 if (isNote(&event))
                         geonSynth->setNote(getNote(&event));
-
-                // Set all events that have occured in the same frame.
-                while (eventIndex < eventsCount && eventFrame == event.time) {
-                        jack_midi_event_get(&event, midiBuffer, eventIndex++);
-                        if (isNote(&event) && eventFrame == event.time)
-                                geonSynth->setNote(getNote(&event));
-                }
                 currentFrame = eventFrame;
         }
 

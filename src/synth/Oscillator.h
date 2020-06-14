@@ -1,5 +1,5 @@
 /**
- * File name: SynthesizerVoice.h
+ * File name: Oscillator.h
  * Project: GeonSynth (A software synthesizer)
  *
  * Copyright (C) 2020 Iurie Nistor <http://iuriepage.wordpress.com>
@@ -21,26 +21,29 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-#ifndef SYNTHESIZER_VOICE_H
-#define SYNTHESIZER_VOICE_H
+#ifndef GEONSYNTH_OSCILLATOR_H
+#define GEONSYNTH_OSCILLATOR_H
 
 #include "GeonSynth.h"
-#include "Note.h"
-#include "Oscillator.h"
 
-class Oscillator;
-
-class SynthesizerVoice {
+class Oscillator {
  public:
-        SynthesizerVoice(MIDIKeyId keyId = GeonSynth::NoMIDIKey);
-        ~SynthesizerVoice() = default;
-        MIDIKeyId midiKeyId() const;
-        void setNote(const Note &note);
+        Oscillator();
+        ~Oscillator() = default;
+        void setPitch(float pitch);
+        float getPitch() const;
         void process(float** out, size_t size);
+        void start();
+        void stop();
+
+ protected:
+        float getValue() const;
+        void incrementPhase();
 
  private:
-        MIDIKeyId midiKey;
-        Oscillator voiceOscillator;
+        float oscillatorPitch;
+        float oscillatorPhase;
+        bool oscillatorStarted;
 };
 
-#endif // SYNTHESIZER_VOICE_H
+#endif // GEONSYNTH_OSCILLATOR_H

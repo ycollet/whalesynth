@@ -22,10 +22,14 @@
  */
 
 #include "SynthesizerVoice.h"
+//#include "Oscillator.h"
+#include "Note.h"
 
 SynthesizerVoice::SynthesizerVoice(MIDIKeyId keyId)
         : midiKey{keyId}
+          //        , voiceOscillator{std::make_unique<Oscillator>()}
 {
+        voiceOscillator.setPitch(440.0f * pow(2.0f, static_cast<float>(midiKey - 69) / 12.0f));
 }
 
 MIDIKeyId SynthesizerVoice::midiKeyId() const
@@ -35,16 +39,14 @@ MIDIKeyId SynthesizerVoice::midiKeyId() const
 
 void SynthesizerVoice::setNote(const Note &note)
 {
-        GSYNTH_UNUSED(note);
+        GSYNTH_LOG_INFO("note[" << static_cast<int>(note.midiKeyId) << "]: " << static_cast<int>(note.midiKeyState));
+        if (note.midiKeyState == MIDIKeyState::MIDIKeyStateOn)
+                voiceOscillator.start();
+        else
+                voiceOscillator.stop();
 }
 
 void SynthesizerVoice::process(float** out, size_t size)
 {
-        for (size_t ch = 0; ch < GeonSynth::defaultChannelsNumber; ch++) {
-                auto frameId = 2 * ch;
-                for (size_t i = 0; i < size; i++) {
-                        out[frameId][i]     += (float)i / size;
-                        out[frameId + 1][i] += (float)i / size;
-                }
-        }
+        voiceOscillator.process(out, size);
 }

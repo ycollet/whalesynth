@@ -43,7 +43,6 @@ size_t Synthesizer::numberOfChannels() const
 
 void Synthesizer::setNote(const Note &note)
 {
-        GSYNTH_LOG_INFO("note[" << static_cast<int>(note.midiKeyId) << "]: " << static_cast<int>(note.midiKeyState));
         if (static_cast<size_t>(note.midiKeyId) < synthVoices.size())
                 synthVoices[static_cast<size_t>(note.midiKeyId)]->setNote(note);
 }
