@@ -22,14 +22,19 @@
  */
 
 #include "SynthesizerVoice.h"
-//#include "Oscillator.h"
 #include "Note.h"
 
 SynthesizerVoice::SynthesizerVoice(MIDIKeyId keyId)
         : midiKey{keyId}
-          //        , voiceOscillator{std::make_unique<Oscillator>()}
+        , voicePitch{440.0f * pow(2.0f, static_cast<float>(midiKey - 69) / 12.0f)}
 {
-        voiceOscillator.setPitch(440.0f * pow(2.0f, static_cast<float>(midiKey - 69) / 12.0f));
+        size_t n = GeonSynth::NumberOfOperators;
+        while (n--) {
+                auto op = std::make_unique<Operator>(voicePitch);
+                if (n == 1)
+                        op->setWave(WaveGenerator::WaveFunctionType::WaveFunctionSawtooth);
+                operatorsList.push_back(std::move(op));
+        }
 }
 
 MIDIKeyId SynthesizerVoice::midiKeyId() const
@@ -39,14 +44,18 @@ MIDIKeyId SynthesizerVoice::midiKeyId() const
 
 void SynthesizerVoice::setNote(const Note &note)
 {
-        GSYNTH_LOG_INFO("note[" << static_cast<int>(note.midiKeyId) << "]: " << static_cast<int>(note.midiKeyState));
-        if (note.midiKeyState == MIDIKeyState::MIDIKeyStateOn)
-                voiceOscillator.start();
-        else
-                voiceOscillator.stop();
+        GSYNTH_LOG_INFO("state: " << operatorsList.size());
+        for (const auto &op: operatorsList) {
+                GSYNTH_LOG_INFO("op: " << op->enabled());
+                if (op->enabled())
+                        op->setOn((note.midiKeyState == MIDIKeyState::MIDIKeyStateOn));
+        }
 }
 
 void SynthesizerVoice::process(float** out, size_t size)
 {
-        voiceOscillator.process(out, size);
+        for (const auto &op: operatorsList) {
+                if (op->enabled())
+                        op->process(out, size);
+        }
 }

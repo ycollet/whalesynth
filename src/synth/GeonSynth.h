@@ -40,7 +40,7 @@ constexpr char GEONSYNTH_VERSION_STRING[] = "1.0.0";
 using AudioFrame = int;
 using MIDIKeyId = char;
 using MIDIKeyVelocity = char;
-enum class MIDIKeyState : char {
+enum class MIDIKeyState : int {
         MIDIKeyStateOff = 0,
         MIDIKeyStateOn  = 1
 };
@@ -58,6 +58,10 @@ namespace GeonSynth {
         constexpr size_t defaultChannelsNumber = 1;
 
         constexpr unsigned int defaultSampleRate = 48000;
+
+        constexpr float defaultPitch = 440.0f;
+
+        constexpr MIDIKeyVelocity NumberOfOperators = 2;
 };
 
 #ifdef GEONSYNTH_DEBUG

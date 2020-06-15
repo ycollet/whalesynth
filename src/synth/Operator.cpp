@@ -1,5 +1,5 @@
 /**
- * File name: Oscillator.h
+ * File name: Operator.h
  * Project: GeonSynth (A software synthesizer)
  *
  * Copyright (C) 2020 Iurie Nistor <http://iuriepage.wordpress.com>
@@ -21,28 +21,29 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-#include "Oscillator.h"
+#include "Operator.h"
 
-Oscillator::Oscillator()
-        : oscillatorPitch{440.0f}
-        , oscillatorPhase{0.0f}
-        , oscillatorStarted{false}
+Operator::Operator(float pitch)
+        : operatorPitch{pitch}
+        , operatorPhase{0.0f}
+        , operatorStarted{false}
+        , isEnabled{true}
 {
 }
 
-void Oscillator::setPitch(float pitch)
+void Operator::setPitch(float pitch)
 {
-        oscillatorPitch = pitch;
+        operatorPitch = pitch;
 }
 
-float Oscillator::getPitch() const
+float Operator::getPitch() const
 {
-        return oscillatorPitch;
+        return operatorPitch;
 }
 
-void Oscillator::process(float** out, size_t size)
+void Operator::process(float** out, size_t size)
 {
-        if (oscillatorStarted) {
+        if (operatorStarted) {
                 for (size_t i = 0; i < size; i++) {
                         auto val = 0.1f * getValue();
                         out[0][i] += val;
@@ -52,26 +53,34 @@ void Oscillator::process(float** out, size_t size)
         }
 }
 
-void Oscillator::start()
+void Operator::setOn(bool b)
 {
-        oscillatorStarted = true;
-        oscillatorPhase = 0.0f;
+        GSYNTH_LOG_INFO("operatorStarted : " << b);
+        operatorStarted = b;
+        if (operatorStarted)
+                operatorPhase = 0.0f;
 }
 
-void Oscillator::stop()
+float Operator::getValue() const
 {
-        oscillatorStarted = false;
+        return waveGenerator.value(operatorPhase);
 }
 
-float Oscillator::getValue() const
+void Operator::incrementPhase()
 {
-        return sin(oscillatorPhase);
+        operatorPhase += (2.0f * M_PI * operatorPitch) / GeonSynth::defaultSampleRate;
+        if (operatorPhase > 2.0f * M_PI)
+                operatorPhase -= 2.0f * M_PI;
 }
 
-void Oscillator::incrementPhase()
+void Operator::enable(bool b)
 {
-        oscillatorPhase += (2.0f * M_PI * oscillatorPitch) / GeonSynth::defaultSampleRate;
-        if (oscillatorPhase > 2.0f * M_PI)
-                oscillatorPhase -= 2.0f * M_PI;
+        isEnabled = b;
 }
+
+bool Operator::enabled() const
+{
+        return isEnabled;
+}
+
 

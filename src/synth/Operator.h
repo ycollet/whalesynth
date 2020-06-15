@@ -1,5 +1,5 @@
 /**
- * File name: Oscillator.h
+ * File name: Operator.h
  * Project: GeonSynth (A software synthesizer)
  *
  * Copyright (C) 2020 Iurie Nistor <http://iuriepage.wordpress.com>
@@ -21,29 +21,34 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-#ifndef GEONSYNTH_OSCILLATOR_H
-#define GEONSYNTH_OSCILLATOR_H
+#ifndef GEONSYNTH_OPERATOR_H
+#define GEONSYNTH_OPERATOR_H
 
 #include "GeonSynth.h"
+#include "WaveGenerator.h"
 
-class Oscillator {
+class Operator {
  public:
-        Oscillator();
-        ~Oscillator() = default;
+        Operator(float pitch = GeonSynth::defaultPitch);
+        ~Operator() = default;
         void setPitch(float pitch);
         float getPitch() const;
         void process(float** out, size_t size);
-        void start();
-        void stop();
+        void setOn(bool b = true);
+        void enable(bool b = true);
+        bool enabled() const;
+        void setWave(WaveGenerator::WaveFunctionType type) { waveGenerator.setWaveFunction(type); }
 
  protected:
         float getValue() const;
         void incrementPhase();
 
  private:
-        float oscillatorPitch;
-        float oscillatorPhase;
-        bool oscillatorStarted;
+        float operatorPitch;
+        float operatorPhase;
+        bool operatorStarted;
+        bool isEnabled;
+        WaveGenerator waveGenerator;
 };
 
-#endif // GEONSYNTH_OSCILLATOR_H
+#endif // GEONSYNTH_OPERATOR_H

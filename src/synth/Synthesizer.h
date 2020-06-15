@@ -27,9 +27,12 @@
 #include "GeonSynth.h"
 #include "SynthesizerVoice.h"
 
+class Note;
+
 class Synthesizer {
  public:
         Synthesizer();
+        ~Synthesizer() = default;
         void setNumberOfChannels(size_t n);
         size_t numberOfChannels() const;
         void setNote(const Note &note);

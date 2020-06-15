@@ -1,5 +1,5 @@
 /**
- * File name: SynthesizerVoice.h
+ * File name: WaveGenerator.h
  * Project: GeonSynth (A software synthesizer)
  *
  * Copyright (C) 2020 Iurie Nistor <http://iuriepage.wordpress.com>
@@ -21,27 +21,36 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-#ifndef SYNTHESIZER_VOICE_H
-#define SYNTHESIZER_VOICE_H
+#ifndef GEONSYNTH_WAVE_GENERATOR_H
+#define GEONSYNTH_WAVE_GENERATOR_H
 
 #include "GeonSynth.h"
-#include "Operator.h"
 
-//class Operator;
-class Note;
-
-class SynthesizerVoice {
+class WaveGenerator {
  public:
-        SynthesizerVoice(MIDIKeyId keyId = GeonSynth::NoMIDIKey);
-        ~SynthesizerVoice() = default;
-        MIDIKeyId midiKeyId() const;
-        void setNote(const Note &note);
-        void process(float** out, size_t size);
+        enum class WaveFunctionType: int {
+                WaveFunctionSine     = 0,
+                WaveFunctionSquare   = 1,
+                WaveFunctionTriangle = 2,
+                WaveFunctionSawtooth = 3,
+                WaveFunctionNoise    = 4
+        };
+
+        WaveGenerator();
+        ~WaveGenerator() = default;
+        void setWaveFunction(WaveFunctionType type);
+        WaveFunctionType waveFunction() const;
+        float value(float phase) const;
+
+ protected:
+        float sineFunction(float phase) const;
+        float squareFunction(float phase) const;
+        float triangleFunction(float phase) const;
+        float sawtoothFunction(float phase) const;
+        float noiseFunction() const;
 
  private:
-        MIDIKeyId midiKey;
-        float voicePitch;
-        std::vector<std::unique_ptr<Operator>> operatorsList;
+        WaveFunctionType generatorWaveFunction;
 };
 
-#endif // SYNTHESIZER_VOICE_H
+#endif // GEONSYNTH_WAVE_GENERATOR_H
