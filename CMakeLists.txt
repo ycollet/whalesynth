@@ -2,9 +2,6 @@ cmake_minimum_required (VERSION 3.7)
 
 project(geonsynth VERSION 1.0.0)
 
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/")
-include(FindRedkite)
-
 option(GSYNTH_STANDALONE "Enable build for standalone" ON)
 option(GSYNTH_PLUGIN "Enable build for plugin" ON)
 if (GSYNTH_PLUGIN)
@@ -91,6 +88,7 @@ endif()
 message(STATUS "------------------------------")
 
 add_subdirectory(${GSYNTH_SYNTH_DIR})
+add_subdirectory(${GSYNTH_GUI_DIR})
 
 if (GSYNTH_STANDALONE)
   add_subdirectory(${GSYNTH_STANDALONE_DIR})

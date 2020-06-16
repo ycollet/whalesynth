@@ -1,8 +1,8 @@
 /**
- * File name: geonsynth_lv2.cpp
+ * File name: geonsynth_lv2_dsp.cpp
  * Project: Geonsynth (A software synthesizer)
  *
- * Copyright (C) 2020Iurie Nistor <http://iuriepage.wordpress.com>
+ * Copyright (C) 2020 Iurie Nistor <http://iuriepage.wordpress.com>
  *
  * This file is part of Geonsynth.
  *
@@ -26,31 +26,23 @@
 #include <lv2/lv2plug.in/ns/ext/atom/util.h>
 #include <lv2/lv2plug.in/ns/ext/midi/midi.h>
 #include <lv2/lv2plug.in/ns/ext/urid/urid.h>
-#include <lv2/lv2plug.in/ns/extensions/ui/ui.h>
-#include <lv2/lv2plug.in/ns/ext/instance-access/instance-access.h>
 #include <lv2/lv2plug.in/ns/ext/state/state.h>
 
-//#include "mainwindow.h"
 #include "Synthesizer.h"
 #include "Note.h"
-//#include "kit_state.h"
-
-//#include <RkMain.h>
-//#include <RkPlatform.h>
 
 #include <vector>
 #include <memory>
 #include <atomic>
 
 #define GEONSYNTH_URI "http://iuriepage.wordpress.com/geonsynth"
-#define GEONSYNTH_URI_UI "http://iuriepage.wordpress.com/geonsynth#ui"
 #define GEONSYNTH_URI_STATE "http://iuriepage.wordpress.com/geonsynth#state"
 #define GEONSYNTH_URI_STATE_CHANGED "http://lv2plug.in/ns/ext/state#StateChanged"
 
-class GeonsynthLv2Plugin
+class GeonsynthLv2DSPPlugin
 {
   public:
-        GeonsynthLv2Plugin()
+        GeonsynthLv2DSPPlugin()
                 : geonSynth{new Synthesizer}
                 , midiIn{nullptr}
                 , notifyHostChannel{nullptr}
@@ -58,7 +50,7 @@ class GeonsynthLv2Plugin
         {
         }
 
-        ~GeonsynthLv2Plugin()
+        ~GeonsynthLv2DSPPlugin()
         {
                 if (geonSynth)
                         delete geonSynth;
@@ -238,118 +230,14 @@ private:
         };
 
         AtomInfo atomInfo;
-        //        std::atomic<bool> kickIsUpdated;
 };
-
-/**
- * Creates and shows an instance of Geonsynth GUI that takes
- * the geonsynth API instance as a pointer.
- */
-static LV2UI_Handle gsynth_instantiate_ui(const LV2UI_Descriptor*   descriptor,
-                                         const char*               plugin_uri,
-                                         const char*               bundle_path,
-                                         LV2UI_Write_Function      write_function,
-                                         LV2UI_Controller          controller,
-                                         LV2UI_Widget*             widget,
-                                         const LV2_Feature* const* features)
-{
-        /*GeonsynthLv2Plugin *geonsynthLv2PLugin = nullptr;
-        if (!features) {
-                return nullptr;
-        }
-
-        void *parent = nullptr;
-        LV2UI_Resize *resize = nullptr;
-        const LV2_Feature *feature;
-        while ((feature = *features)) {
-                if (std::string(feature->URI) == std::string(LV2_UI__parent))
-                        parent = feature->data;
-
-                if (std::string(feature->URI) == std::string(LV2_UI__resize))
-                        resize = (LV2UI_Resize*)feature->data;
-
-                if (std::string(feature->URI) == std::string(LV2_INSTANCE_ACCESS_URI)) {
-                        geonsynthLv2PLugin = static_cast<GeonsynthLv2Plugin*>(feature->data);
-                        if (!geonsynthLv2PLugin)
-                                return nullptr;
-                }
-                features++;
-        }
-
-        // Get the info about X Window parent window.
-        const uintptr_t parentWinId = (uintptr_t)parent;
-        Display* xDisplay = XOpenDisplay(nullptr);
-        int screenNumber = DefaultScreen(xDisplay);
-        auto info = rk_from_native_x11(xDisplay, screenNumber, parentWinId);
-
-        auto guiApp = new RkMain();
-        geonsynthLv2PLugin->getApi()->setEventQueue(guiApp->eventQueue());
-        auto mainWidget = new MainWindow(guiApp, geonsynthLv2PLugin->getApi(), info);
-        if (!mainWidget->init()) {
-                GEONSYNTH_LOG_ERROR("can't init main window");
-                delete guiApp;
-                return nullptr;
-        }
-
-        auto winId = mainWidget->nativeWindowInfo()->window;
-        *widget = (LV2UI_Widget)static_cast<uintptr_t>(winId);
-        auto size = mainWidget->size();
-        resize->ui_resize(resize->handle, size.width(), size.height());
-        return static_cast<LV2UI_Handle>(guiApp);*/
-        return nullptr;
-}
-
-static void gsynth_cleanup_ui(LV2UI_Handle handle)
-{
-        // if (handle)
-        //         delete static_cast<RkMain*>(handle);
-}
-
-static void gsynth_port_event_ui(LV2UI_Handle ui,
-                                uint32_t port_index,
-                                uint32_t buffer_size,
-                                uint32_t format,
-                                const void *buffer )
-{
-}
-
-// static int gsynth_idle(LV2UI_Handle ui)
-// {
-//         GSYNTH_UNUSED(ui);
-//         return 0;
-// }
-
-static const void* gsynth_extension_data(const char* uri)
-{
-    // static const LV2UI_Idle_Interface idleInterface = {gsynth_idle};
-    // if (std::string(uri) == std::string(LV2_UI__idleInterface))
-    //         return &idleInterface;
-    return nullptr;
-}
-
-static const LV2UI_Descriptor gsynth_descriptor_ui = {
-	GEONSYNTH_URI_UI,
-	gsynth_instantiate_ui,
-	gsynth_cleanup_ui,
-	gsynth_port_event_ui,
-	gsynth_extension_data
-};
-
-const LV2UI_Descriptor* lv2ui_descriptor(uint32_t index)
-{
-	switch (index)
-        {
-	case 0:	return &gsynth_descriptor_ui;
-	default: return NULL;
-        }
-}
 
 static LV2_Handle gsynth_instantiate(const LV2_Descriptor*     descriptor,
                                     double                    rate,
                                     const char*               bundle_path,
                                     const LV2_Feature* const* features)
 {
-        auto geonsynthLv2PLugin = new GeonsynthLv2Plugin;
+        auto geonsynthLv2PLugin = new GeonsynthLv2DSPPlugin;
 
         const LV2_Feature *feature;
         while ((feature = *features)) {
@@ -374,7 +262,7 @@ static void gsynth_connect_port(LV2_Handle instance,
                                uint32_t   port,
                                void*      data)
 {
-        auto geonsynthLv2PLugin = static_cast<GeonsynthLv2Plugin*>(instance);
+        auto geonsynthLv2PLugin = static_cast<GeonsynthLv2DSPPlugin*>(instance);
 	auto nChannels = geonsynthLv2PLugin->numberOfChannels();
 	auto portNumber = static_cast<decltype(nChannels)>(port);
         if (portNumber == 0)
@@ -391,8 +279,8 @@ static void gsynth_activate(LV2_Handle instance)
 
 static void gsynth_run(LV2_Handle instance, uint32_t n_samples)
 {
-       auto geonsynthLv2PLugin = static_cast<GeonsynthLv2Plugin*>(instance);
-       geonsynthLv2PLugin->processSamples(n_samples);
+       auto plugin = static_cast<GeonsynthLv2DSPPlugin*>(instance);
+       plugin->processSamples(n_samples);
 }
 
 static void gsynth_deactivate(LV2_Handle instance)
@@ -401,7 +289,7 @@ static void gsynth_deactivate(LV2_Handle instance)
 
 static void gsynth_cleaup(LV2_Handle instance)
 {
-        delete static_cast<GeonsynthLv2Plugin*>(instance);
+        delete static_cast<GeonsynthLv2DSPPlugin*>(instance);
 }
 
 static LV2_State_Status
@@ -411,7 +299,7 @@ gsynth_state_save(LV2_Handle                instance,
                  uint32_t                  flags,
                  const LV2_Feature* const* features)
 {
-        /*        auto geonsynthLv2PLugin = static_cast<GeonsynthLv2Plugin*>(instance);
+        /*        auto geonsynthLv2PLugin = static_cast<GeonsynthLv2DSPPlugin*>(instance);
         if (geonsynthLv2PLugin){
                 std::string stateData = geonsynthLv2PLugin->getStateData();
                 store(handle, geonsynthLv2PLugin->getStateId(), stateData.data(),
@@ -429,7 +317,7 @@ gsynth_state_restore(LV2_Handle                  instance,
                     uint32_t                    flags,
                     const LV2_Feature* const*   features)
 {
-        /*auto geonsynthLv2PLugin = static_cast<GeonsynthLv2Plugin*>(instance);
+        /*auto geonsynthLv2PLugin = static_cast<GeonsynthLv2DSPPlugin*>(instance);
         if (geonsynthLv2PLugin) {
                 size_t size   = 0;
                 LV2_URID type = 0;

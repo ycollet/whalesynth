@@ -1,7 +1,17 @@
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/")
+include(FindRedkite)
+
+set(GSYNTH_GUI_HEADERS
+  ${GSYNTH_GUI_DIR}/MainWindow.h)
+
+set(GSYNTH_GUI_SOURCES
+  ${GSYNTH_GUI_DIR}/MainWindow.cpp)
+
 include_directories(${REDKITE_INCLUDE_DIR})
+include_directories(${GSYNTH_SYNTH_DIR})
 link_directories(${REDKITE_LIBRARY})
 
-include(${GSYNTH_GUI_DIR}/gui/resources.rc)
+include(${GSYNTH_GUI_DIR}/resources/resources.rc)
 
 foreach(pngFile ${gsynth_rc_png_files})
   message(STATUS "convert file ${pngFile}")
@@ -16,3 +26,7 @@ endforeach()
 
 add_custom_target(gsynth_resources ALL DEPENDS ${GSYNTH_RC_OUTPUT})
 
+add_library(gui STATIC
+  ${GSYNTH_GUI_HEADERS}
+  ${GSYNTH_GUI_SOURCES}
+  ${GSYNTH_RC_OUTPUT})

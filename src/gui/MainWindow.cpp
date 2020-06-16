@@ -21,10 +21,23 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-MainWindow::MainWindow(RkMain &app, Synthesizer &synthesizer)
-        : RkWidget(app)
+#include "MainWindow.h"
+
+MainWindow::MainWindow(RkMain &app)
+        : RkWidget(&app)
 {
-        for (auto &op : synthesizer.operators()) {
-                operatorModel = new OperatorModel()
-                        }
+        show();
+        GSYNTH_DEBUG_INFO("called");
+}
+
+MainWindow::MainWindow(RkMain *app, RkNativeWindowInfo& info)
+        : RkWidget(app, info)
+{
+        show();
+        GSYNTH_DEBUG_INFO("called");
+}
+
+MainWindow::~MainWindow()
+{
+        GSYNTH_DEBUG_INFO("called");
 }

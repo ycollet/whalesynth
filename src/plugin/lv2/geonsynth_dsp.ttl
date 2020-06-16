@@ -69,10 +69,3 @@
 	     lv2:symbol "out_r" ;
              lv2:name "Audio Right"
  	].
-
-<http://iuriepage.wordpress.com/geonsynth#ui>
-    a ui:X11UI ;
-    lv2:requiredFeature <http://lv2plug.in/ns/ext/instance-access> ;
-    lv2:requiredFeature ui:idleInterface;
-    lv2:extensionData ui:idleInterface;
-    ui:binary <libgeonsynth_lv2.so> .

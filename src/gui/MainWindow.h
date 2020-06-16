@@ -24,10 +24,15 @@
 #ifndef GEONSYNT_MAIN_WINDOW_H
 #define GEONSYNT_MAIN_WINDOW_H
 
-class MainWindow {
+#include "GeonSynth.h"
+
+#include <RkWidget.h>
+
+class MainWindow: public RkWidget {
  public:
-        MainWindow(RkMain &app, Synthesizer &synthesizer);
-        ~MainWindow() = default;
+        MainWindow(RkMain &app);
+        MainWindow(RkMain *app, RkNativeWindowInfo& info);
+        ~MainWindow();
 };
 
 #endif // GEONSYNT_MAIN_WINDOW_H

@@ -15,6 +15,8 @@ set(GSYNTH_STANDALONE_SOURCES
   ${GSYNTH_STANDALONE_DIR}/main.cpp)
 
 include_directories(${GSYNTH_SYNTH_DIR})
+include_directories(${REDKITE_INCLUDE_DIR})
+include_directories(${GSYNTH_GUI_DIR})
 include_directories(${GSYNTH_STANDALONE_DIR})
 
 set(GSYNTH_TARGET_NAME "geonsynth")
@@ -23,8 +25,8 @@ add_executable(${GSYNTH_TARGET_NAME}
   ${GSYNTH_STANDALONE_HEADERS}
   ${GSYNTH_STANDALONE_SOURCES})
 
-#add_dependencies(${GSYNTH_TARGET_NAME} synth)
 target_link_libraries(${GSYNTH_TARGET_NAME} synth)
-target_link_libraries(${GSYNTH_TARGET_NAME} "-ljack -lrt -lm -ldl -lpthread")
+target_link_libraries(${GSYNTH_TARGET_NAME} gui)
+target_link_libraries(${GSYNTH_TARGET_NAME} "-lredkite -lX11 -ljack -lrt -lm -ldl -lpthread -lcairo")
 
 install(TARGETS ${GSYNTH_TARGET_NAME} DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)

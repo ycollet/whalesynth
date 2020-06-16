@@ -23,23 +23,21 @@
 
 #include "Jack.h"
 #include "Synthesizer.h"
+#include "MainWindow.h"
 
-// TEMP
-#include <unistd.h>
+#include <RkMain.h>
 
 int main(int argc, char *argv[])
 {
-        //        RkMain mainApp(arg, argv);
+        RkMain mainApp(argc, argv);
 
         Synthesizer synthesizer;
         Jack jack(synthesizer);
 
-        //        auto mainWindow = new MainWindow(mainApp, synthesizer);
+        auto mainWindow = new MainWindow(mainApp);
         jack.start();
-        //        mainWindow->show();
-
-        //        auto res = mainApp.exec();
-        while(1) { sleep(1); }
+        mainWindow->show();
+        auto res = mainApp.exec();
         jack.stop();
-        return 0;
+        return res;
 }
