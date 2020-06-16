@@ -1,5 +1,5 @@
 /**
- * File name: main.cpp
+ * File name: MainWindow.cpp
  * Project: GeonSynth (A software synthesizer)
  *
  * Copyright (C) 2020 Iurie Nistor <http://iuriepage.wordpress.com>
@@ -21,25 +21,10 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-#include "Jack.h"
-#include "Synthesizer.h"
-
-// TEMP
-#include <unistd.h>
-
-int main(int argc, char *argv[])
+MainWindow::MainWindow(RkMain &app, Synthesizer &synthesizer)
+        : RkWidget(app)
 {
-        //        RkMain mainApp(arg, argv);
-
-        Synthesizer synthesizer;
-        Jack jack(synthesizer);
-
-        //        auto mainWindow = new MainWindow(mainApp, synthesizer);
-        jack.start();
-        //        mainWindow->show();
-
-        //        auto res = mainApp.exec();
-        while(1) { sleep(1); }
-        jack.stop();
-        return 0;
+        for (auto &op : synthesizer.operators()) {
+                operatorModel = new OperatorModel()
+                        }
 }

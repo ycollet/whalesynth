@@ -34,7 +34,7 @@ class Synthesizer;
 
 class Jack {
  public:
-        Jack(Synthesizer *synthesizer);
+        Jack(Synthesizer &synthesizer);
         ~Jack();
         bool start();
         void stop();
@@ -53,7 +53,7 @@ class Jack {
         void processAudio(jack_nframes_t nframes);
         static int jackProcessCallback(jack_nframes_t nframes, void *arg);
 
-        Synthesizer *geonSynth;
+        Synthesizer& geonSynth;
         jack_client_t *jackClient;
         jack_port_t* midiInPort;
         bool jackCreated;

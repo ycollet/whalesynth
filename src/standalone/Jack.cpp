@@ -26,7 +26,7 @@
 
 #include <string.h>
 
-Jack::Jack(Synthesizer *synthesizer)
+Jack::Jack(Synthesizer &synthesizer)
         : geonSynth{synthesizer}
         , jackClient{nullptr}
         , midiInPort{nullptr}
@@ -173,15 +173,15 @@ void Jack::processAudio(jack_nframes_t nframes)
                 auto eventFrame = event.time;
                 auto size = eventFrame - currentFrame;
                 if (size > 0)
-                        geonSynth->process(buffer, size);
+                        geonSynth.process(buffer, size);
                 if (isNote(&event))
-                        geonSynth->setNote(getNote(&event));
+                        geonSynth.setNote(getNote(&event));
                 currentFrame = eventFrame;
         }
 
         // Process the rest of the buffer after the last event.
         if (currentFrame < nframes)
-                geonSynth->process(buffer, nframes - currentFrame);
+                geonSynth.process(buffer, nframes - currentFrame);
 }
 
 int Jack::jackProcessCallback(jack_nframes_t nframes, void *arg)
