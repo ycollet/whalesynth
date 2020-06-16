@@ -1,5 +1,5 @@
 /**
- * File name: MainWindow.cpp
+ * File name: OperatorView.cpp
  * Project: GeonSynth (A software synthesizer)
  *
  * Copyright (C) 2020 Iurie Nistor <http://iuriepage.wordpress.com>
@@ -21,34 +21,24 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-#include "MainWindow.h"
-#include "OperatorWidget.h"
+#include "OperatorView.h"
 
-MainWindow::MainWindow(RkMain &app)
-        : RkWidget(&app)
+#include "RkButton.h"
+
+OperatorView::OperatorView(RkWidget* parent)
+        : RkWidget(parent)
 {
-        setFixedSize(800, 500);
-        init();
-        show();
-        GSYNTH_DEBUG_INFO("called");
+        setBackgroundColor({123, 56, 100});
+        setFixedSize(200, 150);
+        auto button = RkButton(this);
+        button->setSize(24, 24);
+        button->setBackgroundColor({0, 100, 0});
+        button->setPosition(10, 10);
+        RK_BIND_ACT(button, pressed, RK_ACT_ARGS(), setWaveFunction());
+        button->show();
 }
 
-MainWindow::MainWindow(RkMain *app, RkNativeWindowInfo& info)
-        : RkWidget(app, info)
+void OperatorView::setWaveFunction()
 {
-        setFixedSize(800, 500);
-        init();
-        show();
-        GSYNTH_DEBUG_INFO("called");
-}
-
-void MainWindow::init()
-{
-        auto widget = new OperatorWidget(this);
-        widget->setPosition(10, 10);
-}
-
-MainWindow::~MainWindow()
-{
-        GSYNTH_DEBUG_INFO("called");
+        GSYNTH_LOG_INFO("called");
 }

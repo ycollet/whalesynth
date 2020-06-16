@@ -1,5 +1,5 @@
 /**
- * File name: MainWindow.cpp
+ * File name: OperatorView.h
  * Project: GeonSynth (A software synthesizer)
  *
  * Copyright (C) 2020 Iurie Nistor <http://iuriepage.wordpress.com>
@@ -21,34 +21,16 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-#include "MainWindow.h"
-#include "OperatorWidget.h"
+#ifndef GEONSYNT_OPERATOR_VIEW_H
+#define GEONSYNT_OPERATOR_VIEW_H
 
-MainWindow::MainWindow(RkMain &app)
-        : RkWidget(&app)
-{
-        setFixedSize(800, 500);
-        init();
-        show();
-        GSYNTH_DEBUG_INFO("called");
-}
+#include "GeonSynth.h"
 
-MainWindow::MainWindow(RkMain *app, RkNativeWindowInfo& info)
-        : RkWidget(app, info)
-{
-        setFixedSize(800, 500);
-        init();
-        show();
-        GSYNTH_DEBUG_INFO("called");
-}
+#include <RkWidget.h>
 
-void MainWindow::init()
-{
-        auto widget = new OperatorWidget(this);
-        widget->setPosition(10, 10);
-}
+class OperatorView: public RkWidget {
+ public:
+        OperatorView(RkWidget* parent);
+};
 
-MainWindow::~MainWindow()
-{
-        GSYNTH_DEBUG_INFO("called");
-}
+#endif // GEONSYNT_OPERATOR_VIEW_H
