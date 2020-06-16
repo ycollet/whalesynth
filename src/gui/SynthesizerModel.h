@@ -1,5 +1,5 @@
 /**
- * File name: MainWindow.h
+ * File name: SynthesizerModel.h
  * Project: GeonSynth (A software synthesizer)
  *
  * Copyright (C) 2020 Iurie Nistor <http://iuriepage.wordpress.com>
@@ -21,23 +21,17 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-#ifndef GEONSYNT_MAIN_WINDOW_H
-#define GEONSYNT_MAIN_WINDOW_H
+#ifndef GEONSYNT_SYNTHESIZER_MODEL_H
+#define GEONSYNT_SYNTHESIZER_MODEL_H
 
 #include "GeonSynth.h"
 
 #include <RkWidget.h>
 
-class MainWindow: public RkWidget {
+class SynthesizerModel: public RkWidget {
  public:
-        MainWindow(RkMain &app, SynthesizerModel* synthesizer);
-        MainWindow(RkMain *app,
-                   SynthesizerModel* synthesizer,
-                   RkNativeWindowInfo& info);
-        ~MainWindow();
-
- private:
-        void init();
+        OperatorView(RkWidget* parent);
+        void setWaveFunction();
 };
 
-#endif // GEONSYNT_MAIN_WINDOW_H
+#endif // GEONSYNT_SYNTHESIZER_MODEL

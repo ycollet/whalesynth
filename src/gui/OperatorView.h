@@ -31,6 +31,7 @@
 class OperatorView: public RkWidget {
  public:
         OperatorView(RkWidget* parent);
+        void setWaveFunction();
 };
 
 #endif // GEONSYNT_OPERATOR_VIEW_H

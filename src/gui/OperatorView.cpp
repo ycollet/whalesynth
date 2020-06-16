@@ -30,12 +30,13 @@ OperatorView::OperatorView(RkWidget* parent)
 {
         setBackgroundColor({123, 56, 100});
         setFixedSize(200, 150);
-        auto button = RkButton(this);
+        auto button = new RkButton(this);
         button->setSize(24, 24);
         button->setBackgroundColor({0, 100, 0});
         button->setPosition(10, 10);
-        RK_BIND_ACT(button, pressed, RK_ACT_ARGS(), setWaveFunction());
+        RK_ACT_BIND(button, pressed, RK_ACT_ARGS(), this, setWaveFunction());
         button->show();
+        show();
 }
 
 void OperatorView::setWaveFunction()

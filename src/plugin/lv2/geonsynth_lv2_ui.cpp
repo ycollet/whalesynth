@@ -34,6 +34,67 @@
 
 #define GEONSYNTH_URI_UI "http://iuriepage.wordpress.com/geonsynth#ui"
 
+class 
+
+class Lv2UIPlugin: public RkObject {
+        Lv2UIPlugin(const LV2_Feature* const* features,
+                    LV2UI_Write_Function function,
+                    LV2UI_Controller controller,
+                    LV2UI_Widget *widget)
+                : writeFunction{function}
+                , uiController{controller}
+                , guiApp{nullptr}
+                , mainWidget{nullptr}
+        {
+                void *parent = nullptr;
+                LV2UI_Resize *resize = nullptr;
+                const LV2_Feature *feature;
+                while ((feature = *features)) {
+                        if (std::string(feature->URI) == std::string(LV2_UI__parent))
+                                parent = feature->data;
+
+                        if (std::string(feature->URI) == std::string(LV2_UI__resize))
+                                resize = (LV2UI_Resize*)feature->data;
+                        features++;
+                }
+
+                // Get paret window info.
+                const uintptr_t parentWinId = (uintptr_t)parent;
+                Display* xDisplay = XOpenDisplay(nullptr);
+                int screenNumber = DefaultScreen(xDisplay);
+                auto info = rk_from_native_x11(xDisplay, screenNumber, parentWinId);
+
+                // Create GUI
+                guiApp = new RkMain();
+                auto synthesizer = new LV2SynthesizerModelProxy(writeFunction, uiController);
+                mainWidget = new MainWindow(guiApp, synthesizer, info);
+
+                auto winId = mainWidget->nativeWindowInfo()->window;
+                *widget = (LV2UI_Widget)static_cast<uintptr_t>(winId);
+                auto size = mainWidget->size();
+                resize->ui_resize(resize->handle, size.width(), size.height());
+                synthesizer
+        }
+
+        void updateOperatorWaveFunction(size_t index, WaveGenerator::WaveFunctionType type)
+        {
+                writeFloat(static_cast<float>(type));
+        }
+
+        void writeFloat(float value)
+        {
+                if (writeFunction && uiController)
+                        writeFunction(uiController, 1,
+                                      sizeof(float),
+                                      0,
+                                      static_cast<const void*>(&value));
+        }
+
+private:
+        LV2UI_Write_Function writeFunction;
+        LV2UI_Controller uiController;
+};
+
 static LV2UI_Handle gsynth_instantiate_ui(const LV2UI_Descriptor*   descriptor,
                                          const char*               plugin_uri,
                                          const char*               bundle_path,
@@ -42,34 +103,16 @@ static LV2UI_Handle gsynth_instantiate_ui(const LV2UI_Descriptor*   descriptor,
                                          LV2UI_Widget*             widget,
                                          const LV2_Feature* const* features)
 {
-        if (!features)
-                return nullptr;
+        GSYNTH_UNUSED(descriptor);
+        GSYNTH_UNUSED(plugin_uri);
+        GSYNTH_UNUSED(bundle_path);
 
-        void *parent = nullptr;
-        LV2UI_Resize *resize = nullptr;
-        const LV2_Feature *feature;
-        while ((feature = *features)) {
-                if (std::string(feature->URI) == std::string(LV2_UI__parent))
-                        parent = feature->data;
-
-                if (std::string(feature->URI) == std::string(LV2_UI__resize))
-                        resize = (LV2UI_Resize*)feature->data;
-                features++;
+        Lv2UIPlugin *uiPlugin = nullptr;
+        if (features) {
+                uiPlugin = new Lv2UIPlugin(features, write_function, controller, widget);
+                if (uiPlugin->init())
+                        return static_cast<LV2UI_Handle>(uiPlugin);
         }
-
-        // Get the info about X Window parent window.
-        const uintptr_t parentWinId = (uintptr_t)parent;
-        Display* xDisplay = XOpenDisplay(nullptr);
-        int screenNumber = DefaultScreen(xDisplay);
-        auto info = rk_from_native_x11(xDisplay, screenNumber, parentWinId);
-
-        auto guiApp = new RkMain();
-        auto mainWidget = new MainWindow(guiApp, info);
-        auto winId = mainWidget->nativeWindowInfo()->window;
-        *widget = (LV2UI_Widget)static_cast<uintptr_t>(winId);
-        auto size = mainWidget->size();
-        resize->ui_resize(resize->handle, size.width(), size.height());
-        return static_cast<LV2UI_Handle>(guiApp);
         return nullptr;
 }
 

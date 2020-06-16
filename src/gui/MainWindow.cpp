@@ -22,33 +22,46 @@
  */
 
 #include "MainWindow.h"
-#include "OperatorWidget.h"
+#include "OperatorView.h"
 
 MainWindow::MainWindow(RkMain &app)
         : RkWidget(&app)
+          synthesizerModel{new SynthesizerModelStandalone(this)}
 {
         setFixedSize(800, 500);
         init();
         show();
-        GSYNTH_DEBUG_INFO("called");
+        GSYNTH_LOG_INFO("called");
 }
 
-MainWindow::MainWindow(RkMain *app, RkNativeWindowInfo& info)
+MainWindow::MainWindow(RkMain *app, SynthesizerModel *model, RkNativeWindowInfo& info)
         : RkWidget(app, info)
+        , synthesizerModel{model}
 {
         setFixedSize(800, 500);
+        synthesizerModel->setEventQueue(eventQueue());
         init();
         show();
-        GSYNTH_DEBUG_INFO("called");
+        GSYNTH_LOG_INFO("called");
+}
+
+MainWindow::~MainWindow()
+{
+        if (geonkickApi) {
+                geonkickApi->registerCallbacks(false);
+                geonkickApi->setEventQueue(nullptr);
+                if (geonkickApi->isStandalone())
+                        delete geonkickApi;
+        }
 }
 
 void MainWindow::init()
 {
-        auto widget = new OperatorWidget(this);
+        operatorView = new OperatorView(this);
         widget->setPosition(10, 10);
 }
 
 MainWindow::~MainWindow()
 {
-        GSYNTH_DEBUG_INFO("called");
+        GSYNTH_LOG_INFO("called");
 }
