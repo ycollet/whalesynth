@@ -25,13 +25,15 @@
 #define GEONSYNT_SYNTHESIZER_MODEL_H
 
 #include "GeonSynth.h"
+#include "WaveGenerator.h"
 
-#include <RkWidget.h>
+#include <RkObject.h>
 
-class SynthesizerModel: public RkWidget {
+class SynthesizerModel: public RkObject {
  public:
-        OperatorView(RkWidget* parent);
-        void setWaveFunction();
+        SynthesizerModel(RkObject* parent);
+        virtual ~SynthesizerModel() = default;
+        virtual void setWaveFunction(WaveGenerator::WaveFunctionType type) = 0;
 };
 
-#endif // GEONSYNT_SYNTHESIZER_MODEL
+#endif // GEONSYNT_SYNTHESIZER_MODEL_H

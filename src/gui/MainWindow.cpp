@@ -22,11 +22,12 @@
  */
 
 #include "MainWindow.h"
+#include "SynthesizerModel.h"
 #include "OperatorView.h"
 
 MainWindow::MainWindow(RkMain &app)
         : RkWidget(&app)
-          synthesizerModel{new SynthesizerModelStandalone(this)}
+        , synthesizerModel{nullptr/*new SynthesizerModelStandalone(this)*/}
 {
         setFixedSize(800, 500);
         init();
@@ -47,21 +48,12 @@ MainWindow::MainWindow(RkMain *app, SynthesizerModel *model, RkNativeWindowInfo&
 
 MainWindow::~MainWindow()
 {
-        if (geonkickApi) {
-                geonkickApi->registerCallbacks(false);
-                geonkickApi->setEventQueue(nullptr);
-                if (geonkickApi->isStandalone())
-                        delete geonkickApi;
-        }
+        if (synthesizerModel)
+                delete synthesizerModel;
 }
 
 void MainWindow::init()
 {
-        operatorView = new OperatorView(this);
-        widget->setPosition(10, 10);
-}
-
-MainWindow::~MainWindow()
-{
-        GSYNTH_LOG_INFO("called");
+        auto operatorView = new OperatorView(this, synthesizerModel);
+        operatorView->setPosition(10, 10);
 }

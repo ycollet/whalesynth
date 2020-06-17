@@ -25,13 +25,17 @@
 #define GEONSYNT_OPERATOR_VIEW_H
 
 #include "GeonSynth.h"
+#include "SynthesizerModel.h"
 
 #include <RkWidget.h>
 
 class OperatorView: public RkWidget {
  public:
-        OperatorView(RkWidget* parent);
+        OperatorView(RkWidget* parent, SynthesizerModel *synth);
         void setWaveFunction();
+
+ private:
+        SynthesizerModel *synthModel;
 };
 
 #endif // GEONSYNT_OPERATOR_VIEW_H

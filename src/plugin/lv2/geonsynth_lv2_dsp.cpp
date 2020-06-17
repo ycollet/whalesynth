@@ -44,8 +44,10 @@ class GeonsynthLv2DSPPlugin
   public:
         GeonsynthLv2DSPPlugin()
                 : geonSynth{new Synthesizer}
-                , midiIn{nullptr}
-                , notifyHostChannel{nullptr}
+                , midiInPort{nullptr}
+                , eventsInPort{nullptr}
+                , eventsOutPort{nullptr}
+                , notifyHostPort{nullptr}
                 , atomInfo{0}
         {
         }
@@ -61,20 +63,30 @@ class GeonsynthLv2DSPPlugin
                 return geonSynth->numberOfChannels();
         }
 
-        void setAudioChannel(float *data, size_t channel)
+        void setAudioChannelPort(float *data, size_t channel)
         {
                 if (channel < 2 * GeonSynth::defaultChannelsNumber)
                         outputChannels[channel] = data;
         }
 
-        void setMidiIn(LV2_Atom_Sequence *data)
+        void setMidiInPort(LV2_Atom_Sequence *data)
         {
-                midiIn = data;
+                midiInPort = data;
         }
 
-        void setNotifyHostChannel(LV2_Atom_Sequence *data)
+        void setNotifyHostPort(LV2_Atom_Sequence *data)
         {
-                notifyHostChannel = data;
+                notifyHostPort = data;
+        }
+
+        void setInEventsPort(LV2_Atom_Sequence *data)
+        {
+                eventsInPort = data;
+        }
+
+        void setOutEventsPort(LV2_Atom_Sequence *data)
+        {
+                eventsOutPort = data;
         }
 
         void setStateId(LV2_URID id)
@@ -167,11 +179,24 @@ class GeonsynthLv2DSPPlugin
 
         void processSamples(int nsamples)
         {
-                if (!midiIn)
+                if (!midiInPort)
                         return;
-                auto it = lv2_atom_sequence_begin(&midiIn->body);
+
+                auto it = lv2_atom_sequence_begin(&eventsInPort->body);
+                while (!lv2_atom_sequence_is_end(&eventsInPort->body, eventsInPort->atom.size, it))
+                {
+                        GSYNTH_LOG_DEBUG("IN: it->time.frames:" << it->time.frames);
+                }
+
+                it = lv2_atom_sequence_begin(&eventsOutPort->body);
+                while (!lv2_atom_sequence_is_end(&eventsOutPort->body, eventsOutPort->atom.size, it))
+                {
+                        GSYNTH_LOG_DEBUG("OUT: it->time.frames:" << it->time.frames);
+                }
+
+                it = lv2_atom_sequence_begin(&midiInPort->body);
                 size_t currentFrame = 0;
-                while (!lv2_atom_sequence_is_end(&midiIn->body, midiIn->atom.size, it)) {
+                while (!lv2_atom_sequence_is_end(&midiInPort->body, midiInPort->atom.size, it)) {
                         auto eventFrame = it->time.frames;
                         auto size = eventFrame - currentFrame;
                         if (size > 0)
@@ -217,8 +242,10 @@ protected:
 
 private:
         Synthesizer *geonSynth;
-        LV2_Atom_Sequence *midiIn;
-        LV2_Atom_Sequence *notifyHostChannel;
+        LV2_Atom_Sequence *midiInPort;
+        LV2_Atom_Sequence *eventsInPort;
+        LV2_Atom_Sequence *eventsOutPort;
+        LV2_Atom_Sequence *notifyHostPort;
         float* outputChannels[GeonSynth::defaultChannelsNumber * 2];
 
         struct AtomInfo {
@@ -265,12 +292,16 @@ static void gsynth_connect_port(LV2_Handle instance,
         auto geonsynthLv2PLugin = static_cast<GeonsynthLv2DSPPlugin*>(instance);
 	auto nChannels = geonsynthLv2PLugin->numberOfChannels();
 	auto portNumber = static_cast<decltype(nChannels)>(port);
-        if (portNumber == 0)
-                geonsynthLv2PLugin->setMidiIn(static_cast<LV2_Atom_Sequence*>(data));
-        else if (portNumber == 1)
-                geonsynthLv2PLugin->setNotifyHostChannel(static_cast<LV2_Atom_Sequence*>(data));
-        else if (portNumber > 2)
-                geonsynthLv2PLugin->setAudioChannel(static_cast<float*>(data), portNumber - 3);
+        if (portNumber == 0 && portNumber == 1)
+                geonsynthLv2PLugin->setAudioChannelPort(static_cast<float*>(data), portNumber);
+        else if (portNumber == 2)
+                geonsynthLv2PLugin->setMidiInPort(static_cast<LV2_Atom_Sequence*>(data));
+        else if (portNumber == 3)
+                geonsynthLv2PLugin->setInEventsPort(static_cast<LV2_Atom_Sequence*>(data));
+        else if (portNumber == 4)
+                geonsynthLv2PLugin->setOutEventsPort(static_cast<LV2_Atom_Sequence*>(data));
+        else if (portNumber == 5)
+                geonsynthLv2PLugin->setNotifyHostPort(static_cast<LV2_Atom_Sequence*>(data));
 }
 
 static void gsynth_activate(LV2_Handle instance)

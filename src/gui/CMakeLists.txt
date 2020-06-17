@@ -2,10 +2,12 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/")
 include(FindRedkite)
 
 set(GSYNTH_GUI_HEADERS
+  ${GSYNTH_GUI_DIR}/SynthesizerModel.h
   ${GSYNTH_GUI_DIR}/OperatorView.h
   ${GSYNTH_GUI_DIR}/MainWindow.h)
 
 set(GSYNTH_GUI_SOURCES
+  ${GSYNTH_GUI_DIR}/SynthesizerModel.cpp
   ${GSYNTH_GUI_DIR}/OperatorView.cpp
   ${GSYNTH_GUI_DIR}/MainWindow.cpp)
 

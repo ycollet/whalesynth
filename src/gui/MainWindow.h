@@ -28,16 +28,21 @@
 
 #include <RkWidget.h>
 
+class SynthesizerModel;
+
 class MainWindow: public RkWidget {
  public:
-        MainWindow(RkMain &app, SynthesizerModel* synthesizer);
+        MainWindow(RkMain &app);
         MainWindow(RkMain *app,
                    SynthesizerModel* synthesizer,
                    RkNativeWindowInfo& info);
         ~MainWindow();
 
- private:
+ protected:
         void init();
+
+ private:
+        SynthesizerModel* synthesizerModel;
 };
 
 #endif // GEONSYNT_MAIN_WINDOW_H

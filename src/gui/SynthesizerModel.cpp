@@ -1,5 +1,5 @@
 /**
- * File name: OperatorView.cpp
+ * File name: SynthesizerModel.cpp
  * Project: GeonSynth (A software synthesizer)
  *
  * Copyright (C) 2020 Iurie Nistor <http://iuriepage.wordpress.com>
@@ -21,32 +21,10 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-#include "OperatorView.h"
-#include "WaveGenerator.h"
+#include "SynthesizerModel.h"
 
-#include "RkButton.h"
-
-OperatorView::OperatorView(RkWidget* parent, SynthesizerModel *synth)
-        : RkWidget(parent)
-        , synthModel{synth}
+SynthesizerModel::SynthesizerModel(RkObject *parent)
+        : RkObject(parent)
 {
-        setBackgroundColor({123, 56, 100});
-        setFixedSize(200, 150);
-        auto button = new RkButton(this);
-        button->setSize(24, 24);
-        button->setBackgroundColor({0, 100, 0});
-        button->setPosition(10, 10);
-        RK_ACT_BIND(button, pressed, RK_ACT_ARGS(), this, setWaveFunction());
-        button->show();
-        show();
 }
 
-void OperatorView::setWaveFunction()
-{
-        static int wave = 0;
-        if (wave > 4)
-                wave = 0;
-        GSYNTH_LOG_INFO("called");
-        synthModel->setWaveFunction(static_cast<WaveGenerator::WaveFunctionType>(wave));
-        wave++;
-}

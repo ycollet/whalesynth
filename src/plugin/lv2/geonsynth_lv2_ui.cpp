@@ -21,29 +21,22 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-#include <lv2/lv2plug.in/ns/lv2core/lv2.h>
-#include <lv2/lv2plug.in/ns/ext/atom/atom.h>
-#include <lv2/lv2plug.in/ns/ext/atom/util.h>
-#include <lv2/lv2plug.in/ns/ext/midi/midi.h>
-#include <lv2/lv2plug.in/ns/ext/urid/urid.h>
-#include <lv2/lv2plug.in/ns/extensions/ui/ui.h>
-
 #include "MainWindow.h"
+#include "LV2SynthesizerModelProxy.h"
+
 #include <RkMain.h>
 #include <RkPlatform.h>
 
 #define GEONSYNTH_URI_UI "http://iuriepage.wordpress.com/geonsynth#ui"
 
-class 
-
-class Lv2UIPlugin: public RkObject {
-        Lv2UIPlugin(const LV2_Feature* const* features,
+class Lv2UiPlugin {
+public:
+        Lv2UiPlugin(const LV2_Feature* const* features,
                     LV2UI_Write_Function function,
                     LV2UI_Controller controller,
-                    LV2UI_Widget *widget)
-                : writeFunction{function}
-                , uiController{controller}
-                , guiApp{nullptr}
+                    LV2UI_Widget *widget,
+                    LV2_URID_Map *map)
+                : guiApp{nullptr}
                 , mainWidget{nullptr}
         {
                 void *parent = nullptr;
@@ -66,33 +59,40 @@ class Lv2UIPlugin: public RkObject {
 
                 // Create GUI
                 guiApp = new RkMain();
-                auto synthesizer = new LV2SynthesizerModelProxy(writeFunction, uiController);
+                auto synthesizer = new LV2SynthesizerModelProxy(function, controller, map);
                 mainWidget = new MainWindow(guiApp, synthesizer, info);
 
                 auto winId = mainWidget->nativeWindowInfo()->window;
                 *widget = (LV2UI_Widget)static_cast<uintptr_t>(winId);
                 auto size = mainWidget->size();
                 resize->ui_resize(resize->handle, size.width(), size.height());
-                synthesizer
         }
 
-        void updateOperatorWaveFunction(size_t index, WaveGenerator::WaveFunctionType type)
+        ~Lv2UiPlugin()
         {
-                writeFloat(static_cast<float>(type));
+                closeGui();
         }
 
-        void writeFloat(float value)
+        RkMain *getGuiApp()
         {
-                if (writeFunction && uiController)
-                        writeFunction(uiController, 1,
-                                      sizeof(float),
-                                      0,
-                                      static_cast<const void*>(&value));
+                return guiApp;
+        }
+
+        void closeGui()
+        {
+                if (guiApp)
+                        delete guiApp;
+        }
+
+        void exect()
+        {
+                if (guiApp)
+                        guiApp->exec(true);
         }
 
 private:
-        LV2UI_Write_Function writeFunction;
-        LV2UI_Controller uiController;
+        RkMain *guiApp;
+        MainWindow *mainWidget;
 };
 
 static LV2UI_Handle gsynth_instantiate_ui(const LV2UI_Descriptor*   descriptor,
@@ -107,11 +107,29 @@ static LV2UI_Handle gsynth_instantiate_ui(const LV2UI_Descriptor*   descriptor,
         GSYNTH_UNUSED(plugin_uri);
         GSYNTH_UNUSED(bundle_path);
 
-        Lv2UIPlugin *uiPlugin = nullptr;
+        const LV2_Feature *feature;
+        LV2_URID_Map *uridMap = nullptr;
+        while ((feature = *features)) {
+                if (std::string(feature->URI) == std::string(LV2_URID__map)) {
+                        uridMap = static_cast<LV2_URID_Map*>(feature->data);
+                        break;
+                }
+                features++;
+        }
+
+        if (!uridMap) {
+                GSYNTH_LOG_ERROR("can't find urid map");
+                return nullptr;
+        }
+
+        Lv2UiPlugin *uiPlugin = nullptr;
         if (features) {
-                uiPlugin = new Lv2UIPlugin(features, write_function, controller, widget);
-                if (uiPlugin->init())
-                        return static_cast<LV2UI_Handle>(uiPlugin);
+                uiPlugin = new Lv2UiPlugin(features,
+                                           write_function,
+                                           controller,
+                                           widget,
+                                           uridMap);
+                return static_cast<LV2UI_Handle>(uiPlugin);
         }
         return nullptr;
 }
@@ -119,7 +137,7 @@ static LV2UI_Handle gsynth_instantiate_ui(const LV2UI_Descriptor*   descriptor,
 static void gsynth_cleanup_ui(LV2UI_Handle handle)
 {
         if (handle)
-                delete static_cast<RkMain*>(handle);
+                delete static_cast<Lv2UiPlugin*>(handle);
 }
 
 static void gsynth_port_event_ui(LV2UI_Handle ui,
@@ -132,7 +150,9 @@ static void gsynth_port_event_ui(LV2UI_Handle ui,
 
 static int gsynth_idle(LV2UI_Handle ui)
 {
-        static_cast<RkMain*>(ui)->exec(false);
+        auto plugin = static_cast<Lv2UiPlugin*>(ui);
+        if (plugin)
+                plugin->exect();
         return 0;
 }
 
@@ -141,7 +161,7 @@ static const void* gsynth_extension_data(const char* uri)
         static const LV2UI_Idle_Interface idleInterface = {gsynth_idle};
         if (std::string(uri) == std::string(LV2_UI__idleInterface))
                 return &idleInterface;
-    return nullptr;
+        return nullptr;
 }
 
 static const LV2UI_Descriptor gsynth_descriptor_ui = {

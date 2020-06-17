@@ -2,7 +2,7 @@ cmake_minimum_required (VERSION 3.7)
 
 project(geonsynth VERSION 1.0.0)
 
-option(GSYNTH_STANDALONE "Enable build for standalone" ON)
+option(GSYNTH_STANDALONE "Enable build for standalone" OFF)
 option(GSYNTH_PLUGIN "Enable build for plugin" ON)
 if (GSYNTH_PLUGIN)
   option(GSYNTH_PLUGIN_LV2 "Enable build LV2 plugin" ON)
@@ -61,6 +61,20 @@ find_package(PkgConfig REQUIRED)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 add_definitions(-fPIC)
 
+add_subdirectory(${GSYNTH_SYNTH_DIR})
+add_subdirectory(${GSYNTH_GUI_DIR})
+
+if (GSYNTH_STANDALONE)
+  add_subdirectory(${GSYNTH_STANDALONE_DIR})
+endif (GSYNTH_STANDALONE)
+
+if (GSYNTH_PLUGIN)
+  add_subdirectory(${GSYNTH_PLUGIN_DIR})
+endif (GSYNTH_PLUGIN)
+
+add_subdirectory(data)
+add_subdirectory(presets)
+
 message(STATUS "------------ Summary ---------")
 if (GSYNTH_STANDALONE)
   message(STATUS "Standalone: yes" )
@@ -86,17 +100,3 @@ else()
   message(STATUS "Debug enabled: no" )
 endif()
 message(STATUS "------------------------------")
-
-add_subdirectory(${GSYNTH_SYNTH_DIR})
-add_subdirectory(${GSYNTH_GUI_DIR})
-
-if (GSYNTH_STANDALONE)
-  add_subdirectory(${GSYNTH_STANDALONE_DIR})
-endif (GSYNTH_STANDALONE)
-
-if (GSYNTH_PLUGIN)
-  add_subdirectory(${GSYNTH_PLUGIN_DIR})
-endif (GSYNTH_PLUGIN)
-
-add_subdirectory(data)
-add_subdirectory(presets)
