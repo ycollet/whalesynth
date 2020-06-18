@@ -45,17 +45,24 @@ MIDIKeyId SynthesizerVoice::midiKeyId() const
 void SynthesizerVoice::setNote(const Note &note)
 {
         GSYNTH_LOG_INFO("state: " << operatorsList.size());
-        for (const auto &op: operatorsList) {
-                GSYNTH_LOG_INFO("op: " << op->enabled());
-                if (op->enabled())
-                        op->setOn((note.midiKeyState == MIDIKeyState::MIDIKeyStateOn));
+        for (size_t i = 0; i < operatorsList.size(); i++) {
+                if (operatorsList[i]->enabled())
+                        operatorsList[i]->setOn((note.midiKeyState == MIDIKeyState::MIDIKeyStateOn));
         }
 }
 
 void SynthesizerVoice::process(float** out, size_t size)
 {
-        for (const auto &op: operatorsList) {
-                if (op->enabled())
-                        op->process(out, size);
+        for (size_t i = 0; i < operatorsList.size(); i++) {
+                if (operatorsList[i]->enabled())
+                        operatorsList[i]->process(out, size);
+        }
+}
+
+void SynthesizerVoice::setWave(WaveGenerator::WaveFunctionType type)
+{
+        for (size_t i = 0; i < operatorsList.size(); i++) {
+                if (operatorsList[i]->enabled())
+                        operatorsList[i]->setWave(type);
         }
 }

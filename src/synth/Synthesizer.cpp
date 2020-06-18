@@ -49,12 +49,18 @@ void Synthesizer::setNote(const Note &note)
 
 void Synthesizer::process(float** out, size_t size)
 {
-        for (auto &voice: synthVoices)
-                voice->process(out, size);
+        for (size_t i = 0; i < synthVoices.size(); i++)
+                synthVoices[i]->process(out, size);
 }
 
 void Synthesizer::addVoice(std::unique_ptr<SynthesizerVoice> voice)
 {
         if (synthVoices.size() < static_cast<decltype(synthVoices.size())>(GeonSynth::MaxMidiKeyId))
                 synthVoices.push_back(std::move(voice));
+}
+
+void Synthesizer::setWave(WaveGenerator::WaveFunctionType type)
+{
+        for (size_t i = 0; i < synthVoices.size(); i++)
+                synthVoices[i]->setWave(type);
 }

@@ -61,7 +61,7 @@ namespace GeonSynth {
 
         constexpr float defaultPitch = 440.0f;
 
-        constexpr MIDIKeyVelocity NumberOfOperators = 2;
+        constexpr MIDIKeyVelocity NumberOfOperators = 8;
 };
 
 #ifdef GEONSYNTH_DEBUG

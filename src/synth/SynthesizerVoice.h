@@ -37,6 +37,8 @@ class SynthesizerVoice {
         MIDIKeyId midiKeyId() const;
         void setNote(const Note &note);
         void process(float** out, size_t size);
+        void setWave(WaveGenerator::WaveFunctionType type);
+
 
  private:
         MIDIKeyId midiKey;

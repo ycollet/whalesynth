@@ -183,15 +183,12 @@ class GeonsynthLv2DSPPlugin
                         return;
 
                 auto it = lv2_atom_sequence_begin(&eventsInPort->body);
-                while (!lv2_atom_sequence_is_end(&eventsInPort->body, eventsInPort->atom.size, it))
-                {
-                        GSYNTH_LOG_DEBUG("IN: it->time.frames:" << it->time.frames);
-                }
-
-                it = lv2_atom_sequence_begin(&eventsOutPort->body);
-                while (!lv2_atom_sequence_is_end(&eventsOutPort->body, eventsOutPort->atom.size, it))
-                {
-                        GSYNTH_LOG_DEBUG("OUT: it->time.frames:" << it->time.frames);
+                while (!lv2_atom_sequence_is_end(&eventsInPort->body, eventsInPort->atom.size, it)) {
+                        LV2_Atom_Int* v = (LV2_Atom_Int*)(&it->body);
+                        int *vv = (int*)LV2_ATOM_BODY(v);
+                        GSYNTH_LOG_DEBUG("IN: body :" << *vv);
+                        geonSynth->setWave(static_cast<WaveGenerator::WaveFunctionType>(*vv));
+                        it = lv2_atom_sequence_next(it);
                 }
 
                 it = lv2_atom_sequence_begin(&midiInPort->body);
@@ -276,6 +273,8 @@ static LV2_Handle gsynth_instantiate(const LV2_Descriptor*     descriptor,
                                 geonsynthLv2PLugin->setAtomSequence(uridMap->map(uridMap->handle, LV2_ATOM__Sequence));
                                 geonsynthLv2PLugin->setAtomStateChanged(uridMap->map(uridMap->handle, GEONSYNTH_URI_STATE_CHANGED));
                                 geonsynthLv2PLugin->setAtomObject(uridMap->map(uridMap->handle, LV2_ATOM__Object));
+                                GSYNTH_LOG_INFO("IDDDDD: " << uridMap->map(uridMap->handle, LV2_ATOM__Object));
+                                GSYNTH_LOG_INFO("LV2_ATOM__FloatID: " << uridMap->map(uridMap->handle, LV2_ATOM__Float));
                         }
                         break;
                 }
@@ -290,9 +289,8 @@ static void gsynth_connect_port(LV2_Handle instance,
                                void*      data)
 {
         auto geonsynthLv2PLugin = static_cast<GeonsynthLv2DSPPlugin*>(instance);
-	auto nChannels = geonsynthLv2PLugin->numberOfChannels();
-	auto portNumber = static_cast<decltype(nChannels)>(port);
-        if (portNumber == 0 && portNumber == 1)
+	size_t portNumber = static_cast<size_t>(port);
+        if (portNumber == 0 || portNumber == 1)
                 geonsynthLv2PLugin->setAudioChannelPort(static_cast<float*>(data), portNumber);
         else if (portNumber == 2)
                 geonsynthLv2PLugin->setMidiInPort(static_cast<LV2_Atom_Sequence*>(data));

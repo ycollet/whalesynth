@@ -59,8 +59,8 @@ public:
 
                 // Create GUI
                 guiApp = new RkMain();
-                auto synthesizer = new LV2SynthesizerModelProxy(function, controller, map);
-                mainWidget = new MainWindow(guiApp, synthesizer, info);
+                auto synthesizerModel = new LV2SynthesizerModelProxy(function, controller, map);
+                mainWidget = new MainWindow(guiApp, synthesizerModel, info);
 
                 auto winId = mainWidget->nativeWindowInfo()->window;
                 *widget = (LV2UI_Widget)static_cast<uintptr_t>(winId);
@@ -80,6 +80,7 @@ public:
 
         void closeGui()
         {
+                GSYNTH_LOG_INFO("called");
                 if (guiApp)
                         delete guiApp;
         }
@@ -87,7 +88,7 @@ public:
         void exect()
         {
                 if (guiApp)
-                        guiApp->exec(true);
+                        guiApp->exec(false);
         }
 
 private:
@@ -136,6 +137,7 @@ static LV2UI_Handle gsynth_instantiate_ui(const LV2UI_Descriptor*   descriptor,
 
 static void gsynth_cleanup_ui(LV2UI_Handle handle)
 {
+        GSYNTH_LOG_INFO("called");
         if (handle)
                 delete static_cast<Lv2UiPlugin*>(handle);
 }
@@ -144,8 +146,9 @@ static void gsynth_port_event_ui(LV2UI_Handle ui,
                                 uint32_t port_index,
                                 uint32_t buffer_size,
                                 uint32_t format,
-                                const void *buffer )
+                                const void *buffer)
 {
+        GSYNTH_LOG_INFO("called, port_index: " << port_index);
 }
 
 static int gsynth_idle(LV2UI_Handle ui)

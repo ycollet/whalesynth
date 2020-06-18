@@ -36,7 +36,9 @@ LV2SynthesizerModelProxy::LV2SynthesizerModelProxy(LV2UI_Write_Function function
         , uridMap{uridmap}
 
 {
+        uint8_t get_buf[512];
         lv2_atom_forge_init(&atomForge, uridMap);
+        lv2_atom_forge_set_buffer(&atomForge, get_buf, sizeof(get_buf));
 }
 
 void LV2SynthesizerModelProxy::setWaveFunction(WaveGenerator::WaveFunctionType type)
@@ -46,8 +48,11 @@ void LV2SynthesizerModelProxy::setWaveFunction(WaveGenerator::WaveFunctionType t
 
 void LV2SynthesizerModelProxy::sendInt(int value)
 {
-        LV2_Atom_Forge_Frame forgeFrame;
-        lv2_atom_forge_int(&atomForge, value);
-        lv2_atom_forge_pop(&atomForge, &forgeFrame);
-        //        writeFunction(uiController, 3, sizeof(float), 0, static_cast<const void*>(&value));
+        GSYNTH_LOG_DEBUG("value : " << value);
+        LV2_Atom* msg = lv2_atom_forge_deref(&atomForge, lv2_atom_forge_int(&atomForge, value));
+        writeFunction(uiController,
+                      3,
+                      lv2_atom_total_size(msg),
+                      uridMap->map(uridMap->handle, LV2_ATOM__eventTransfer),
+                      msg);
 }
