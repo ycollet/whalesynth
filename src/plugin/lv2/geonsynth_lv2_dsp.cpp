@@ -184,10 +184,33 @@ class GeonsynthLv2DSPPlugin
 
                 auto it = lv2_atom_sequence_begin(&eventsInPort->body);
                 while (!lv2_atom_sequence_is_end(&eventsInPort->body, eventsInPort->atom.size, it)) {
-                        LV2_Atom_Int* v = (LV2_Atom_Int*)(&it->body);
-                        int *vv = (int*)LV2_ATOM_BODY(v);
-                        GSYNTH_LOG_DEBUG("IN: body :" << *vv);
-                        geonSynth->setWave(static_cast<WaveGenerator::WaveFunctionType>(*vv));
+                        auto obj = (LV2_Atom_Object*)(&it->body);
+
+                        const LV2_Atom* id = NULL;
+                        const LV2_Atom* command  = NULL;
+                        const LV2_Atom* setWave = NULL;
+                        const LV2_Atom* val  = NULL;
+                        lv2_atom_object_get(obj,
+                                            64, &id,
+                                            65, &command,
+                                            66, &setWave,
+                                            67, &val,
+                                            0);
+
+                        GSYNTH_LOG_DEBUG("id:" << ((const LV2_Atom_Int*)id)->body);
+                        GSYNTH_LOG_DEBUG("command:" << ((const LV2_Atom_Int*)command)->body);
+                        if (setWave) {
+                                GSYNTH_LOG_DEBUG("setWave:" << ((const LV2_Atom_Int*)setWave)->body);
+                        }
+                        GSYNTH_LOG_DEBUG("val:" << ((const LV2_Atom_Int*)val)->body);
+
+                        // //auto objBody = (LV2_Atom*)LV2_ATOM_BODY(obj);
+                        // auto prop = (LV2_Atom_Property*)LV2_ATOM_BODY(obj);
+                        // GSYNTH_LOG_DEBUG("IN: ID :" << ((LV2_Atom_Int*)(&prop->body.value))->body);
+                        // prop += prop->atom.size;
+                        // GSYNTH_LOG_DEBUG("IN: ID :" << ((LV2_Atom_Int*)(&prop->body.value))->body);
+                        // // GSYNTH_LOG_DEBUG("IN: body :" << *vv);
+                        // geonSynth->setWave(static_cast<WaveGenerator::WaveFunctionType>(*vv));
                         it = lv2_atom_sequence_next(it);
                 }
 
@@ -273,8 +296,9 @@ static LV2_Handle gsynth_instantiate(const LV2_Descriptor*     descriptor,
                                 geonsynthLv2PLugin->setAtomSequence(uridMap->map(uridMap->handle, LV2_ATOM__Sequence));
                                 geonsynthLv2PLugin->setAtomStateChanged(uridMap->map(uridMap->handle, GEONSYNTH_URI_STATE_CHANGED));
                                 geonsynthLv2PLugin->setAtomObject(uridMap->map(uridMap->handle, LV2_ATOM__Object));
-                                GSYNTH_LOG_INFO("IDDDDD: " << uridMap->map(uridMap->handle, LV2_ATOM__Object));
+                                GSYNTH_LOG_INFO("LV2_ATOM__Object: " << uridMap->map(uridMap->handle, LV2_ATOM__Object));
                                 GSYNTH_LOG_INFO("LV2_ATOM__FloatID: " << uridMap->map(uridMap->handle, LV2_ATOM__Float));
+                                GSYNTH_LOG_INFO("LV2_ATOM__Int: " << uridMap->map(uridMap->handle, LV2_ATOM__Int));
                         }
                         break;
                 }

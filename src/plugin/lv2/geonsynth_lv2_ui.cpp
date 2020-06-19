@@ -107,7 +107,7 @@ static LV2UI_Handle gsynth_instantiate_ui(const LV2UI_Descriptor*   descriptor,
         GSYNTH_UNUSED(descriptor);
         GSYNTH_UNUSED(plugin_uri);
         GSYNTH_UNUSED(bundle_path);
-
+        GSYNTH_LOG_DEBUG("THREADID:" << std::this_thread::get_id());
         const LV2_Feature *feature;
         LV2_URID_Map *uridMap = nullptr;
         while ((feature = *features)) {

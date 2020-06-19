@@ -29,6 +29,7 @@
 #include <vector>
 #include <iostream>
 #include <math.h>
+#include <thread>
 
 #define GSYNTH_UNUSED(expr) (void)expr
 

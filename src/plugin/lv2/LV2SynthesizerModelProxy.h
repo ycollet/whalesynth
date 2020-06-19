@@ -26,6 +26,7 @@
 
 #include "GeonSynth.h"
 #include "SynthesizerModel.h"
+#include "UridMap.h"
 
 #include <lv2/lv2plug.in/ns/ext/atom/forge.h>
 #include <lv2/lv2plug.in/ns/lv2core/lv2.h>
@@ -39,6 +40,10 @@
 
 class LV2SynthesizerModelProxy : public SynthesizerModel {
  public:
+        enum class CommandType: int {
+                SetWave = 0
+        };
+
         LV2SynthesizerModelProxy(LV2UI_Write_Function function,
                                  LV2UI_Controller controller,
                                  LV2_URID_Map* uridmap,
@@ -46,14 +51,13 @@ class LV2SynthesizerModelProxy : public SynthesizerModel {
         ~LV2SynthesizerModelProxy() = default;
         void setWaveFunction(WaveGenerator::WaveFunctionType type);
 
- protected:
-        void sendInt(int value);
-
  private:
         LV2UI_Write_Function writeFunction;
         LV2UI_Controller  uiController;
         LV2_URID_Map* uridMap;
+        UridMapId uridMapId;
         LV2_Atom_Forge atomForge;
+        std::vector<uint8_t> stackBuffer;
 };
 
 #endif // GEONSYNT_LV2_SYNTHESIZER_MODEL_H

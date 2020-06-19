@@ -26,6 +26,12 @@
 
 #include <RkObject.h>
 
+LV2_URID synthOperatorUrid;
+LV2_URID synthID;
+LV2_URID synthCommand;
+LV2_URID synthSetWave;
+LV2_URID synthIntValue;
+
 LV2SynthesizerModelProxy::LV2SynthesizerModelProxy(LV2UI_Write_Function function,
                                                    LV2UI_Controller controller,
                                                    LV2_URID_Map* uridmap,
@@ -34,25 +40,44 @@ LV2SynthesizerModelProxy::LV2SynthesizerModelProxy(LV2UI_Write_Function function
         , writeFunction{function}
         , uiController{controller}
         , uridMap{uridmap}
+        , uridMapId{getUridMap(uridMap)}
+        , stackBuffer(2048, 0)
 
 {
-        uint8_t get_buf[512];
-        lv2_atom_forge_init(&atomForge, uridMap);
-        lv2_atom_forge_set_buffer(&atomForge, get_buf, sizeof(get_buf));
 }
 
 void LV2SynthesizerModelProxy::setWaveFunction(WaveGenerator::WaveFunctionType type)
 {
-        sendInt(static_cast<int>(type));
+        lv2_atom_forge_init(&atomForge, uridMap);
+        lv2_atom_forge_set_buffer(&atomForge, stackBuffer.data(), stackBuffer.size());
+
+        LV2_Atom_Forge_Frame frame;
+
+        // Start operator object.
+        LV2_Atom *message = (LV2_Atom*)lv2_atom_forge_object(&atomForge, &frame, 0, uridMapId.operator);
+
+        // Add operator ID.
+        lv2_atom_forge_key(&atomForge, uridMapId.id);
+        lv2_atom_forge_int(&atomForge, 2);
+
+        // Add set wave type command.
+        lv2_atom_forge_key(&atomForge, uridMapId.command);
+        lv2_atom_forge_int(&atomForge, static_cast<int>(command));
+
+        // Add generator wave type.
+        lv2_atom_forge_key(&atomForge, uridMapId.waveType);
+        lv2_atom_forge_int(&atomForge, static_cast<int>(type));
+
+        lv2_atom_forge_pop(&atomForge, &frame);
+
+        writeMesasge(message);
 }
 
-void LV2SynthesizerModelProxy::sendInt(int value)
+void LV2SynthesizerModelProxy::writeMessage(LV2_Atom *message)
 {
-        GSYNTH_LOG_DEBUG("value : " << value);
-        LV2_Atom* msg = lv2_atom_forge_deref(&atomForge, lv2_atom_forge_int(&atomForge, value));
         writeFunction(uiController,
-                      3,
-                      lv2_atom_total_size(msg),
-                      uridMap->map(uridMap->handle, LV2_ATOM__eventTransfer),
+                      GSYNTH_LV2_EVENTS_IN_PORT,
+                      lv2_atom_total_size(message),
+                      mapId.eventTransfer,
                       msg);
 }
