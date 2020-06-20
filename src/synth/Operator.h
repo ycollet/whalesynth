@@ -29,7 +29,7 @@
 
 class Operator {
  public:
-        Operator(float pitch = Whalesynth::defaultPitch);
+        Operator(float pitch = WhaleSynth::defaultPitch);
         ~Operator() = default;
         void setPitch(float pitch);
         float getPitch() const;
