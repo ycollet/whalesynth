@@ -1,12 +1,12 @@
 /**
  * File name: Operator.h
- * Project: GeonSynth (A software synthesizer)
+ * Project: WhaleSynth (A software synthesizer)
  *
  * Copyright (C) 2020 Iurie Nistor <http://iuriepage.wordpress.com>
  *
- * This file is part of GeonSynth.
+ * This file is part of WhaleSynth.
  *
- * GeonKick is free software; you can redistribute it and/or modify
+ * WhaleSynth is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or
  * (at your option) any later version.
@@ -55,7 +55,7 @@ void Operator::process(float** out, size_t size)
 
 void Operator::setOn(bool b)
 {
-        GSYNTH_LOG_INFO("operatorStarted : " << b);
+        WHALE_LOG_INFO("operatorStarted : " << b);
         operatorStarted = b;
         if (operatorStarted)
                 operatorPhase = 0.0f;
@@ -68,7 +68,7 @@ float Operator::getValue() const
 
 void Operator::incrementPhase()
 {
-        operatorPhase += (2.0f * M_PI * operatorPitch) / GeonSynth::defaultSampleRate;
+        operatorPhase += (2.0f * M_PI * operatorPitch) / WhaleSynth::defaultSampleRate;
         if (operatorPhase > 2.0f * M_PI)
                 operatorPhase -= 2.0f * M_PI;
 }

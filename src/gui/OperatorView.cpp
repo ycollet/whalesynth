@@ -1,12 +1,12 @@
 /**
  * File name: OperatorView.cpp
- * Project: GeonSynth (A software synthesizer)
+ * Project: WhaleSynth (A software synthesizer)
  *
  * Copyright (C) 2020 Iurie Nistor <http://iuriepage.wordpress.com>
  *
- * This file is part of GeonSynth.
+ * This file is part of WhaleSynth.
  *
- * GeonKick is free software; you can redistribute it and/or modify
+ * WhaleSynth is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or
  * (at your option) any later version.
@@ -46,7 +46,7 @@ void OperatorView::setWaveFunction()
         static int wave = 0;
         if (wave > 4)
                 wave = 0;
-        GSYNTH_LOG_INFO("called");
+        WHALE_LOG_INFO("called");
         synthModel->setWaveFunction(static_cast<WaveGenerator::WaveFunctionType>(wave));
         wave++;
 }

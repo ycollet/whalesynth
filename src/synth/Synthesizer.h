@@ -1,12 +1,12 @@
 /**
  * File name: Synthesizer.h
- * Project: GeonSynth (A software synthesizer)
+ * Project: Whaleynth (A software synthesizer)
  *
  * Copyright (C) 2020 Iurie Nistor <http://iuriepage.wordpress.com>
  *
- * This file is part of GeonSynth.
+ * This file is part of WhaleSynth.
  *
- * GeonKick is free software; you can redistribute it and/or modify
+ * WhaleSynth is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or
  * (at your option) any later version.
@@ -21,10 +21,10 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-#ifndef GEONSYNTH_SYNTHESIZER_H
-#define GEONSYNTH_SYNTHESIZER_H
+#ifndef WHALESYNTH_SYNTHESIZER_H
+#define WHALESYNTH_SYNTHESIZER_H
 
-#include "GeonSynth.h"
+#include "WhaleSynth.h"
 #include "SynthesizerVoice.h"
 
 class Note;
@@ -47,4 +47,4 @@ class Synthesizer {
         size_t channelsNumber;
 };
 
-#endif // GEONSYNTH_SYNTHESIZER_H
+#endif // WHALESYNTH_SYNTHESIZER_H

@@ -1,12 +1,12 @@
 /**
  * File name: MainWindow.h
- * Project: GeonSynth (A software synthesizer)
+ * Project: WhaleSynth (A software synthesizer)
  *
  * Copyright (C) 2020 Iurie Nistor <http://iuriepage.wordpress.com>
  *
- * This file is part of GeonSynth.
+ * This file is part of WhaleSynth.
  *
- * GeonKick is free software; you can redistribute it and/or modify
+ * WhaleSynth is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or
  * (at your option) any later version.
@@ -21,10 +21,10 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-#ifndef GEONSYNT_MAIN_WINDOW_H
-#define GEONSYNT_MAIN_WINDOW_H
+#ifndef WHALESYNT_MAIN_WINDOW_H
+#define WHALESYNT_MAIN_WINDOW_H
 
-#include "GeonSynth.h"
+#include "WhaleSynth.h"
 
 #include <RkWidget.h>
 
@@ -45,4 +45,4 @@ class MainWindow: public RkWidget {
         SynthesizerModel* synthesizerModel;
 };
 
-#endif // GEONSYNT_MAIN_WINDOW_H
+#endif // WHALESYNT_MAIN_WINDOW_H

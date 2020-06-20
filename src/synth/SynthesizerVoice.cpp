@@ -1,12 +1,12 @@
 /**
  * File name: SynthesizerVoice.cpp
- * Project: GeonSynth (A software synthesizer)
+ * Project: WhaleSynth (A software synthesizer)
  *
  * Copyright (C) 2020 Iurie Nistor <http://iuriepage.wordpress.com>
  *
- * This file is part of GeonSynth.
+ * This file is part of WhaleSynth.
  *
- * GeonKick is free software; you can redistribute it and/or modify
+ * WhaleSynth is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or
  * (at your option) any later version.
@@ -28,7 +28,7 @@ SynthesizerVoice::SynthesizerVoice(MIDIKeyId keyId)
         : midiKey{keyId}
         , voicePitch{440.0f * pow(2.0f, static_cast<float>(midiKey - 69) / 12.0f)}
 {
-        size_t n = GeonSynth::NumberOfOperators;
+        size_t n = WhaleSynth::NumberOfOperators;
         while (n--) {
                 auto op = std::make_unique<Operator>(voicePitch);
                 if (n == 1)
@@ -44,7 +44,7 @@ MIDIKeyId SynthesizerVoice::midiKeyId() const
 
 void SynthesizerVoice::setNote(const Note &note)
 {
-        GSYNTH_LOG_INFO("state: " << operatorsList.size());
+        WHALE_LOG_INFO("state: " << operatorsList.size());
         for (size_t i = 0; i < operatorsList.size(); i++) {
                 if (operatorsList[i]->enabled())
                         operatorsList[i]->setOn((note.midiKeyState == MIDIKeyState::MIDIKeyStateOn));

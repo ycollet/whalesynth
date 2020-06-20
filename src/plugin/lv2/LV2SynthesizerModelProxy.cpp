@@ -1,12 +1,12 @@
 /**
  * File name: LV2SynthesizerModelProxy.cpp
- * Project: GeonSynth (A software synthesizer)
+ * Project: WhaleSynth (A software synthesizer)
  *
  * Copyright (C) 2020 Iurie Nistor <http://iuriepage.wordpress.com>
  *
- * This file is part of GeonSynth.
+ * This file is part of WhaleSynth.
  *
- * GeonKick is free software; you can redistribute it and/or modify
+ * WhaleSynth is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or
  * (at your option) any later version.
@@ -21,7 +21,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-#include "GeonSynth.h"
+#include "WhaleSynth.h"
 #include "LV2SynthesizerModelProxy.h"
 
 #include <RkObject.h>
@@ -76,7 +76,7 @@ void LV2SynthesizerModelProxy::setWaveFunction(WaveGenerator::WaveFunctionType t
 void LV2SynthesizerModelProxy::writeMessage(LV2_Atom *message)
 {
         writeFunction(uiController,
-                      GSYNTH_LV2_EVENTS_IN_PORT,
+                      WHALE_LV2_EVENTS_IN_PORT,
                       lv2_atom_total_size(message),
                       mapId.eventTransfer,
                       msg);

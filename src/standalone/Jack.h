@@ -1,12 +1,12 @@
 /**
  * File name: Jack.h
- * Project: GeonSynth (A software synthesizer)
+ * Project: WhaleSynth (A software synthesizer)
  *
  * Copyright (C) 2020 Iurie Nistor <http://iuriepage.wordpress.com>
  *
- * This file is part of GeonSynth.
+ * This file is part of WhaleSynth.
  *
- * GeonKick is free software; you can redistribute it and/or modify
+ * WhaleSynth is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or
  * (at your option) any later version.
@@ -21,10 +21,10 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-#ifndef GEONSYNTH_JACK_H
-#define GEONSYNTH_JACK_H
+#ifndef WHALESYNTH_JACK_H
+#define WHALESYNTH_JACK_H
 
-#include "GeonSynth.h"
+#include "WhaleSynth.h"
 #include "Note.h"
 
 #include <jack/jack.h>
@@ -53,11 +53,11 @@ class Jack {
         void processAudio(jack_nframes_t nframes);
         static int jackProcessCallback(jack_nframes_t nframes, void *arg);
 
-        Synthesizer& geonSynth;
+        Synthesizer& whalesynth;
         jack_client_t *jackClient;
         jack_port_t* midiInPort;
         bool jackCreated;
         std::vector<std::pair<jack_port_t*, jack_port_t*>> outputChannels;
 };
 
-#endif // GEONSYNTH_JACK_H
+#endif // WHALESYNTH_JACK_H

@@ -1,12 +1,12 @@
 /**
  * File name: MainWindow.cpp
- * Project: GeonSynth (A software synthesizer)
+ * Project: WhaleSynth (A software synthesizer)
  *
  * Copyright (C) 2020 Iurie Nistor <http://iuriepage.wordpress.com>
  *
- * This file is part of GeonSynth.
+ * This file is part of WhaleSynth.
  *
- * GeonKick is free software; you can redistribute it and/or modify
+ * WhaleSynth is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or
  * (at your option) any later version.
@@ -32,7 +32,7 @@ MainWindow::MainWindow(RkMain &app)
         setFixedSize(800, 500);
         init();
         show();
-        GSYNTH_LOG_INFO("called");
+        WHALE_LOG_INFO("called");
 }
 
 MainWindow::MainWindow(RkMain *app, SynthesizerModel *model, RkNativeWindowInfo& info)
@@ -43,7 +43,7 @@ MainWindow::MainWindow(RkMain *app, SynthesizerModel *model, RkNativeWindowInfo&
         synthesizerModel->setEventQueue(eventQueue());
         init();
         show();
-        GSYNTH_LOG_INFO("called");
+        WHALE_LOG_INFO("called");
 }
 
 MainWindow::~MainWindow()

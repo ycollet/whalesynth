@@ -1,12 +1,12 @@
 /**
  * File name: Jack.cpp
- * Project: GeonSynth (A software synthesizer)
+ * Project: Whalesynth (A software synthesizer)
  *
  * Copyright (C) 2020 Iurie Nistor <http://iuriepage.wordpress.com>
  *
- * This file is part of GeonSynth.
+ * This file is part of Whalesynth.
  *
- * GeonKick is free software; you can redistribute it and/or modify
+ * WhaleSynth is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or
  * (at your option) any later version.
@@ -27,7 +27,7 @@
 #include <string.h>
 
 Jack::Jack(Synthesizer &synthesizer)
-        : geonSynth{synthesizer}
+        : whaleSynth{synthesizer}
         , jackClient{nullptr}
         , midiInPort{nullptr}
         , jackCreated{false}
@@ -49,9 +49,9 @@ Jack::~Jack()
 
 bool Jack::createJackClient()
 {
-        jackClient = jack_client_open(GEONSYNTH_NAME, JackNoStartServer, NULL);
+        jackClient = jack_client_open(WHALESYNTH_NAME, JackNoStartServer, NULL);
         if (jackClient == nullptr) {
-                GSYNTH_LOG_ERROR("can't create jack client");
+                WHALE_LOG_ERROR("can't create jack client");
                 return false;
         }
 
@@ -70,7 +70,7 @@ void Jack::createMidiInPot()
                                         JACK_DEFAULT_MIDI_TYPE,
                                         JackPortIsInput, 0);
         if (midiInPort == NULL) {
-                GSYNTH_LOG_ERROR("can't create MidiIn port");
+                WHALE_LOG_ERROR("can't create MidiIn port");
         }
 }
 
@@ -85,7 +85,7 @@ void Jack::createOutputPorts()
                                                 JACK_DEFAULT_AUDIO_TYPE,
                                                 JackPortIsOutput, 0);
                 if (!portL || !portR) {
-                        GSYNTH_LOG_ERROR("can't create jack audio output port " << name);
+                        WHALE_LOG_ERROR("can't create jack audio output port " << name);
                 } else {
                         outputChannels.push_back({portL, portR});
                 }
@@ -95,15 +95,15 @@ void Jack::createOutputPorts()
 bool Jack::start()
 {
         if (!jackClient) {
-                GSYNTH_LOG_ERROR("Jack client was not created");
+                WHALE_LOG_ERROR("Jack client was not created");
                 return false;
         }
 
         if (jack_activate(jackClient) != 0) {
-                GSYNTH_LOG_ERROR("can't active Jack client");
+                WHALE_LOG_ERROR("can't active Jack client");
                 return false;
         } else {
-                GSYNTH_LOG_DEBUG("Jack client activated");
+                WHALE_LOG_DEBUG("Jack client activated");
         }
 
         return true;
@@ -120,12 +120,12 @@ bool Jack::isActive() const
 
 size_t Jack::channels() const
 {
-        return GeonSynth::defaultChannelsNumber;
+        return Whalesynth::defaultChannelsNumber;
 }
 
 unsigned int Jack::sampleRate() const
 {
-        return GeonSynth::defaultSampleRate;
+        return Whalesynth::defaultSampleRate;
 }
 
 bool Jack::isNote(const jack_midi_event_t *event) const
@@ -135,8 +135,8 @@ bool Jack::isNote(const jack_midi_event_t *event) const
 
 Note Jack::getNote(const jack_midi_event_t *event) const
 {
-        Note note = {GeonSynth::NoMIDIKey,
-                     GeonSynth::MaxMIDIKeyVelocity,
+        Note note = {Whalesynth::NoMIDIKey,
+                     Whalesynth::MaxMIDIKeyVelocity,
                      MIDIKeyState::MIDIKeyStateOff};
 
         if (((*(event->buffer) & 0xf0)) == 0x90) {
@@ -152,8 +152,8 @@ Note Jack::getNote(const jack_midi_event_t *event) const
 
 void Jack::processAudio(jack_nframes_t nframes)
 {
-        float *buffer[2 * GeonSynth::defaultChannelsNumber];
-        for (size_t ch = 0; ch < GeonSynth::defaultChannelsNumber; ch++) {
+        float *buffer[2 * Whalesynth::defaultChannelsNumber];
+        for (size_t ch = 0; ch < Whalesynth::defaultChannelsNumber; ch++) {
                 auto channel = outputChannels[ch];
                 buffer[2 * ch] = static_cast<jack_default_audio_sample_t*>(jack_port_get_buffer(channel.first,
                                                                                                 nframes));
@@ -173,15 +173,15 @@ void Jack::processAudio(jack_nframes_t nframes)
                 auto eventFrame = event.time;
                 auto size = eventFrame - currentFrame;
                 if (size > 0)
-                        geonSynth.process(buffer, size);
+                        whalesynth.process(buffer, size);
                 if (isNote(&event))
-                        geonSynth.setNote(getNote(&event));
+                        whalesynth.setNote(getNote(&event));
                 currentFrame = eventFrame;
         }
 
         // Process the rest of the buffer after the last event.
         if (currentFrame < nframes)
-                geonSynth.process(buffer, nframes - currentFrame);
+                whaleSynth.process(buffer, nframes - currentFrame);
 }
 
 int Jack::jackProcessCallback(jack_nframes_t nframes, void *arg)

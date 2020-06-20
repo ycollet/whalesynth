@@ -7,27 +7,27 @@
 @prefix state: <http://lv2plug.in/ns/ext/state#> .
 @prefix ui:    <http://lv2plug.in/ns/extensions/ui#> .
 
-<http://iuriepage.wordpress.com/geonsynth#author>
+<http://iuriepage.wordpress.com/whalesynth#author>
 	a foaf:Person ;
 	foaf:name "Iurie Nistor" ;
 	foaf:mbox <mailto:iurie@iuriepage.wordpress.com> ;
 	foaf:homepage <http://iuriepage.wordpress.com/> .
 
-<http://iuriepage.wordpress.com/geonsynth>
+<http://iuriepage.wordpress.com/whalesynth>
 	a doap:Project ;
-	doap:maintainer <http://iuriepage.wordpress.com/geonsynth#author> ;
-	doap:name "Geonsynth" .
+	doap:maintainer <http://iuriepage.wordpress.com/whalesynth#author> ;
+	doap:name "Whalesynth" .
 
-<http://iuriepage.wordpress.com/geonsynth>
+<http://iuriepage.wordpress.com/whalesynth>
     a lv2:Plugin, lv2:InstrumentPlugin;
-    doap:name "Geonsynth";
-    lv2:project <http://iuriepage.wordpress.com/geonsynth> ;
+    doap:name "Whalesynth";
+    lv2:project <http://iuriepage.wordpress.com/whalesynth> ;
     lv2:extensionData state:interface ;
     lv2:optionalFeature lv2:hardRTCapable ;
     lv2:minorVersion 20 ;
     lv2:microVersion 0 ;
     doap:license <https://www.gnu.org/licenses/gpl-3.0.en.html> ;
-    ui:ui <http://iuriepage.wordpress.com/geonsynth#ui> ;
+    ui:ui <http://iuriepage.wordpress.com/whalesynth#ui> ;
            lv2:port [
 	     a lv2:AudioPort , lv2:OutputPort ;
 	     lv2:index 0 ;

@@ -2,13 +2,13 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix ui:   <http://lv2plug.in/ns/extensions/ui#> .
 
-<http://iuriepage.wordpress.com/geonsynth>
+<http://iuriepage.wordpress.com/whalesynth>
   a lv2:Plugin;
-  lv2:binary <libgeonsynth_lv2_dsp.so>;
-  rdfs:seeAlso <geonsynth_dsp.ttl>.
+  lv2:binary <libwhalesynth_lv2_dsp.so>;
+  rdfs:seeAlso <whalesynth_dsp.ttl>.
 
-<http://iuriepage.wordpress.com/geonsynth#ui>
+<http://iuriepage.wordpress.com/whalesynth#ui>
     a ui:X11UI ;
     lv2:requiredFeature ui:idleInterface;
     lv2:extensionData ui:idleInterface;
-    ui:binary <libgeonsynth_lv2_ui.so>.
+    ui:binary <libwhalesynth_lv2_ui.so>.

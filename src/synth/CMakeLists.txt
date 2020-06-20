@@ -1,21 +1,21 @@
-include_directories(${GSYNTH_SYNTH_DIR})
+include_directories(${WHALE_SYNTH_DIR})
 
-set(GSYNTH_SYNTH_HEADERS
-  ${GSYNTH_SYNTH_DIR}/GeonSynth.h
-  ${GSYNTH_SYNTH_DIR}/WaveGenerator.h
-  ${GSYNTH_SYNTH_DIR}/Operator.h
-  ${GSYNTH_SYNTH_DIR}/Note.h
-  ${GSYNTH_SYNTH_DIR}/SynthesizerVoice.h
-  ${GSYNTH_SYNTH_DIR}/Synthesizer.h)
+set(WHALE_SYNTH_HEADERS
+  ${WHALE_SYNTH_DIR}/WhaleSynth.h
+  ${WHALE_SYNTH_DIR}/WaveGenerator.h
+  ${WHALE_SYNTH_DIR}/Operator.h
+  ${WHALE_SYNTH_DIR}/Note.h
+  ${WHALE_SYNTH_DIR}/SynthesizerVoice.h
+  ${WHALE_SYNTH_DIR}/Synthesizer.h)
 
-set(GSYNTH_SYNTH_HEADERS
-  ${GSYNTH_SYNTH_DIR}/GeonSynth.h
-  ${GSYNTH_SYNTH_DIR}/WaveGenerator.cpp
-  ${GSYNTH_SYNTH_DIR}/Operator.cpp
-  ${GSYNTH_SYNTH_DIR}/Synthesizer.cpp
-  ${GSYNTH_SYNTH_DIR}/SynthesizerVoice.cpp)
+set(WHALE_SYNTH_HEADERS
+  ${WHALE_SYNTH_DIR}/WhaleSynth.h
+  ${WHALE_SYNTH_DIR}/WaveGenerator.cpp
+  ${WHALE_SYNTH_DIR}/Operator.cpp
+  ${WHALE_SYNTH_DIR}/Synthesizer.cpp
+  ${WHALE_SYNTH_DIR}/SynthesizerVoice.cpp)
 
 add_library(synth STATIC
-  ${GSYNTH_SYNTH_HEADERS}
-  ${GSYNTH_SYNTH_SOURCES})
+  ${WHALE_SYNTH_HEADERS}
+  ${WHALE_SYNTH_SOURCES})
 

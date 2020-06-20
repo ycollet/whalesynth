@@ -1,12 +1,12 @@
 /**
  * File name: UridMap.h
- * Project: Geonsynth (A software synthesizer)
+ * Project: Whalesynth (A software synthesizer)
  *
  * Copyright (C) 2020 Iurie Nistor <http://iuriepage.wordpress.com>
  *
- * This file is part of Geonsynth.
+ * This file is part of Whalesynth.
  *
- * Geonsynth is free software; you can redistribute it and/or modify
+ * Whalesynth is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or
  * (at your option) any later version.
@@ -24,8 +24,8 @@
 #ifndef GEONSYNTH_URIDMAP_H
 #define GEONSYNTH_URIDMAP_H
 
-constexpr int GSYNTH_LV2_EVENTS_IN_PORT  = 3;
-constexpr int GSYNTH_LV2_EVENTS_OUT_PORT = 4;
+constexpr int WHALE_LV2_EVENTS_IN_PORT  = 3;
+constexpr int WHALE_LV2_EVENTS_OUT_PORT = 4;
 
 struct UridMapId {
         stateId;
@@ -54,10 +54,10 @@ UridMapId getUridMap(LV2_URIDMap* map)
         mapId.atomInt          = uridMap->map(uridMap->handle, LV2_ATOM__Int);
         mapId.eventTransfer    = uridMap->map(uridMap->handle, LV2_ATOM__eventTransfer);
 
-        mapId.id       = uridMap->map(uridMap->handle, "GeonSynth/ID");
-        mapId.operator = uridMap->map(uridMap->handle, "GeonSynth/Operator");
-        mapId.command  = uridMap->map(uridMap->handle, "GeonSynth/Command");
-        mapId.waveType = uridMap->map(uridMap->handle, "GeonSynth/WaveType");
+        mapId.id       = uridMap->map(uridMap->handle, "WhaleSynth/ID");
+        mapId.operator = uridMap->map(uridMap->handle, "WhaleSynth/Operator");
+        mapId.command  = uridMap->map(uridMap->handle, "WhaleSynth/Command");
+        mapId.waveType = uridMap->map(uridMap->handle, "WhaleSynth/WaveType");
 
         return getUridMap;
 };

@@ -1,12 +1,12 @@
 /**
  * File name: LV2SynthesizerModelProxy.h
- * Project: GeonSynth (A software synthesizer)
+ * Project: WhaleSynth (A software synthesizer)
  *
  * Copyright (C) 2020 Iurie Nistor <http://iuriepage.wordpress.com>
  *
- * This file is part of GeonSynth.
+ * This file is part of WhaleSynth.
  *
- * GeonKick is free software; you can redistribute it and/or modify
+ * WhaleSynth is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or
  * (at your option) any later version.
@@ -21,10 +21,10 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-#ifndef GEONSYNT_LV2_SYNTHESIZER_MODEL_H
-#define GEONSYNT_LV2_SYNTHESIZER_MODEL_H
+#ifndef WHALESYNT_LV2_SYNTHESIZER_MODEL_H
+#define WHALESYNT_LV2_SYNTHESIZER_MODEL_H
 
-#include "GeonSynth.h"
+#include "WhaleSynth.h"
 #include "SynthesizerModel.h"
 #include "UridMap.h"
 
@@ -60,4 +60,4 @@ class LV2SynthesizerModelProxy : public SynthesizerModel {
         std::vector<uint8_t> stackBuffer;
 };
 
-#endif // GEONSYNT_LV2_SYNTHESIZER_MODEL_H
+#endif // WHALESYNT_LV2_SYNTHESIZER_MODEL_H

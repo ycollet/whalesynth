@@ -1,12 +1,12 @@
 /**
  * File name: WaveGenerator.h
- * Project: GeonSynth (A software synthesizer)
+ * Project: WhaleSynth (A software synthesizer)
  *
  * Copyright (C) 2020 Iurie Nistor <http://iuriepage.wordpress.com>
  *
- * This file is part of GeonSynth.
+ * This file is part of WhaleSynth.
  *
- * GeonKick is free software; you can redistribute it and/or modify
+ * WhaleSynth is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or
  * (at your option) any later version.
@@ -24,7 +24,7 @@
 #ifndef GEONSYNTH_WAVE_GENERATOR_H
 #define GEONSYNTH_WAVE_GENERATOR_H
 
-#include "GeonSynth.h"
+#include "WhaleSynth.h"
 
 class WaveGenerator {
  public:

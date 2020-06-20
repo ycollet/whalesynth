@@ -1,32 +1,32 @@
-if (GSYNTH_STANDALONE)
+if (WHALE_STANDALONE)
   pkg_check_modules(JACK jack)
   if (NOT JACK_FOUND)
     message(FATAL_ERROR "can't find jack library")
   endif(NOT JACK_FOUND)
-  list(APPEND GSYNTH_API_FLAGS "-DGEONSYNTH_AUDIO_JACK")
+  list(APPEND WHALE_API_FLAGS "-DWHALESYNTH_AUDIO_JACK")
 endif()
 
-set(GSYNTH_STANDALONE_HEADERS
-  ${GSYNTH_STANDALONE_DIR}/Jack.cpp
-  ${GSYNTH_STANDALONE_DIR}/main.cpp)
+set(WHALE_STANDALONE_HEADERS
+  ${WHALE_STANDALONE_DIR}/Jack.cpp
+  ${WHALE_STANDALONE_DIR}/main.cpp)
 
-set(GSYNTH_STANDALONE_SOURCES
-  ${GSYNTH_STANDALONE_DIR}/Jack.cpp
-  ${GSYNTH_STANDALONE_DIR}/main.cpp)
+set(WHALE_STANDALONE_SOURCES
+  ${WHALE_STANDALONE_DIR}/Jack.cpp
+  ${WHALE_STANDALONE_DIR}/main.cpp)
 
-include_directories(${GSYNTH_SYNTH_DIR})
+include_directories(${WHALE_SYNTH_DIR})
 include_directories(${REDKITE_INCLUDE_DIR})
-include_directories(${GSYNTH_GUI_DIR})
-include_directories(${GSYNTH_STANDALONE_DIR})
+include_directories(${WHALE_GUI_DIR})
+include_directories(${WHALE_STANDALONE_DIR})
 
-set(GSYNTH_TARGET_NAME "geonsynth")
+set(WHALE_TARGET_NAME "whalesynth")
 
-add_executable(${GSYNTH_TARGET_NAME}
-  ${GSYNTH_STANDALONE_HEADERS}
-  ${GSYNTH_STANDALONE_SOURCES})
+add_executable(${WHALE_TARGET_NAME}
+  ${WHALE_STANDALONE_HEADERS}
+  ${WHALE_STANDALONE_SOURCES})
 
-target_link_libraries(${GSYNTH_TARGET_NAME} synth)
-target_link_libraries(${GSYNTH_TARGET_NAME} gui)
-target_link_libraries(${GSYNTH_TARGET_NAME} "-lredkite -lX11 -ljack -lrt -lm -ldl -lpthread -lcairo")
+target_link_libraries(${WHALE_TARGET_NAME} synth)
+target_link_libraries(${WHALE_TARGET_NAME} gui)
+target_link_libraries(${WHALE_TARGET_NAME} "-lredkite -lX11 -ljack -lrt -lm -ldl -lpthread -lcairo")
 
-install(TARGETS ${GSYNTH_TARGET_NAME} DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+install(TARGETS ${WHALE_TARGET_NAME} DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)

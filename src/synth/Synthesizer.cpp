@@ -1,12 +1,12 @@
 /**
  * File name: Synthesizer.h
- * Project: GeonSynth (A software synthesizer)
+ * Project: WhaleSynth (A software synthesizer)
  *
  * Copyright (C) 2020 Iurie Nistor <http://iuriepage.wordpress.com>
  *
- * This file is part of GeonSynth.
+ * This file is part of WhaleSynth.
  *
- * GeonKick is free software; you can redistribute it and/or modify
+ * WhaleSynth is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or
  * (at your option) any later version.
@@ -27,7 +27,7 @@
 Synthesizer::Synthesizer()
         : channelsNumber{1}
 {
-        for (size_t i = 0; i < GeonSynth::MaxMidiKeyId; i++)
+        for (size_t i = 0; i < WhaleSynth::MaxMidiKeyId; i++)
                 addVoice(std::make_unique<SynthesizerVoice>(static_cast<MIDIKeyId>(i)));
 }
 
@@ -55,7 +55,7 @@ void Synthesizer::process(float** out, size_t size)
 
 void Synthesizer::addVoice(std::unique_ptr<SynthesizerVoice> voice)
 {
-        if (synthVoices.size() < static_cast<decltype(synthVoices.size())>(GeonSynth::MaxMidiKeyId))
+        if (synthVoices.size() < static_cast<decltype(synthVoices.size())>(WhaleSynth::MaxMidiKeyId))
                 synthVoices.push_back(std::move(voice));
 }
 
