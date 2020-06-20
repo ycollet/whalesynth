@@ -7,11 +7,16 @@ include_directories(${WHALE_SYNTH_DIR})
 include_directories(${WHALE_GUI_DIR})
 include_directories(${REDKITE_INCLUDE_DIR})
 
+set(WHALESYNTH_LV2_DSP_HEADERS
+  ${WHALE_LV2_DIR}/UridMap.h)
+
+
 set(WHALESYNTH_LV2_DSP_SOURCES
   ${WHALE_LV2_DIR}/whalesynth_lv2_dsp.cpp)
 set(WHALESYNTH_LV2_DSP_TARGET_NAME "${PROJECT_NAME}_lv2_dsp")
 
 set(WHALESYNTH_LV2_UI_HEADERS
+  ${WHALE_LV2_DIR}/UridMap.h
   ${WHALE_LV2_DIR}/LV2SynthesizerModelProxy.h)
 set(WHALESYNTH_LV2_UI_SOURCES
   ${WHALE_LV2_DIR}/LV2SynthesizerModelProxy.cpp
@@ -19,6 +24,7 @@ set(WHALESYNTH_LV2_UI_SOURCES
 set(WHALESYNTH_LV2_UI_TARGET_NAME "${PROJECT_NAME}_lv2_ui")
 
 add_library(${WHALESYNTH_LV2_DSP_TARGET_NAME} SHARED
+            ${WHALESYNTH_LV2_DSP_HEADERS}
             ${WHALESYNTH_LV2_DSP_SOURCES})
 add_library(${WHALESYNTH_LV2_UI_TARGET_NAME} SHARED
             ${WHALESYNTH_LV2_UI_HEADERS}

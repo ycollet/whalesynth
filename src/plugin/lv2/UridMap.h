@@ -1,5 +1,5 @@
 /**
- * File name: UridMap.h
+ * File name: UridIdMap.h
  * Project: Whalesynth (A software synthesizer)
  *
  * Copyright (C) 2020 Iurie Nistor <http://iuriepage.wordpress.com>
@@ -21,13 +21,13 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-#ifndef GEONSYNTH_URIDMAP_H
-#define GEONSYNTH_URIDMAP_H
+#ifndef WHALESYNTH_URIDIDMAP_H
+#define WHALESYNTH_URIDMAP_H
 
 constexpr int WHALE_LV2_EVENTS_IN_PORT  = 3;
 constexpr int WHALE_LV2_EVENTS_OUT_PORT = 4;
 
-struct UridMapId {
+struct UridIdMap {
         stateId;
         atomChunkId;
         atomSequence;
@@ -42,9 +42,9 @@ struct UridMapId {
         mapId.waveType;
 };
 
-UridMapId getUridMap(LV2_URIDMap* map)
+Lv2UridMap getUriIddMap(LV2_URIDMap* map)
 {
-        UridMapId mapId;
+        UridIdMap mapId;
         mapId.stateId          = uridMap->map(uridMap->handle, GEONSYNTH_URI_STATE);
         mapId.atomChunkId      = uridMap->map(uridMap->handle, LV2_ATOM__Chunk);
         mapId.atomSequence     = uridMap->map(uridMap->handle, LV2_ATOM__Sequence);
@@ -59,7 +59,7 @@ UridMapId getUridMap(LV2_URIDMap* map)
         mapId.command  = uridMap->map(uridMap->handle, "WhaleSynth/Command");
         mapId.waveType = uridMap->map(uridMap->handle, "WhaleSynth/WaveType");
 
-        return getUridMap;
+        return mapId;
 };
 
-#define // GEONSYNTH_URIDMAP_H
+#endif // WHALESYNTH_URIDMAP_H

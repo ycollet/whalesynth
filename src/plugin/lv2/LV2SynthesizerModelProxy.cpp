@@ -40,9 +40,8 @@ LV2SynthesizerModelProxy::LV2SynthesizerModelProxy(LV2UI_Write_Function function
         , writeFunction{function}
         , uiController{controller}
         , uridMap{uridmap}
-        , uridMapId{getUridMap(uridMap)}
+        , uridIdMap{getUridIdMap(uridMap)}
         , stackBuffer(2048, 0)
-
 {
 }
 

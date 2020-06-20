@@ -30,6 +30,7 @@
 
 #include "Synthesizer.h"
 #include "Note.h"
+#include "UridMap.h"
 
 #include <vector>
 #include <memory>
@@ -56,6 +57,16 @@ class WhaleSynthLv2DSPPlugin
         {
                 if (whalesynth)
                         delete whalesynth;
+        }
+
+        void setUridIdMap(UridMapId map)
+        {
+                uridIdMap = id;
+        }
+
+        UridIdMap getUridIdMap() const
+        {
+                return uridIdMap;
         }
 
         size_t numberOfChannels() const
@@ -87,56 +98,6 @@ class WhaleSynthLv2DSPPlugin
         void setOutEventsPort(LV2_Atom_Sequence *data)
         {
                 eventsOutPort = data;
-        }
-
-        void setStateId(LV2_URID id)
-        {
-                atomInfo.stateId = id;
-        }
-
-        LV2_URID getStateId() const
-        {
-                return atomInfo.stateId;
-        }
-
-        void setAtomChunkId(LV2_URID id)
-        {
-                atomInfo.atomStringId = id;
-        }
-
-        LV2_URID getAtomChunkId() const
-        {
-                return atomInfo.atomStringId;
-        }
-
-        void setAtomSequence(LV2_URID sequence)
-        {
-                atomInfo.atomSequence = sequence;
-        }
-
-        LV2_URID getAtomSequence(void) const
-        {
-                return atomInfo.atomSequence;
-        }
-
-        void setAtomStateChanged(LV2_URID changed)
-        {
-                atomInfo.atomStateChanged = changed;
-        }
-
-        LV2_URID getAtomStateChanged(void) const
-        {
-                return atomInfo.atomStateChanged;
-        }
-
-        void setAtomObject(LV2_URID object)
-        {
-                atomInfo.atomObject = object;
-        }
-
-        LV2_URID getAtomObject(void) const
-        {
-                return atomInfo.atomObject;
         }
 
         void setStateData(const std::string &data, int flags = 0)
@@ -267,16 +228,7 @@ private:
         LV2_Atom_Sequence *eventsOutPort;
         LV2_Atom_Sequence *notifyHostPort;
         float* outputChannels[WhaleSynth::defaultChannelsNumber * 2];
-
-        struct AtomInfo {
-                LV2_URID stateId;
-                LV2_URID atomStringId;
-                LV2_URID atomSequence;
-                LV2_URID atomStateChanged;
-                LV2_URID atomObject;
-        };
-
-        AtomInfo atomInfo;
+        UridIdMap uridIdMap;
 };
 
 static LV2_Handle whale_instantiate(const LV2_Descriptor*     descriptor,
@@ -284,28 +236,23 @@ static LV2_Handle whale_instantiate(const LV2_Descriptor*     descriptor,
                                     const char*               bundle_path,
                                     const LV2_Feature* const* features)
 {
-        auto whalesynthLv2PLugin = new WhaleSynthLv2DSPPlugin;
-
         const LV2_Feature *feature;
         while ((feature = *features)) {
                 if (std::string(feature->URI) == std::string(LV2_URID__map)) {
                         auto uridMap = static_cast<LV2_URID_Map*>(feature->data);
-                        if (uridMap && uridMap->map && uridMap->handle) {
-                                whalesynthLv2PLugin->setStateId(uridMap->map(uridMap->handle, WHALESYNTH_URI_STATE));
-                                whalesynthLv2PLugin->setAtomChunkId(uridMap->map(uridMap->handle, LV2_ATOM__Chunk));
-                                whalesynthLv2PLugin->setAtomSequence(uridMap->map(uridMap->handle, LV2_ATOM__Sequence));
-                                whalesynthLv2PLugin->setAtomStateChanged(uridMap->map(uridMap->handle, WHALESYNTH_URI_STATE_CHANGED));
-                                whalesynthLv2PLugin->setAtomObject(uridMap->map(uridMap->handle, LV2_ATOM__Object));
-                                WHALE_LOG_INFO("LV2_ATOM__Object: " << uridMap->map(uridMap->handle, LV2_ATOM__Object));
-                                WHALE_LOG_INFO("LV2_ATOM__FloatID: " << uridMap->map(uridMap->handle, LV2_ATOM__Float));
-                                WHALE_LOG_INFO("LV2_ATOM__Int: " << uridMap->map(uridMap->handle, LV2_ATOM__Int));
+                        if (!uridMap || !uridMap->map || !uridMap->handle) {
+                                WHALE_LOG_ERROR("can't get urid map");
+                                return nullptr;
+                        } else {
+                                auto whaleSynthLv2PLugin = new WhaleSynthLv2DSPPlugin;
+                                whaleSynthLv2PLugin->setUridIdMap(getUridMapId(uridMap));
+                                return static_cast<LV2_Handle>(whaleSynthLv2PLugin);
                         }
                         break;
                 }
                 features++;
         }
-
-        return static_cast<LV2_Handle>(whalesynthLv2PLugin);
+        return nullptr;
 }
 
 static void whale_connect_port(LV2_Handle instance,
