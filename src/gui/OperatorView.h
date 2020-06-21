@@ -26,16 +26,22 @@
 
 #include "WhaleSynth.h"
 #include "SynthesizerModel.h"
+#include "OperatorModel.h"
 
 #include <RkWidget.h>
 
 class OperatorView: public RkWidget {
  public:
         OperatorView(RkWidget* parent, SynthesizerModel *synth);
+        void setModel(OperatorModel *model);
+        OperatorModel* model(OperatorModel *model) const;
+        void updateView();
+
+ protected:
         void setWaveFunction();
 
  private:
-        SynthesizerModel *synthModel;
+        OperatorModel *operatorModel;
 };
 
 #endif // WHALESYNT_OPERATOR_VIEW_H
