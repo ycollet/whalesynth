@@ -1,5 +1,5 @@
 /**
- * File name: OperatorView.h
+ * File name: TopMenu.cpp
  * Project: WhaleSynth (A software synthesizer)
  *
  * Copyright (C) 2020 Iurie Nistor <http://iuriepage.wordpress.com>
@@ -21,28 +21,26 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-#ifndef WHALESYNT_OPERATOR_VIEW_H
-#define WHALESYNT_OPERATOR_VIEW_H
+#include "TopMenu.h"
 
-#include "WhaleSynth.h"
-#include "WhaleSynthWidget.h"
-#include "SynthesizerModel.h"
-#include "OperatorModel.h"
+#include <RkContainer.h>
 
-#include <RkWidget.h>
+TopMenu::TopMenu(WhaleSynthWidget* parent)
+        : RkWidget(parent)
+{
+        setFixedSize({parent->width(), 25});
+        setBackgroundColor({50, 50, 50});
 
-class OperatorView: public WhaleSynthWidget {
- public:
-        OperatorView(WhaleSynthWidget* parent, SynthesizerModel *synth);
-        void setModel(OperatorModel *model);
-        OperatorModel* model(OperatorModel *model) const;
-        void updateView();
+        auto menuContiner = new RkContainer(this);
+        menuContiner->setSize({width(), height() - 3});
+        menuContiner->setPosition({0, 3});
 
- protected:
-        void setWaveFunction();
+        for (size_t i = 0; i < WhaleSynth::NumberOfOperators; i++) {
+                auto button = new RkButton(this);
+                button->setSize({24, menuContiner->height()});
+                menuContiner->addWidget(button);
+                RK_ACT_BIND(button, pressed, RK_ACT_ARGS(), this, showOperator(i));
+        }
 
- private:
-        OperatorModel *operatorModel;
-};
-
-#endif // WHALESYNT_OPERATOR_VIEW_H
+        show();
+}

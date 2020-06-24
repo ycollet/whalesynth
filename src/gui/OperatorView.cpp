@@ -26,8 +26,8 @@
 
 #include "RkButton.h"
 
-OperatorView::OperatorView(RkWidget* parent, OperatorModel *model)
-        : RkWidget(parent)
+OperatorView::OperatorView(WhaleSynthWidget* parent, OperatorModel *model)
+        : WhaleSynthWidget(parent)
         , operatorModel{model}
 {
         setBackgroundColor({123, 56, 100});

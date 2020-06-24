@@ -1,5 +1,5 @@
 /**
- * File name: OperatorView.h
+ * File name: TopMenu.h
  * Project: WhaleSynth (A software synthesizer)
  *
  * Copyright (C) 2020 Iurie Nistor <http://iuriepage.wordpress.com>
@@ -21,8 +21,8 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-#ifndef WHALESYNT_OPERATOR_VIEW_H
-#define WHALESYNT_OPERATOR_VIEW_H
+#ifndef TOP_MENU_H
+#define TOP_MENU_H
 
 #include "WhaleSynth.h"
 #include "WhaleSynthWidget.h"
@@ -31,18 +31,9 @@
 
 #include <RkWidget.h>
 
-class OperatorView: public WhaleSynthWidget {
+class TopMenu: public WhaleSynthWidget {
  public:
-        OperatorView(WhaleSynthWidget* parent, SynthesizerModel *synth);
-        void setModel(OperatorModel *model);
-        OperatorModel* model(OperatorModel *model) const;
-        void updateView();
-
- protected:
-        void setWaveFunction();
-
- private:
-        OperatorModel *operatorModel;
+        TopMenu(WhaleSynthWidget* parent);
 };
 
-#endif // WHALESYNT_OPERATOR_VIEW_H
+#endif // TOP_MENU_H

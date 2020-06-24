@@ -26,24 +26,22 @@
 #include "OperatorView.h"
 
 MainWindow::MainWindow(RkMain &app)
-        : RkWidget(&app)
+        : WhaleSynthWidget(&app)
         , synthesizerModel{nullptr/*new SynthesizerModelStandalone(this)*/}
 {
-        setFixedSize(800, 500);
+        setFixedSize(665, 504);
         init();
         show();
-        WHALE_LOG_INFO("called");
 }
 
 MainWindow::MainWindow(RkMain *app, SynthesizerModel *model, RkNativeWindowInfo& info)
-        : RkWidget(app, info)
+        : WhaleSynthWidget(app, info)
         , synthesizerModel{model}
 {
-        setFixedSize(800, 500);
+        setFixedSize(665, 504);
         synthesizerModel->setEventQueue(eventQueue());
         init();
         show();
-        WHALE_LOG_INFO("called");
 }
 
 MainWindow::~MainWindow()

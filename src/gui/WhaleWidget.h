@@ -1,5 +1,5 @@
 /**
- * File name: OperatorView.h
+ * File name: WhaleSynthWidget.h
  * Project: WhaleSynth (A software synthesizer)
  *
  * Copyright (C) 2020 Iurie Nistor <http://iuriepage.wordpress.com>
@@ -21,28 +21,19 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-#ifndef WHALESYNT_OPERATOR_VIEW_H
-#define WHALESYNT_OPERATOR_VIEW_H
+#ifndef WHALESYNT_WIDGET_H
+#define WHALESYNT_WIDGET_H
 
-#include "WhaleSynth.h"
-#include "WhaleSynthWidget.h"
-#include "SynthesizerModel.h"
-#include "OperatorModel.h"
-
-#include <RkWidget.h>
-
-class OperatorView: public WhaleSynthWidget {
+class WhaleSynthWidget : public RkWidget {
  public:
-        OperatorView(WhaleSynthWidget* parent, SynthesizerModel *synth);
-        void setModel(OperatorModel *model);
-        OperatorModel* model(OperatorModel *model) const;
-        void updateView();
-
- protected:
-        void setWaveFunction();
-
- private:
-        OperatorModel *operatorModel;
+        WhaleSynthWidget::WhaleSynthWidget(RkMain *app,
+                                           Rk::WindowFlags flags = Rk::WindowFlags::Widget);
+        WhaleSynthWidget::WhaleSynthWidget(RkMain *app,
+                                           const RkNativeWindowInfo &info,
+                                           Rk::WindowFlags flags = Rk::WindowFlags::Widget);
+        WhaleSynthWidget::WhaleSynthWidget(RkWidget *parent,
+                                           Rk::WindowFlags flags = Rk::WindowFlags::Widget);
+        virtual ~WhaleSynthWidget() = default;
 };
 
-#endif // WHALESYNT_OPERATOR_VIEW_H
+#endif // WHALESYNT_WIDGET_H

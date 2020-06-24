@@ -25,12 +25,11 @@
 #define WHALESYNT_MAIN_WINDOW_H
 
 #include "WhaleSynth.h"
-
-#include <RkWidget.h>
+#include "WhaleSynthWidget.h"
 
 class SynthesizerModel;
 
-class MainWindow: public RkWidget {
+class MainWindow: public WhaleSynthWidget {
  public:
         MainWindow(RkMain &app);
         MainWindow(RkMain *app,
