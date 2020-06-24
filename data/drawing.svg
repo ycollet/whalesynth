@@ -25,11 +25,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1"
-     inkscape:cx="2341.2789"
-     inkscape:cy="1405.7992"
+     inkscape:zoom="2.2544417"
+     inkscape:cx="2357.3438"
+     inkscape:cy="1597.4977"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g1834"
      showgrid="false"
      showguides="false"
      inkscape:guide-bbox="true"
@@ -108,7 +108,7 @@
          style="stroke-width:0.26458332" /></text>
     <g
        id="g1834"
-       transform="matrix(1.2597293,0,0,1.2597293,607.13948,-125.68523)">
+       transform="matrix(1.2597293,0,0,1.2313408,607.13948,-126.14088)">
       <rect
          y="-21.422281"
          x="-56.715576"
@@ -139,11 +139,11 @@
            id="tspan983-8"
            sodipodi:role="line">OP 2</tspan></text>
       <rect
-         inkscape:transform-center-y="-0.13381857"
+         inkscape:transform-center-y="-0.13461445"
          inkscape:transform-center-x="7.2752212"
-         y="-21.176939"
+         y="-21.207407"
          x="-23.978907"
-         height="5.1265116"
+         height="5.1569791"
          width="13.141962"
          id="rect1092-6"
          style="opacity:1;fill:#52524f;fill-opacity:0.81818183;stroke:#383835;stroke-width:0;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
