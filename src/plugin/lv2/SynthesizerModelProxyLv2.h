@@ -1,5 +1,5 @@
 /**
- * File name: LV2SynthesizerModelProxy.h
+ * File name: SynthesizerProxyLv2.h
  * Project: WhaleSynth (A software synthesizer)
  *
  * Copyright (C) 2020 Iurie Nistor <http://iuriepage.wordpress.com>
@@ -21,11 +21,11 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-#ifndef WHALESYNT_LV2_SYNTHESIZER_MODEL_H
-#define WHALESYNT_LV2_SYNTHESIZER_MODEL_H
+#ifndef SYNTHESIZER_PROXY_LV2_H
+#define SYNTHESIZER_PROXY_LV2_H
 
 #include "WhaleSynth.h"
-#include "SynthesizerModel.h"
+#include "SynthesizerProxy.h"
 #include "UridMap.h"
 
 #include <lv2/lv2plug.in/ns/ext/atom/forge.h>
@@ -36,20 +36,19 @@
 #include <lv2/lv2plug.in/ns/ext/urid/urid.h>
 #include <lv2/lv2plug.in/ns/extensions/ui/ui.h>
 
-#include <RkObject.h>
-
-class LV2SynthesizerModelProxy : public SynthesizerModel {
+class SynthesizerProxyLV2 : public SynthesizerProxy {
  public:
         enum class CommandType: int {
                 SetWave = 0
         };
 
-        LV2SynthesizerModelProxy(LV2UI_Write_Function function,
+        SynthesizerProxyLv2(LV2UI_Write_Function function,
                                  LV2UI_Controller controller,
                                  LV2_URID_Map* uridmap,
                                  RkObject* parent = nullptr);
-        ~LV2SynthesizerModelProxy() = default;
-        void setWaveFunction(WaveGenerator::WaveFunctionType type);
+        ~SynthesizerProxyLv2() = default;
+        void setOperatorWaveFunction(const OperatorIndex &index, WaveGenerator::WaveFunctionType type);
+        void operatorWaveFunction(const OperatorIndex &index, WaveGenerator::WaveFunctionType type) const;
 
  private:
         LV2UI_Write_Function writeFunction;
@@ -60,4 +59,4 @@ class LV2SynthesizerModelProxy : public SynthesizerModel {
         std::vector<uint8_t> stackBuffer;
 };
 
-#endif // WHALESYNT_LV2_SYNTHESIZER_MODEL_H
+#endif // SYNTHESIZER_PROXY_LV2_H

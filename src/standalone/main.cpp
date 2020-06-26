@@ -21,8 +21,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-#include "Jack.h"
-#include "Synthesizer.h"
+#include "SynthesizerProxyStandalone.h"
 #include "MainWindow.h"
 
 #include <RkMain.h>
@@ -30,14 +29,8 @@
 int main(int argc, char *argv[])
 {
         RkMain mainApp(argc, argv);
-
-        Synthesizer synthesizer;
-        Jack jack(synthesizer);
-
-        auto mainWindow = new MainWindow(mainApp);
-        jack.start();
+        auto mainWindow = new MainWindow(mainApp, new SynthesizerProxyStandalone());
         mainWindow->show();
         auto res = mainApp.exec();
-        jack.stop();
         return res;
 }

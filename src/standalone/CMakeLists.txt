@@ -7,11 +7,13 @@ if (WHALE_STANDALONE)
 endif()
 
 set(WHALE_STANDALONE_HEADERS
-  ${WHALE_STANDALONE_DIR}/Jack.cpp
+  ${WHALE_STANDALONE_DIR}/Jack.h
+  ${WHALE_STANDALONE_DIR}/SynthesizerProxyStandalone.h
   ${WHALE_STANDALONE_DIR}/main.cpp)
 
 set(WHALE_STANDALONE_SOURCES
   ${WHALE_STANDALONE_DIR}/Jack.cpp
+  ${WHALE_STANDALONE_DIR}/SynthesizerProxyStandalone.cpp
   ${WHALE_STANDALONE_DIR}/main.cpp)
 
 include_directories(${WHALE_SYNTH_DIR})

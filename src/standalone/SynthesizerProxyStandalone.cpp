@@ -1,6 +1,6 @@
 /**
- * File name: SynthesizerModel.h
- * Project: WhaleSynth (A software synthesizer)
+ * File name: SynthesizerProxysStandalone.h
+ * Project: Whaleynth (A software synthesizer)
  *
  * Copyright (C) 2020 Iurie Nistor <http://iuriepage.wordpress.com>
  *
@@ -21,19 +21,12 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-#ifndef WHALESYNT_SYNTHESIZER_MODEL_H
-#define WHALESYNT_SYNTHESIZER_MODEL_H
+#include "SynthesizerProxyStandalone.h"
+#include "Synthesizer.h"
+#include "Jack.h"
 
-#include <RkObject.h>
-
-class SynthsizerProxy;
-
-class SynthesizerModel: public RkObject {
- public:
-        SynthesizerModel(RkObject* parent, SynthesizerProxy *proxy);
-        ~SynthesizerModel();
- private:
-        SynthsizerProxy *synthProxy;
-};
-
-#endif // WHALESYNT_SYNTHESIZER_MODEL_H
+SynthesizerProxyStandalone::SynthesizerProxyStandalone()
+        : synthesizer{std::make_unique<Synthesizer>}
+        , jack{std::make_unique<Jack>(synthesizer)}
+{
+}

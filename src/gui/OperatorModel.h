@@ -1,5 +1,5 @@
 /**
- * File name: SynthesizerModel.h
+ * File name: OperatorModel.h
  * Project: WhaleSynth (A software synthesizer)
  *
  * Copyright (C) 2020 Iurie Nistor <http://iuriepage.wordpress.com>
@@ -21,19 +21,17 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-#ifndef WHALESYNT_SYNTHESIZER_MODEL_H
-#define WHALESYNT_SYNTHESIZER_MODEL_H
+#ifndef OPERATOR_MODEL_H
+#define OPERATOR_MODEL_H
 
-#include <RkObject.h>
+#include "WhaleSynth.h"
 
-class SynthsizerProxy;
+class SynthesizerProxy;
 
-class SynthesizerModel: public RkObject {
+class OperatorModel: public RkObject {
  public:
-        SynthesizerModel(RkObject* parent, SynthesizerProxy *proxy);
-        ~SynthesizerModel();
- private:
-        SynthsizerProxy *synthProxy;
+        OperatorModel(RkObject* parent, SynthesizerProxy *proxy);
+        ~OperatorModel()= default;
 };
 
-#endif // WHALESYNT_SYNTHESIZER_MODEL_H
+#endif // OPERATOR_MODEL_H

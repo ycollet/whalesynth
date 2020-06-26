@@ -23,8 +23,14 @@
 
 #include "SynthesizerModel.h"
 
-SynthesizerModel::SynthesizerModel(RkObject *parent)
+SynthesizerModel::SynthesizerModel(RkObject *parent, SynthesizerProxy *proxy)
         : RkObject(parent)
+        , synthProxy{proxy}
 {
+}
+
+SynthesizerModel::~SynthesizerModel()
+{
+        delete synthProxy;
 }
 

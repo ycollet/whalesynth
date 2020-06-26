@@ -33,6 +33,7 @@ Jack::Jack(Synthesizer &synthesizer)
         , jackCreated{false}
 {
         createJackClient();
+        start();
 }
 
 Jack::~Jack()

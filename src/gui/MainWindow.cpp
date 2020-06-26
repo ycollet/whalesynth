@@ -25,33 +25,38 @@
 #include "SynthesizerModel.h"
 #include "OperatorView.h"
 
-MainWindow::MainWindow(RkMain &app)
+MainWindow::MainWindow(RkMain &app, SynthesizerProxy *synthProxy)
         : WhaleSynthWidget(&app)
-        , synthesizerModel{nullptr/*new SynthesizerModelStandalone(this)*/}
+        , synthesizerModel{new SynthesizerModel(this, synthProxy)}
+        , verticalContainer{new RkContainer(this, Rk::Orientation::Vertical)}
 {
         setFixedSize(665, 504);
+        verticalContainer->setSize(size());
         init();
         show();
 }
 
-MainWindow::MainWindow(RkMain *app, SynthesizerModel *model, RkNativeWindowInfo& info)
+MainWindow::MainWindow(RkMain *app, SynthesizerProxy *synthProxy, RkNativeWindowInfo& info)
         : WhaleSynthWidget(app, info)
-        , synthesizerModel{model}
+        , synthesizerModel{new SynthesizerModel(this, synthProxy)}
+        , verticalContainer{new RkContainer(this, Rk::Orientation::Vertical)}
 {
         setFixedSize(665, 504);
-        synthesizerModel->setEventQueue(eventQueue());
+        verticalContainer->setSize(size());
         init();
         show();
 }
 
 MainWindow::~MainWindow()
 {
-        if (synthesizerModel)
-                delete synthesizerModel;
 }
 
 void MainWindow::init()
 {
-        auto operatorView = new OperatorView(this, synthesizerModel);
-        operatorView->setPosition(10, 10);
+        auto topMenu = new TopMenu(this, synthesizerModel);
+        verticalContianer->addWidget(topMenu);
+
+        auto operatorView = new OperatorView(this, synthesizerModel->getOperator(0));
+        RK_BIND_ACT(topMenu, operatorSelected(OperatorModel* op), operatorView, setModel(op));
+        verticalContianer->addWidget(operatorView);
 }

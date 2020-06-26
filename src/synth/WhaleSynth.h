@@ -45,6 +45,7 @@ enum class MIDIKeyState : int {
         MIDIKeyStateOff = 0,
         MIDIKeyStateOn  = 1
 };
+using OperatorIndex = int;
 
 using ChannelId = int;
 
@@ -63,6 +64,8 @@ namespace WhaleSynth {
         constexpr float defaultPitch = 440.0f;
 
         constexpr MIDIKeyVelocity NumberOfOperators = 8;
+
+        constexpr OperatorIndex invalidOperatorIndex = -1;
 };
 
 #ifdef GEONSYNTH_DEBUG

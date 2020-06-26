@@ -26,14 +26,21 @@
 
 #include "WhaleSynth.h"
 #include "WhaleSynthWidget.h"
-#include "SynthesizerModel.h"
-#include "OperatorModel.h"
 
-#include <RkWidget.h>
+class RkButton;
+class SynthersizerModel;
+class OperatorModel;
 
 class TopMenu: public WhaleSynthWidget {
  public:
-        TopMenu(WhaleSynthWidget* parent);
+        TopMenu(WhaleSynthWidget* parent, SynthesizerModel *model);
+        RK_DECL_ACT(operatorSelected,
+                    operatorSelected(OperatorModel* op),
+                    RK_ARG_TYPE(OperatorModel*),
+                    RK_ARG_VAL(op));
+
+ private:
+        SynthesizerModel *synthModel;
 };
 
 #endif // TOP_MENU_H

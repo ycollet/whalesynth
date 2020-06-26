@@ -59,8 +59,8 @@ public:
 
                 // Create GUI
                 guiApp = new RkMain();
-                auto synthesizerModel = new LV2SynthesizerModelProxy(function, controller, map);
-                mainWidget = new MainWindow(guiApp, synthesizerModel, info);
+                auto synthesizerProxy = new SynthesizerProxyLv2(function, controller, map);
+                mainWidget = new MainWindow(guiApp, synthesizerProxy, info);
 
                 auto winId = mainWidget->nativeWindowInfo()->window;
                 *widget = (LV2UI_Widget)static_cast<uintptr_t>(winId);

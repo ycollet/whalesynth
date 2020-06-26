@@ -28,12 +28,14 @@
 #include "WhaleSynthWidget.h"
 
 class SynthesizerModel;
+class RkContainer;
+class SynthesizerProxy;
 
 class MainWindow: public WhaleSynthWidget {
  public:
-        MainWindow(RkMain &app);
+        MainWindow(RkMain &app, SynthesizerProxy* synthProxy);
         MainWindow(RkMain *app,
-                   SynthesizerModel* synthesizer,
+                   SynthesizerProxy* synthProxy,
                    RkNativeWindowInfo& info);
         ~MainWindow();
 
@@ -42,6 +44,7 @@ class MainWindow: public WhaleSynthWidget {
 
  private:
         SynthesizerModel* synthesizerModel;
+        RkContainer *verticalContiner;
 };
 
 #endif // WHALESYNT_MAIN_WINDOW_H

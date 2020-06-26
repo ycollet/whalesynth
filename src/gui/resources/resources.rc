@@ -1,1 +1,4 @@
-set(whale_rc_png_files)
+set(whale_rc_png_files
+operator_button.png
+operator_button_hover.png
+operator_button_on.png)

@@ -22,11 +22,18 @@
  */
 
 #include "TopMenu.h"
+#include "SynthesizerModel.h"
+#include "OperatorModel.h"
 
 #include <RkContainer.h>
 
-TopMenu::TopMenu(WhaleSynthWidget* parent)
-        : RkWidget(parent)
+RK_DECLARE_RC(operator_button);
+RK_DECLARE_RC(operator_button_hover);
+RK_DECLARE_RC(operator_button_on);
+
+TopMenu::TopMenu(WhaleSynthWidget* parent, SynthsizerModel *model)
+        : WhaleSynthWidget(parent)
+        , synthModel{model}
 {
         setFixedSize({parent->width(), 25});
         setBackgroundColor({50, 50, 50});
@@ -35,12 +42,24 @@ TopMenu::TopMenu(WhaleSynthWidget* parent)
         menuContiner->setSize({width(), height() - 3});
         menuContiner->setPosition({0, 3});
 
-        for (size_t i = 0; i < WhaleSynth::NumberOfOperators; i++) {
+        for (const &auto op: synthModel->operators())
                 auto button = new RkButton(this);
                 button->setSize({24, menuContiner->height()});
                 menuContiner->addWidget(button);
-                RK_ACT_BIND(button, pressed, RK_ACT_ARGS(), this, showOperator(i));
+                RK_ACT_BIND(button, pressed, RK_ACT_ARGS(), this, showOperator(button, op));
+                menuButtons->bush_back(button);
         }
 
         show();
 }
+
+void TopMenu::showOperator(RkButton *button, Operator* op)
+{
+        for (const auto& btn: menuButtons) {
+                if (button != btn)
+                        buttons->setPressed(false);
+        }
+        action operatorSelected(op);
+}
+
+

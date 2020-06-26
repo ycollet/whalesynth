@@ -6,7 +6,8 @@ set(WHALE_SYNTH_HEADERS
   ${WHALE_SYNTH_DIR}/Operator.h
   ${WHALE_SYNTH_DIR}/Note.h
   ${WHALE_SYNTH_DIR}/SynthesizerVoice.h
-  ${WHALE_SYNTH_DIR}/Synthesizer.h)
+  ${WHALE_SYNTH_DIR}/Synthesizer.h
+  ${WHALE_SYNTH_DIR}/SynthesizerProxy.h)
 
 set(WHALE_SYNTH_HEADERS
   ${WHALE_SYNTH_DIR}/WhaleSynth.h

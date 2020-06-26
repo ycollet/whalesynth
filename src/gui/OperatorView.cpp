@@ -22,9 +22,7 @@
  */
 
 #include "OperatorView.h"
-#include "WaveGenerator.h"
-
-#include "RkButton.h"
+#include "OperatorModel.h"
 
 OperatorView::OperatorView(WhaleSynthWidget* parent, OperatorModel *model)
         : WhaleSynthWidget(parent)
@@ -32,32 +30,27 @@ OperatorView::OperatorView(WhaleSynthWidget* parent, OperatorModel *model)
 {
         setBackgroundColor({123, 56, 100});
         setFixedSize(200, 150);
-
-        auto button = new RkButton(this);
-        button->setSize(24, 24);
-        button->setBackgroundColor({0, 100, 0});
-        button->setPosition(10, 10);
-        RK_ACT_BIND(button, pressed, RK_ACT_ARGS(), this, setWaveFunction());
-        button->show();
-
         bindModel();
         updateView();
         show();
 }
 
+void OperatorModel::updateView()
+{
+}
+
 void OperatorModel::setModel(OperatorModel *model)
 {
+        unbindModel();
         operatorModel = model;
         bindModel();
         updateView();
 }
 
-void OperatorView::setWaveFunction()
+void OperatorModel::bindModel()
 {
-        static int wave = 0;
-        if (wave > 4)
-                wave = 0;
-        WHALE_LOG_INFO("called");
-        synthModel->setWaveFunction(static_cast<WaveGenerator::WaveFunctionType>(wave));
-        wave++;
+}
+
+void OperatorModel::unbindModel()
+{
 }
