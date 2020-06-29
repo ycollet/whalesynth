@@ -24,41 +24,46 @@
 #ifndef WHALESYNTH_URIDIDMAP_H
 #define WHALESYNTH_URIDMAP_H
 
+#include "WhaleSynth.h"
+
+#include <lv2/lv2plug.in/ns/ext/urid/urid.h>
+
 constexpr int WHALE_LV2_EVENTS_IN_PORT  = 3;
 constexpr int WHALE_LV2_EVENTS_OUT_PORT = 4;
+constexpr char WHALESYNTH_URI[] = "http://iuriepage.wordpress.com/whalesynth";
+constexpr char WHALESYNTH_URI_STATE[] = "http://iuriepage.wordpress.com/whalesynth#state";
+constexpr char WHALESYNTH_URI_STATE_CHANGED[] = "http://lv2plug.in/ns/ext/state#StateChanged";
 
 struct UridIdMap {
-        stateId;
-        atomChunkId;
-        atomSequence;
-        atomStateChanged;
-        atomObject;
-        atomFloat;
-        atomInt;
-
-        mapId.id;
-        mapId.operator;
-        mapId.command;
-        mapId.waveType;
+        LV2_URID stateId;
+        LV2_URID atomChunkId;
+        LV2_URID atomSequence;
+        LV2_URID atomStateChanged;
+        LV2_URID atomObject;
+        LV2_URID atomFloat;
+        LV2_URID atomInt;
+        LV2_URID eventTransfer;
+        LV2_URID id;
+        LV2_URID operatorId;
+        LV2_URID command;
+        LV2_URID waveType;
 };
 
-Lv2UridMap getUriIddMap(LV2_URIDMap* map)
+UridIdMap getUriIddMap(LV2_URID_Map* uridMap)
 {
         UridIdMap mapId;
-        mapId.stateId          = uridMap->map(uridMap->handle, GEONSYNTH_URI_STATE);
+        mapId.stateId          = uridMap->map(uridMap->handle, WHALESYNTH_URI_STATE);
         mapId.atomChunkId      = uridMap->map(uridMap->handle, LV2_ATOM__Chunk);
         mapId.atomSequence     = uridMap->map(uridMap->handle, LV2_ATOM__Sequence);
-        mapId.atomStateChanged = uridMap->map(uridMap->handle, GEONSYNTH_URI_STATE_CHANGED);
+        mapId.atomStateChanged = uridMap->map(uridMap->handle, WHALESYNTH_URI_STATE_CHANGED);
         mapId.atomObject       = uridMap->map(uridMap->handle, LV2_ATOM__Object);
         mapId.atomFloat        = uridMap->map(uridMap->handle, LV2_ATOM__Float);
         mapId.atomInt          = uridMap->map(uridMap->handle, LV2_ATOM__Int);
         mapId.eventTransfer    = uridMap->map(uridMap->handle, LV2_ATOM__eventTransfer);
-
-        mapId.id       = uridMap->map(uridMap->handle, "WhaleSynth/ID");
-        mapId.operator = uridMap->map(uridMap->handle, "WhaleSynth/Operator");
-        mapId.command  = uridMap->map(uridMap->handle, "WhaleSynth/Command");
-        mapId.waveType = uridMap->map(uridMap->handle, "WhaleSynth/WaveType");
-
+        mapId.id               = uridMap->map(uridMap->handle, "WhaleSynth/ID");
+        mapId.operatorId       = uridMap->map(uridMap->handle, "WhaleSynth/Operator");
+        mapId.command          = uridMap->map(uridMap->handle, "WhaleSynth/Command");
+        mapId.waveType         = uridMap->map(uridMap->handle, "WhaleSynth/WaveType");
         return mapId;
 };
 

@@ -26,14 +26,14 @@
 
 #include <RkObject.h>
 
-class SynthsizerProxy;
+class SynthesizerProxy;
 
 class SynthesizerModel: public RkObject {
  public:
         SynthesizerModel(RkObject* parent, SynthesizerProxy *proxy);
         ~SynthesizerModel();
  private:
-        SynthsizerProxy *synthProxy;
+        SynthesizerProxy *synthProxy;
 };
 
 #endif // WHALESYNT_SYNTHESIZER_MODEL_H

@@ -36,10 +36,6 @@
 #include <memory>
 #include <atomic>
 
-#define WHALESYNTH_URI "http://iuriepage.wordpress.com/whalesynth"
-#define WHALESYNTH_URI_STATE "http://iuriepage.wordpress.com/whalesynth#state"
-#define WHALESYNTH_URI_STATE_CHANGED "http://lv2plug.in/ns/ext/state#StateChanged"
-
 class WhaleSynthLv2DSPPlugin
 {
   public:
@@ -49,7 +45,6 @@ class WhaleSynthLv2DSPPlugin
                 , eventsInPort{nullptr}
                 , eventsOutPort{nullptr}
                 , notifyHostPort{nullptr}
-                , atomInfo{0}
         {
         }
 
@@ -59,9 +54,9 @@ class WhaleSynthLv2DSPPlugin
                         delete whalesynth;
         }
 
-        void setUridIdMap(UridMapId map)
+        void setUridIdMap(const UridIdMap &map)
         {
-                uridIdMap = id;
+                uridIdMap = map;
         }
 
         UridIdMap getUridIdMap() const

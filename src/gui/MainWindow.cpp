@@ -26,7 +26,7 @@
 #include "OperatorView.h"
 
 MainWindow::MainWindow(RkMain &app, SynthesizerProxy *synthProxy)
-        : WhaleSynthWidget(&app)
+        : WhalehWidget(&app)
         , synthesizerModel{new SynthesizerModel(this, synthProxy)}
         , verticalContainer{new RkContainer(this, Rk::Orientation::Vertical)}
 {
@@ -37,7 +37,7 @@ MainWindow::MainWindow(RkMain &app, SynthesizerProxy *synthProxy)
 }
 
 MainWindow::MainWindow(RkMain *app, SynthesizerProxy *synthProxy, RkNativeWindowInfo& info)
-        : WhaleSynthWidget(app, info)
+        : WhaleWidget(app, info)
         , synthesizerModel{new SynthesizerModel(this, synthProxy)}
         , verticalContainer{new RkContainer(this, Rk::Orientation::Vertical)}
 {

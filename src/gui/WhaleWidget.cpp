@@ -1,5 +1,5 @@
 /**
- * File name: WhaleSynthWidget.cpp
+ * File name: WhaleWidget.cpp
  * Project: WhaleSynth (A software synthesizer)
  *
  * Copyright (C) 2020 Iurie Nistor <http://iuriepage.wordpress.com>
@@ -21,11 +21,10 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-#include "WhaleSynthWidget.h"
+#include "WhaleWidget.h"
 
-WhaleSynthWidget::WhaleSynthWidget(RkMain *app,
-                                   Rk::WindowFlags flags = Rk::WindowFlags::Widget)
-        : RkWidget(parent, flags)
+WhaleWidget::WhaleWidget(RkMain *app, Rk::WindowFlags flags)
+        : RkWidget(app, flags)
 {
         setBackgroundColor(20, 20, 20);
         setTextColor({223, 223, 223});
@@ -34,10 +33,10 @@ WhaleSynthWidget::WhaleSynthWidget(RkMain *app,
         setFont(f);
 }
 
-WhaleSynthWidget::WhaleSynthWidget(RkMain *app,
-                                   const RkNativeWindowInfo &info,
-                                   Rk::WindowFlags flags = Rk::WindowFlags::Widget)
-        : RkWidget(parent, flags)
+WhaleWidget::WhaleWidget(RkMain *app,
+                         const RkNativeWindowInfo &info,
+                         Rk::WindowFlags flags)
+        : RkWidget(app, flags)
 {
         setBackgroundColor(20, 20, 20);
         setTextColor({223, 223, 223});
@@ -46,8 +45,7 @@ WhaleSynthWidget::WhaleSynthWidget(RkMain *app,
         setFont(f);
 }
 
-WhaleSynthWidget::WhaleSynthWidget(RkWidget *parent,
-                                   Rk::WindowFlags flags = Rk::WindowFlags::Widget)
+WhaleWidget::WhaleWidget(RkWidget *parent, Rk::WindowFlags flags)
         : RkWidget(parent, flags)
 {
         setBackgroundColor(20, 20, 20);
@@ -56,4 +54,3 @@ WhaleSynthWidget::WhaleSynthWidget(RkWidget *parent,
         f.setSize(12);
         setFont(f);
 }
-

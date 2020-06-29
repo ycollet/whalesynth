@@ -1,5 +1,5 @@
 /**
- * File name: WhaleSynthWidget.h
+ * File name: WhaleWidget.h
  * Project: WhaleSynth (A software synthesizer)
  *
  * Copyright (C) 2020 Iurie Nistor <http://iuriepage.wordpress.com>
@@ -24,16 +24,18 @@
 #ifndef WHALESYNT_WIDGET_H
 #define WHALESYNT_WIDGET_H
 
-class WhaleSynthWidget : public RkWidget {
+#include <RkWidget.h>
+
+class WhaleWidget : public RkWidget {
  public:
-        WhaleSynthWidget::WhaleSynthWidget(RkMain *app,
-                                           Rk::WindowFlags flags = Rk::WindowFlags::Widget);
-        WhaleSynthWidget::WhaleSynthWidget(RkMain *app,
-                                           const RkNativeWindowInfo &info,
-                                           Rk::WindowFlags flags = Rk::WindowFlags::Widget);
-        WhaleSynthWidget::WhaleSynthWidget(RkWidget *parent,
-                                           Rk::WindowFlags flags = Rk::WindowFlags::Widget);
-        virtual ~WhaleSynthWidget() = default;
+        WhaleWidget(RkMain *app,
+                    Rk::WindowFlags flags = Rk::WindowFlags::Widget);
+        WhaleWidget(RkMain *app,
+                    const RkNativeWindowInfo &info,
+                    Rk::WindowFlags flags = Rk::WindowFlags::Widget);
+        WhaleWidget(RkWidget *parent,
+                    Rk::WindowFlags flags = Rk::WindowFlags::Widget);
+        virtual ~WhaleWidget() = default;
 };
 
 #endif // WHALESYNT_WIDGET_H

@@ -25,15 +25,15 @@
 #define TOP_MENU_H
 
 #include "WhaleSynth.h"
-#include "WhaleSynthWidget.h"
+#include "WhaleWidget.h"
 
 class RkButton;
 class SynthersizerModel;
 class OperatorModel;
 
-class TopMenu: public WhaleSynthWidget {
+class TopMenu: public WhaleWidget {
  public:
-        TopMenu(WhaleSynthWidget* parent, SynthesizerModel *model);
+        TopMenu(WhaleWidget* parent, SynthesizerModel *model);
         RK_DECL_ACT(operatorSelected,
                     operatorSelected(OperatorModel* op),
                     RK_ARG_TYPE(OperatorModel*),

@@ -31,8 +31,8 @@ RK_DECLARE_RC(operator_button);
 RK_DECLARE_RC(operator_button_hover);
 RK_DECLARE_RC(operator_button_on);
 
-TopMenu::TopMenu(WhaleSynthWidget* parent, SynthsizerModel *model)
-        : WhaleSynthWidget(parent)
+TopMenu::TopMenu(WhaleWidget* parent, SynthsizerModel *model)
+        : WhaleWidget(parent)
         , synthModel{model}
 {
         setFixedSize({parent->width(), 25});

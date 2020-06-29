@@ -24,8 +24,8 @@
 #include "OperatorView.h"
 #include "OperatorModel.h"
 
-OperatorView::OperatorView(WhaleSynthWidget* parent, OperatorModel *model)
-        : WhaleSynthWidget(parent)
+OperatorView::OperatorView(WhaleWidget* parent, OperatorModel *model)
+        : WhaleWidget(parent)
         , operatorModel{model}
 {
         setBackgroundColor({123, 56, 100});

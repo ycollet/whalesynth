@@ -25,7 +25,7 @@
 #define WHALESYNT_MAIN_WINDOW_H
 
 #include "WhaleSynth.h"
-#include "WhaleSynthWidget.h"
+#include "WhaleWidget.h"
 
 class SynthesizerModel;
 class RkContainer;

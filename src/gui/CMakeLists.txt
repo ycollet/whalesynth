@@ -3,7 +3,7 @@ include(FindRedkite)
 
 set(WHALE_GUI_HEADERS
   ${WHALE_GUI_DIR}/SynthesizerModel.h
-  ${WHALE_GUI_DIR}/WhaleSynthWidget.h
+  ${WHALE_GUI_DIR}/WhaleWidget.h
   ${WHALE_GUI_DIR}/TopMenu.h
   ${WHALE_GUI_DIR}/OperatorModel.h
   ${WHALE_GUI_DIR}/OperatorView.h
@@ -11,7 +11,7 @@ set(WHALE_GUI_HEADERS
 
 set(WHALE_GUI_SOURCES
   ${WHALE_GUI_DIR}/SynthesizerModel.cpp
-  ${WHALE_GUI_DIR}/WhaleSynthWidget.cpp
+  ${WHALE_GUI_DIR}/WhaleWidget.cpp
   ${WHALE_GUI_DIR}/OperatorModel.cpp
   ${WHALE_GUI_DIR}/OperatorView.cpp
   ${WHALE_GUI_DIR}/TopMenu.cpp

@@ -25,14 +25,14 @@
 #define WHALESYNT_OPERATOR_VIEW_H
 
 #include "WhaleSynth.h"
-#include "WhaleSynthWidget.h"
+#include "WhaleWidget.h"
 #include "SynthesizerModel.h"
 
 class OperatorModel;
 
-class OperatorView: public WhaleSynthWidget {
+class OperatorView: public WhaleWidget {
  public:
-        OperatorView(WhaleSynthWidget* parent, OperatorModel *model);
+        OperatorView(WhaleWidget* parent, OperatorModel *model);
         void setModel(OperatorModel *model);
         OperatorModel* model() const;
         void updateView();

@@ -26,6 +26,8 @@
 
 #include "WhaleSynth.h"
 
+#include <RkObject.h>
+
 class SynthesizerProxy;
 
 class OperatorModel: public RkObject {
