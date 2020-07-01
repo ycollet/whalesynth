@@ -36,25 +36,27 @@
 #include <lv2/lv2plug.in/ns/ext/urid/urid.h>
 #include <lv2/lv2plug.in/ns/extensions/ui/ui.h>
 
-class SynthesizerProxyLV2 : public SynthesizerProxy {
+class SynthesizerProxyLv2: public SynthesizerProxy {
  public:
         enum class CommandType: int {
                 SetWave = 0
         };
 
         SynthesizerProxyLv2(LV2UI_Write_Function function,
-                                 LV2UI_Controller controller,
-                                 LV2_URID_Map* uridmap,
-                                 RkObject* parent = nullptr);
+                            LV2UI_Controller controller,
+                            LV2_URID_Map* uridmap);
         ~SynthesizerProxyLv2() = default;
         void setOperatorWaveFunction(const OperatorIndex &index, WaveGenerator::WaveFunctionType type);
-        void operatorWaveFunction(const OperatorIndex &index, WaveGenerator::WaveFunctionType type) const;
+        WaveGenerator::WaveFunctionType operatorWaveFunction(const OperatorIndex &index) const;
+
+ protected:
+        void writeMessage(LV2_Atom *message);
 
  private:
         LV2UI_Write_Function writeFunction;
         LV2UI_Controller  uiController;
         LV2_URID_Map* uridMap;
-        UridMapId uridMapId;
+        UridIdMap uridMapId;
         LV2_Atom_Forge atomForge;
         std::vector<uint8_t> stackBuffer;
 };

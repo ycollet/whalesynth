@@ -16,10 +16,10 @@ set(WHALESYNTH_LV2_DSP_TARGET_NAME "${PROJECT_NAME}_lv2_dsp")
 
 set(WHALESYNTH_LV2_UI_HEADERS
   ${WHALE_LV2_DIR}/UridMap.h
-  ${WHALE_LV2_DIR}/SynthesizerModelProxyLv2.h)
+  ${WHALE_LV2_DIR}/SynthesizerProxyLv2.h)
 
 set(WHALESYNTH_LV2_UI_SOURCES
-  ${WHALE_LV2_DIR}/SynthesizerModelProxyLv2.cpp
+  ${WHALE_LV2_DIR}/SynthesizerProxyLv2.cpp
   ${WHALE_LV2_DIR}/whalesynth_lv2_ui.cpp)
 
 set(WHALESYNTH_LV2_UI_TARGET_NAME "${PROJECT_NAME}_lv2_ui")

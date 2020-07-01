@@ -36,7 +36,7 @@ WhaleWidget::WhaleWidget(RkMain *app, Rk::WindowFlags flags)
 WhaleWidget::WhaleWidget(RkMain *app,
                          const RkNativeWindowInfo &info,
                          Rk::WindowFlags flags)
-        : RkWidget(app, flags)
+        : RkWidget(app, info, flags)
 {
         setBackgroundColor(20, 20, 20);
         setTextColor({223, 223, 223});

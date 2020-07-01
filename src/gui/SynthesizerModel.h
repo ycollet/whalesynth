@@ -24,16 +24,23 @@
 #ifndef WHALESYNT_SYNTHESIZER_MODEL_H
 #define WHALESYNT_SYNTHESIZER_MODEL_H
 
+#include "WhaleSynth.h"
+
 #include <RkObject.h>
 
 class SynthesizerProxy;
+class OperatorModel;
 
 class SynthesizerModel: public RkObject {
  public:
         SynthesizerModel(RkObject* parent, SynthesizerProxy *proxy);
         ~SynthesizerModel();
+        const std::vector<std::unique_ptr<OperatorModel>>& operators() const;
+        OperatorModel* getOperator(OperatorIndex index) const;
+
  private:
         SynthesizerProxy *synthProxy;
+        std::vector<std::unique_ptr<OperatorModel>> operatorsModels;
 };
 
 #endif // WHALESYNT_SYNTHESIZER_MODEL_H

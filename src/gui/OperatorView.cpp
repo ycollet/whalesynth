@@ -35,11 +35,11 @@ OperatorView::OperatorView(WhaleWidget* parent, OperatorModel *model)
         show();
 }
 
-void OperatorModel::updateView()
+void OperatorView::updateView()
 {
 }
 
-void OperatorModel::setModel(OperatorModel *model)
+void OperatorView::setModel(OperatorModel *model)
 {
         unbindModel();
         operatorModel = model;
@@ -47,10 +47,10 @@ void OperatorModel::setModel(OperatorModel *model)
         updateView();
 }
 
-void OperatorModel::bindModel()
+void OperatorView::bindModel()
 {
 }
 
-void OperatorModel::unbindModel()
+void OperatorView::unbindModel()
 {
 }

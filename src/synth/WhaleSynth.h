@@ -45,7 +45,7 @@ enum class MIDIKeyState : int {
         MIDIKeyStateOff = 0,
         MIDIKeyStateOn  = 1
 };
-using OperatorIndex = int;
+using OperatorIndex = size_t;
 
 using ChannelId = int;
 

@@ -1,5 +1,5 @@
 /**
- * File name: LV2SynthesizerModelProxy.cpp
+ * File name: SynthesizerProxyLv2.cpp
  * Project: WhaleSynth (A software synthesizer)
  *
  * Copyright (C) 2020 Iurie Nistor <http://iuriepage.wordpress.com>
@@ -22,30 +22,21 @@
  */
 
 #include "WhaleSynth.h"
-#include "LV2SynthesizerModelProxy.h"
+#include "SynthesizerProxyLv2.h"
 
-#include <RkObject.h>
-
-LV2_URID synthOperatorUrid;
-LV2_URID synthID;
-LV2_URID synthCommand;
-LV2_URID synthSetWave;
-LV2_URID synthIntValue;
-
-LV2SynthesizerModelProxy::LV2SynthesizerModelProxy(LV2UI_Write_Function function,
-                                                   LV2UI_Controller controller,
-                                                   LV2_URID_Map* uridmap,
-                                                   RkObject* parent)
-        : SynthesizerModel(parent)
-        , writeFunction{function}
+SynthesizerProxyLv2::SynthesizerProxyLv2(LV2UI_Write_Function function,
+                                         LV2UI_Controller controller,
+                                         LV2_URID_Map* uridmap)
+        : writeFunction{function}
         , uiController{controller}
         , uridMap{uridmap}
-        , uridIdMap{getUridIdMap(uridMap)}
+        , uridMapId{createUriIdMap(uridMap)}
         , stackBuffer(2048, 0)
 {
 }
 
-void LV2SynthesizerModelProxy::setWaveFunction(WaveGenerator::WaveFunctionType type)
+void SynthesizerProxyLv2::setOperatorWaveFunction(const OperatorIndex &index,
+                                                  WaveGenerator::WaveFunctionType type)
 {
         lv2_atom_forge_init(&atomForge, uridMap);
         lv2_atom_forge_set_buffer(&atomForge, stackBuffer.data(), stackBuffer.size());
@@ -53,7 +44,7 @@ void LV2SynthesizerModelProxy::setWaveFunction(WaveGenerator::WaveFunctionType t
         LV2_Atom_Forge_Frame frame;
 
         // Start operator object.
-        LV2_Atom *message = (LV2_Atom*)lv2_atom_forge_object(&atomForge, &frame, 0, uridMapId.operator);
+        LV2_Atom *message = (LV2_Atom*)lv2_atom_forge_object(&atomForge, &frame, 0, uridMapId.operatorId);
 
         // Add operator ID.
         lv2_atom_forge_key(&atomForge, uridMapId.id);
@@ -61,7 +52,7 @@ void LV2SynthesizerModelProxy::setWaveFunction(WaveGenerator::WaveFunctionType t
 
         // Add set wave type command.
         lv2_atom_forge_key(&atomForge, uridMapId.command);
-        lv2_atom_forge_int(&atomForge, static_cast<int>(command));
+        lv2_atom_forge_int(&atomForge, static_cast<int>(0));
 
         // Add generator wave type.
         lv2_atom_forge_key(&atomForge, uridMapId.waveType);
@@ -69,14 +60,20 @@ void LV2SynthesizerModelProxy::setWaveFunction(WaveGenerator::WaveFunctionType t
 
         lv2_atom_forge_pop(&atomForge, &frame);
 
-        writeMesasge(message);
+        writeMessage(message);
 }
 
-void LV2SynthesizerModelProxy::writeMessage(LV2_Atom *message)
+WaveGenerator::WaveFunctionType
+SynthesizerProxyLv2::operatorWaveFunction(const OperatorIndex &index) const
+{
+        return WaveGenerator::WaveFunctionType::WaveFunctionSine;
+}
+
+void SynthesizerProxyLv2::writeMessage(LV2_Atom *message)
 {
         writeFunction(uiController,
                       WHALE_LV2_EVENTS_IN_PORT,
                       lv2_atom_total_size(message),
-                      mapId.eventTransfer,
-                      msg);
+                      uridMapId.eventTransfer,
+                      message);
 }

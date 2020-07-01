@@ -22,15 +22,31 @@
  */
 
 #include "SynthesizerModel.h"
+#include "OperatorModel.h"
+#include "SynthesizerProxy.h"
 
 SynthesizerModel::SynthesizerModel(RkObject *parent, SynthesizerProxy *proxy)
         : RkObject(parent)
         , synthProxy{proxy}
 {
+        for (size_t i = 0; i < WhaleSynth::NumberOfOperators; i++)
+                operatorsModels.push_back(std::make_unique<OperatorModel>(this, proxy));
 }
 
 SynthesizerModel::~SynthesizerModel()
 {
         delete synthProxy;
+}
+
+OperatorModel* SynthesizerModel::getOperator(OperatorIndex index) const
+{
+        if (index < operatorsModels.size())
+                return operatorsModels[index].get();
+        return nullptr;
+}
+
+const std::vector<std::unique_ptr<OperatorModel>>& SynthesizerModel::operators() const
+{
+        return operatorsModels;
 }
 

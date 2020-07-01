@@ -31,12 +31,12 @@ class SynthesizerModel;
 class RkContainer;
 class SynthesizerProxy;
 
-class MainWindow: public WhaleSynthWidget {
+class MainWindow: public WhaleWidget {
  public:
         MainWindow(RkMain &app, SynthesizerProxy* synthProxy);
         MainWindow(RkMain *app,
                    SynthesizerProxy* synthProxy,
-                   RkNativeWindowInfo& info);
+                   const RkNativeWindowInfo& info);
         ~MainWindow();
 
  protected:
@@ -44,7 +44,7 @@ class MainWindow: public WhaleSynthWidget {
 
  private:
         SynthesizerModel* synthesizerModel;
-        RkContainer *verticalContiner;
+        RkContainer *mainContainer;
 };
 
 #endif // WHALESYNT_MAIN_WINDOW_H

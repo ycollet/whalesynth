@@ -22,27 +22,30 @@
  */
 
 #include "MainWindow.h"
+#include "TopMenu.h"
 #include "SynthesizerModel.h"
 #include "OperatorView.h"
 
+#include <RkContainer.h>
+
 MainWindow::MainWindow(RkMain &app, SynthesizerProxy *synthProxy)
-        : WhalehWidget(&app)
+        : WhaleWidget(&app)
         , synthesizerModel{new SynthesizerModel(this, synthProxy)}
-        , verticalContainer{new RkContainer(this, Rk::Orientation::Vertical)}
+        , mainContainer{new RkContainer(this, Rk::Orientation::Vertical)}
 {
         setFixedSize(665, 504);
-        verticalContainer->setSize(size());
+        mainContainer->setSize(size());
         init();
         show();
 }
 
-MainWindow::MainWindow(RkMain *app, SynthesizerProxy *synthProxy, RkNativeWindowInfo& info)
+MainWindow::MainWindow(RkMain *app, SynthesizerProxy *synthProxy, const RkNativeWindowInfo& info)
         : WhaleWidget(app, info)
         , synthesizerModel{new SynthesizerModel(this, synthProxy)}
-        , verticalContainer{new RkContainer(this, Rk::Orientation::Vertical)}
+        , mainContainer{new RkContainer(this, Rk::Orientation::Vertical)}
 {
         setFixedSize(665, 504);
-        verticalContainer->setSize(size());
+        mainContainer->setSize(size());
         init();
         show();
 }
@@ -54,9 +57,9 @@ MainWindow::~MainWindow()
 void MainWindow::init()
 {
         auto topMenu = new TopMenu(this, synthesizerModel);
-        verticalContianer->addWidget(topMenu);
+        mainContainer->addWidget(topMenu);
 
         auto operatorView = new OperatorView(this, synthesizerModel->getOperator(0));
-        RK_BIND_ACT(topMenu, operatorSelected(OperatorModel* op), operatorView, setModel(op));
-        verticalContianer->addWidget(operatorView);
+        RK_ACT_BIND(topMenu, operatorSelected, RK_ACT_ARGS(OperatorModel* op), operatorView, setModel(op));
+        mainContainer->addWidget(operatorView);
 }

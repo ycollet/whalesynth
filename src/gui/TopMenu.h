@@ -28,7 +28,7 @@
 #include "WhaleWidget.h"
 
 class RkButton;
-class SynthersizerModel;
+class SynthesizerModel;
 class OperatorModel;
 
 class TopMenu: public WhaleWidget {
@@ -39,8 +39,12 @@ class TopMenu: public WhaleWidget {
                     RK_ARG_TYPE(OperatorModel*),
                     RK_ARG_VAL(op));
 
+ protected:
+        void showOperator(RkButton *button, OperatorModel* op);
+
  private:
         SynthesizerModel *synthModel;
+        std::vector<RkButton*> menuButtons;
 };
 
 #endif // TOP_MENU_H

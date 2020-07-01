@@ -22,7 +22,7 @@
  */
 
 #include "MainWindow.h"
-#include "LV2SynthesizerModelProxy.h"
+#include "SynthesizerProxyLv2.h"
 
 #include <RkMain.h>
 #include <RkPlatform.h>

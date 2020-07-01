@@ -141,23 +141,29 @@
       <rect
          inkscape:transform-center-y="-0.13461445"
          inkscape:transform-center-x="7.2752212"
-         y="-21.207407"
-         x="-23.978907"
+         y="-31.882292"
+         x="-24.817379"
          height="5.1569791"
          width="13.141962"
          id="rect1092-6"
-         style="opacity:1;fill:#52524f;fill-opacity:0.81818183;stroke:#383835;stroke-width:0;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
+         style="opacity:1;fill:#525252;fill-opacity:1;stroke:#383835;stroke-width:0;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+         inkscape:export-filename="/home/iurie/projects/whalesynth/src/gui/resources/operator_button_on.png"
+         inkscape:export-xdpi="96.657753"
+         inkscape:export-ydpi="96.657753" />
       <text
          id="text985-7"
-         y="-16.937277"
-         x="-22.594305"
+         y="-27.627396"
+         x="-23.489491"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.53695726px;line-height:1.25;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.1701359"
-         xml:space="preserve"><tspan
+         xml:space="preserve"
+         inkscape:export-filename="/home/iurie/projects/whalesynth/src/gui/resources/operator_button_on.png"
+         inkscape:export-xdpi="96.657753"
+         inkscape:export-ydpi="96.657753"><tspan
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';fill:#ffffff;fill-opacity:1;stroke-width:0.1701359"
-           y="-16.937277"
-           x="-22.594305"
+           y="-27.627396"
+           x="-23.489491"
            id="tspan983-9"
-           sodipodi:role="line">OP 3</tspan></text>
+           sodipodi:role="line">OP 6</tspan></text>
       <text
          id="text985-2"
          y="-17.182619"
@@ -180,20 +186,61 @@
            x="7.7443824"
            id="tspan983-7"
            sodipodi:role="line">OP 5</tspan></text>
+      <rect
+         inkscape:transform-center-y="-0.13461445"
+         inkscape:transform-center-x="7.2752212"
+         y="-30.650875"
+         x="-2.4967752"
+         height="5.1569791"
+         width="13.141962"
+         id="rect1092-6-3"
+         style="opacity:1;fill:#323232;fill-opacity:1;stroke:#383835;stroke-width:0;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+         inkscape:export-filename="/home/iurie/projects/whalesynth/src/gui/resources/operator_button.png"
+         inkscape:export-xdpi="96.657753"
+         inkscape:export-ydpi="96.657753" />
       <text
          id="text985-5"
-         y="-17.182619"
-         x="23.219213"
+         y="-26.395979"
+         x="-1.1688862"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.53695726px;line-height:1.25;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';letter-spacing:0px;word-spacing:0px;fill:#e0dedf;fill-opacity:1;stroke:none;stroke-width:0.1701359"
-         xml:space="preserve"><tspan
+         xml:space="preserve"
+         inkscape:export-filename="/home/iurie/projects/whalesynth/src/gui/resources/operator_button.png"
+         inkscape:export-xdpi="96.657753"
+         inkscape:export-ydpi="96.657753"><tspan
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';fill:#e0dedf;fill-opacity:1;stroke-width:0.1701359"
-           y="-17.182619"
-           x="23.219213"
+           y="-26.395979"
+           x="-1.1688862"
            id="tspan983-92"
+           sodipodi:role="line">OP 6</tspan></text>
+      <rect
+         inkscape:transform-center-y="-0.13461445"
+         inkscape:transform-center-x="7.2752212"
+         y="-31.50868"
+         x="20.048815"
+         height="5.1569791"
+         width="13.141962"
+         id="rect1092-6-6"
+         style="opacity:1;fill:#464646;fill-opacity:1;stroke:#383835;stroke-width:0;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+         inkscape:export-filename="/home/iurie/projects/whalesynth/src/gui/resources/operator_button_hover.png"
+         inkscape:export-xdpi="96.657753"
+         inkscape:export-ydpi="96.657753" />
+      <text
+         id="text985-7-7"
+         y="-27.25379"
+         x="21.376696"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.53695726px;line-height:1.25;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';letter-spacing:0px;word-spacing:0px;fill:#f0f0f0;fill-opacity:1;stroke:none;stroke-width:0.1701359"
+         xml:space="preserve"
+         inkscape:export-filename="/home/iurie/projects/whalesynth/src/gui/resources/operator_button_hover.png"
+         inkscape:export-xdpi="96.657753"
+         inkscape:export-ydpi="96.657753"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';fill:#f0f0f0;fill-opacity:1;stroke-width:0.1701359"
+           y="-27.25379"
+           x="21.376696"
+           id="tspan983-9-5"
            sodipodi:role="line">OP 6</tspan></text>
     </g>
     <rect
-       style="opacity:1;fill:#52524f;fill-opacity:0.81818183;stroke:none;stroke-width:0.34662572;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       style="opacity:1;fill:#525252;fill-opacity:1;stroke:none;stroke-width:0.34662572;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
        id="rect1092"
        width="176.04134"
        height="44.365307"

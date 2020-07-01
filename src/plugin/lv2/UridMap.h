@@ -22,10 +22,16 @@
  */
 
 #ifndef WHALESYNTH_URIDIDMAP_H
-#define WHALESYNTH_URIDMAP_H
+#define WHALESYNTH_URIDIDMAP_H
 
 #include "WhaleSynth.h"
 
+#include <lv2/lv2plug.in/ns/lv2core/lv2.h>
+#include <lv2/lv2plug.in/ns/ext/atom/atom.h>
+#include <lv2/lv2plug.in/ns/ext/atom/util.h>
+#include <lv2/lv2plug.in/ns/ext/midi/midi.h>
+#include <lv2/lv2plug.in/ns/ext/urid/urid.h>
+#include <lv2/lv2plug.in/ns/ext/state/state.h>
 #include <lv2/lv2plug.in/ns/ext/urid/urid.h>
 
 constexpr int WHALE_LV2_EVENTS_IN_PORT  = 3;
@@ -49,7 +55,7 @@ struct UridIdMap {
         LV2_URID waveType;
 };
 
-UridIdMap getUriIddMap(LV2_URID_Map* uridMap)
+inline UridIdMap createUriIdMap(LV2_URID_Map* uridMap)
 {
         UridIdMap mapId;
         mapId.stateId          = uridMap->map(uridMap->handle, WHALESYNTH_URI_STATE);
@@ -67,4 +73,4 @@ UridIdMap getUriIddMap(LV2_URID_Map* uridMap)
         return mapId;
 };
 
-#endif // WHALESYNTH_URIDMAP_H
+#endif // WHALESYNTH_URIDIDMAP_H

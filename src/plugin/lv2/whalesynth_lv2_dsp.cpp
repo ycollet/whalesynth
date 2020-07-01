@@ -21,13 +21,6 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-#include <lv2/lv2plug.in/ns/lv2core/lv2.h>
-#include <lv2/lv2plug.in/ns/ext/atom/atom.h>
-#include <lv2/lv2plug.in/ns/ext/atom/util.h>
-#include <lv2/lv2plug.in/ns/ext/midi/midi.h>
-#include <lv2/lv2plug.in/ns/ext/urid/urid.h>
-#include <lv2/lv2plug.in/ns/ext/state/state.h>
-
 #include "Synthesizer.h"
 #include "Note.h"
 #include "UridMap.h"
@@ -54,12 +47,12 @@ class WhaleSynthLv2DSPPlugin
                         delete whalesynth;
         }
 
-        void setUridIdMap(const UridIdMap &map)
+        void setUriIdMap(const UridIdMap &map)
         {
                 uridIdMap = map;
         }
 
-        UridIdMap getUridIdMap() const
+        const UridIdMap& getUridIdMap() const
         {
                 return uridIdMap;
         }
@@ -240,7 +233,7 @@ static LV2_Handle whale_instantiate(const LV2_Descriptor*     descriptor,
                                 return nullptr;
                         } else {
                                 auto whaleSynthLv2PLugin = new WhaleSynthLv2DSPPlugin;
-                                whaleSynthLv2PLugin->setUridIdMap(getUridMapId(uridMap));
+                                whaleSynthLv2PLugin->setUriIdMap(createUriIdMap(uridMap));
                                 return static_cast<LV2_Handle>(whaleSynthLv2PLugin);
                         }
                         break;

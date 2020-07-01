@@ -34,6 +34,9 @@ class OperatorModel: public RkObject {
  public:
         OperatorModel(RkObject* parent, SynthesizerProxy *proxy);
         ~OperatorModel()= default;
+
+ private:
+        SynthesizerProxy *synthProxy;
 };
 
 #endif // OPERATOR_MODEL_H

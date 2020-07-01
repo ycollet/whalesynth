@@ -26,38 +26,50 @@
 #include "OperatorModel.h"
 
 #include <RkContainer.h>
+#include <RkButton.h>
 
-RK_DECLARE_RC(operator_button);
-RK_DECLARE_RC(operator_button_hover);
-RK_DECLARE_RC(operator_button_on);
+RK_DECLARE_IMAGE_RC(operator_button);
+RK_DECLARE_IMAGE_RC(operator_button_hover);
+RK_DECLARE_IMAGE_RC(operator_button_on);
 
-TopMenu::TopMenu(WhaleWidget* parent, SynthsizerModel *model)
+TopMenu::TopMenu(WhaleWidget* parent, SynthesizerModel *model)
         : WhaleWidget(parent)
         , synthModel{model}
 {
-        setFixedSize({parent->width(), 25});
+        setFixedSize({parent->width(), 24});
         setBackgroundColor({50, 50, 50});
 
         auto menuContiner = new RkContainer(this);
         menuContiner->setSize({width(), height() - 3});
         menuContiner->setPosition({0, 3});
 
-        for (const &auto op: synthModel->operators())
+        for (const auto &op: synthModel->operators()) {
                 auto button = new RkButton(this);
-                button->setSize({24, menuContiner->height()});
+                button->setSize({63, 24});
+                button->setImage(RkImage(button->size(), RK_IMAGE_RC(operator_button)),
+                                 RkButton::ButtonImage::ImageUnpressed);
+                button->setImage(RkImage(button->size(), RK_IMAGE_RC(operator_button_hover)),
+                                 RkButton::ButtonImage::ImageUnpressedHover);
+                button->setImage(RkImage(button->size(), RK_IMAGE_RC(operator_button_on)),
+                                 RkButton::ButtonImage::ImagePressed);
+                button->setImage(RkImage(button->size(), RK_IMAGE_RC(operator_button_hover)),
+                                 RkButton::ButtonImage::ImagePressedHover);
+                button->show();
                 menuContiner->addWidget(button);
-                RK_ACT_BIND(button, pressed, RK_ACT_ARGS(), this, showOperator(button, op));
-                menuButtons->bush_back(button);
+                menuContiner->addSpace(5);
+                OperatorModel *m = op.get();
+                RK_ACT_BIND(button, pressed, RK_ACT_ARGS(), this, showOperator(button, m));
+                menuButtons.push_back(button);
         }
 
         show();
 }
 
-void TopMenu::showOperator(RkButton *button, Operator* op)
+void TopMenu::showOperator(RkButton *button, OperatorModel* op)
 {
         for (const auto& btn: menuButtons) {
                 if (button != btn)
-                        buttons->setPressed(false);
+                        btn->setPressed(false);
         }
         action operatorSelected(op);
 }
