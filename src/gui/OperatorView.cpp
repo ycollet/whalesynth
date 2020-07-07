@@ -23,13 +23,23 @@
 
 #include "OperatorView.h"
 #include "OperatorModel.h"
+#include "WaveGeneratorView.h"
 
 OperatorView::OperatorView(WhaleWidget* parent, OperatorModel *model)
         : WhaleWidget(parent)
         , operatorModel{model}
+        , waveGeneratorView{new WaveGeneratorView(this, (model ? model->waveGeneratorModel() : nullptr))}
 {
-        setBackgroundColor({123, 56, 100});
-        setFixedSize(200, 150);
+        setBackgroundColor({82, 82, 82});
+        setFixedSize(parent->width(), 168);
+
+        auto mainContiner = new RkContiner(this);
+        mainContiner->setSize(size());
+        auto leftContiner = new RkContiner(this, Rk::Orientation::Vertical)
+        leftContiner->setSize({waveGeneratorView->width(), mainContiner->height()});
+        mainContiner->addContainer(leftContiner);
+        leftContiner->addWidget(waveGeneratorView);
+
         bindModel();
         updateView();
         show();

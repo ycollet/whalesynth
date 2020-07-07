@@ -25,11 +25,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.2544417"
+     inkscape:zoom="1.594131"
      inkscape:cx="2357.3438"
-     inkscape:cy="1597.4977"
+     inkscape:cy="1697.8659"
      inkscape:document-units="mm"
-     inkscape:current-layer="g1834"
+     inkscape:current-layer="layer1"
      showgrid="false"
      showguides="false"
      inkscape:guide-bbox="true"
@@ -106,138 +106,153 @@
          x="41.541397"
          y="-2.2169909"
          style="stroke-width:0.26458332" /></text>
+    <rect
+       style="opacity:1;fill:#323232;fill-opacity:1;stroke:none;stroke-width:1.78412306;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+       id="rect860-6"
+       width="175.99866"
+       height="6.3124833"
+       x="535.69324"
+       y="-152.51901" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.6505723px;line-height:1.25;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';letter-spacing:0px;word-spacing:0px;fill:#fffffa;fill-opacity:1;stroke:none;stroke-width:0.21189646"
+       x="533.29224"
+       y="-148.98685"
+       id="text985"
+       transform="scale(1.0114618,0.9886681)"><tspan
+         sodipodi:role="line"
+         id="tspan983"
+         x="533.29224"
+         y="-148.98685"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';fill:#fffffa;fill-opacity:1;stroke-width:0.21189646">OP 1</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.6505723px;line-height:1.25;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';letter-spacing:0px;word-spacing:0px;fill:#fffffa;fill-opacity:1;stroke:none;stroke-width:0.21189646"
+       x="552.13879"
+       y="-148.98685"
+       id="text985-1"
+       transform="scale(1.0114618,0.9886681)"><tspan
+         sodipodi:role="line"
+         id="tspan983-8"
+         x="552.13879"
+         y="-148.98685"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';fill:#fffffa;fill-opacity:1;stroke-width:0.21189646">OP 2</tspan></text>
     <g
-       id="g1834"
-       transform="matrix(1.2597293,0,0,1.2313408,607.13948,-126.14088)">
-      <rect
-         y="-21.422281"
-         x="-56.715576"
-         height="5.1265121"
-         width="139.71149"
-         id="rect860-6"
-         style="opacity:1;fill:#323232;fill-opacity:1;stroke:none;stroke-width:1.43250799;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
-      <text
-         id="text985"
-         y="-17.182619"
-         x="-53.769302"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.53695726px;line-height:1.25;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';letter-spacing:0px;word-spacing:0px;fill:#fffffa;fill-opacity:1;stroke:none;stroke-width:0.1701359"
-         xml:space="preserve"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';fill:#fffffa;fill-opacity:1;stroke-width:0.1701359"
-           y="-17.182619"
-           x="-53.769302"
-           id="tspan983"
-           sodipodi:role="line">OP 1</tspan></text>
-      <text
-         id="text985-1"
-         y="-17.182619"
-         x="-38.637009"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.53695726px;line-height:1.25;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';letter-spacing:0px;word-spacing:0px;fill:#fffffa;fill-opacity:1;stroke:none;stroke-width:0.1701359"
-         xml:space="preserve"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';fill:#fffffa;fill-opacity:1;stroke-width:0.1701359"
-           y="-17.182619"
-           x="-38.637009"
-           id="tspan983-8"
-           sodipodi:role="line">OP 2</tspan></text>
+       id="g5239"
+       transform="translate(-56.582813)">
       <rect
          inkscape:transform-center-y="-0.13461445"
          inkscape:transform-center-x="7.2752212"
-         y="-31.882292"
-         x="-24.817379"
-         height="5.1569791"
-         width="13.141962"
+         y="-183.39569"
+         x="576.87213"
+         height="6.349999"
+         width="16.555315"
          id="rect1092-6"
          style="opacity:1;fill:#525252;fill-opacity:1;stroke:#383835;stroke-width:0;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
          inkscape:export-filename="/home/iurie/projects/whalesynth/src/gui/resources/operator_button_on.png"
          inkscape:export-xdpi="96.657753"
          inkscape:export-ydpi="96.657753" />
       <text
+         transform="scale(1.0114618,0.98866809)"
          id="text985-7"
-         y="-27.627396"
-         x="-23.489491"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.53695726px;line-height:1.25;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.1701359"
+         y="-180.46143"
+         x="572.81134"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.6505723px;line-height:1.25;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.21189646"
          xml:space="preserve"
          inkscape:export-filename="/home/iurie/projects/whalesynth/src/gui/resources/operator_button_on.png"
          inkscape:export-xdpi="96.657753"
          inkscape:export-ydpi="96.657753"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';fill:#ffffff;fill-opacity:1;stroke-width:0.1701359"
-           y="-27.627396"
-           x="-23.489491"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';fill:#ffffff;fill-opacity:1;stroke-width:0.21189646"
+           y="-180.46143"
+           x="572.81134"
            id="tspan983-9"
-           sodipodi:role="line">OP 6</tspan></text>
-      <text
-         id="text985-2"
-         y="-17.182619"
-         x="-7.7304492"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.53695726px;line-height:1.25;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';letter-spacing:0px;word-spacing:0px;fill:#e0dedf;fill-opacity:1;stroke:none;stroke-width:0.1701359"
-         xml:space="preserve"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';fill:#e0dedf;fill-opacity:1;stroke-width:0.1701359"
-           y="-17.182619"
-           x="-7.7304492"
-           id="tspan983-0"
-           sodipodi:role="line">OP 4</tspan></text>
-      <text
-         id="text985-23"
-         y="-17.182619"
-         x="7.7443824"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.53695726px;line-height:1.25;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';letter-spacing:0px;word-spacing:0px;fill:#e0dedf;fill-opacity:1;stroke:none;stroke-width:0.1701359"
-         xml:space="preserve"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';fill:#e0dedf;fill-opacity:1;stroke-width:0.1701359"
-           y="-17.182619"
-           x="7.7443824"
-           id="tspan983-7"
            sodipodi:role="line">OP 5</tspan></text>
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.6505723px;line-height:1.25;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';letter-spacing:0px;word-spacing:0px;fill:#e0dedf;fill-opacity:1;stroke:none;stroke-width:0.21189646"
+       x="590.63153"
+       y="-148.98685"
+       id="text985-2"
+       transform="scale(1.0114618,0.9886681)"><tspan
+         sodipodi:role="line"
+         id="tspan983-0"
+         x="590.63153"
+         y="-148.98685"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';fill:#e0dedf;fill-opacity:1;stroke-width:0.21189646">OP 4</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.6505723px;line-height:1.25;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';letter-spacing:0px;word-spacing:0px;fill:#e0dedf;fill-opacity:1;stroke:none;stroke-width:0.21189646"
+       x="609.90472"
+       y="-148.98685"
+       id="text985-23"
+       transform="scale(1.0114618,0.9886681)"><tspan
+         sodipodi:role="line"
+         id="tspan983-7"
+         x="609.90472"
+         y="-148.98685"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';fill:#e0dedf;fill-opacity:1;stroke-width:0.21189646">OP 5</tspan></text>
+    <g
+       id="g5244"
+       transform="translate(-56.084854)">
       <rect
          inkscape:transform-center-y="-0.13461445"
          inkscape:transform-center-x="7.2752212"
-         y="-30.650875"
-         x="-2.4967752"
-         height="5.1569791"
-         width="13.141962"
+         y="-183.39569"
+         x="604.63385"
+         height="6.349999"
+         width="16.555315"
          id="rect1092-6-3"
          style="opacity:1;fill:#323232;fill-opacity:1;stroke:#383835;stroke-width:0;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
          inkscape:export-filename="/home/iurie/projects/whalesynth/src/gui/resources/operator_button.png"
          inkscape:export-xdpi="96.657753"
          inkscape:export-ydpi="96.657753" />
       <text
+         transform="scale(1.0114618,0.98866809)"
          id="text985-5"
-         y="-26.395979"
-         x="-1.1688862"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.53695726px;line-height:1.25;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';letter-spacing:0px;word-spacing:0px;fill:#e0dedf;fill-opacity:1;stroke:none;stroke-width:0.1701359"
+         y="-180.46143"
+         x="600.25848"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.6505723px;line-height:1.25;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';letter-spacing:0px;word-spacing:0px;fill:#e0dedf;fill-opacity:1;stroke:none;stroke-width:0.21189646"
          xml:space="preserve"
          inkscape:export-filename="/home/iurie/projects/whalesynth/src/gui/resources/operator_button.png"
          inkscape:export-xdpi="96.657753"
          inkscape:export-ydpi="96.657753"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';fill:#e0dedf;fill-opacity:1;stroke-width:0.1701359"
-           y="-26.395979"
-           x="-1.1688862"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';fill:#e0dedf;fill-opacity:1;stroke-width:0.21189646"
+           y="-180.46143"
+           x="600.25848"
            id="tspan983-92"
-           sodipodi:role="line">OP 6</tspan></text>
+           sodipodi:role="line">OP 5</tspan></text>
+    </g>
+    <g
+       id="g5249"
+       transform="translate(-56.582813)">
       <rect
          inkscape:transform-center-y="-0.13461445"
          inkscape:transform-center-x="7.2752212"
-         y="-31.50868"
-         x="20.048815"
-         height="5.1569791"
-         width="13.141962"
+         y="-183.39569"
+         x="633.39142"
+         height="6.349999"
+         width="16.555315"
          id="rect1092-6-6"
          style="opacity:1;fill:#464646;fill-opacity:1;stroke:#383835;stroke-width:0;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
          inkscape:export-filename="/home/iurie/projects/whalesynth/src/gui/resources/operator_button_hover.png"
          inkscape:export-xdpi="96.657753"
          inkscape:export-ydpi="96.657753" />
       <text
+         transform="scale(1.0114618,0.98866809)"
          id="text985-7-7"
-         y="-27.25379"
-         x="21.376696"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.53695726px;line-height:1.25;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';letter-spacing:0px;word-spacing:0px;fill:#f0f0f0;fill-opacity:1;stroke:none;stroke-width:0.1701359"
+         y="-180.46143"
+         x="628.69019"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.6505723px;line-height:1.25;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';letter-spacing:0px;word-spacing:0px;fill:#f0f0f0;fill-opacity:1;stroke:none;stroke-width:0.21189646"
          xml:space="preserve"
          inkscape:export-filename="/home/iurie/projects/whalesynth/src/gui/resources/operator_button_hover.png"
          inkscape:export-xdpi="96.657753"
          inkscape:export-ydpi="96.657753"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';fill:#f0f0f0;fill-opacity:1;stroke-width:0.1701359"
-           y="-27.25379"
-           x="21.376696"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';fill:#f0f0f0;fill-opacity:1;stroke-width:0.21189646"
+           y="-180.46143"
+           x="628.69019"
            id="tspan983-9-5"
-           sodipodi:role="line">OP 6</tspan></text>
+           sodipodi:role="line">OP 5</tspan></text>
     </g>
     <rect
        style="opacity:1;fill:#525252;fill-opacity:1;stroke:none;stroke-width:0.34662572;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
@@ -739,95 +754,95 @@
        id="rect1092-63"
        width="69.551613"
        height="66.786278"
-       x="642.05737"
-       y="-102.37739" />
+       x="641.19623"
+       y="-100.66692" />
     <rect
        style="opacity:1;fill:#323232;fill-opacity:1;stroke:none;stroke-width:0.76445383;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
        id="rect860-6-6"
        width="64.496086"
        height="3.1624894"
-       x="645.65906"
-       y="-101.98603" />
+       x="644.79791"
+       y="-100.27557" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.79879975px;line-height:1.25;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';letter-spacing:0px;word-spacing:0px;fill:#fffffa;fill-opacity:1;stroke:none;stroke-width:0.10495497"
-       x="646.51862"
-       y="-99.370628"
+       x="645.65747"
+       y="-97.660172"
        id="text985-4"><tspan
          sodipodi:role="line"
          id="tspan983-3"
-         x="646.51862"
-         y="-99.370628"
+         x="645.65747"
+         y="-97.660172"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';fill:#fffffa;fill-opacity:1;stroke-width:0.10495497">OP 1</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.79879975px;line-height:1.25;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';letter-spacing:0px;word-spacing:0px;fill:#fffffa;fill-opacity:1;stroke:none;stroke-width:0.10495497"
-       x="655.8537"
-       y="-99.370628"
+       x="654.99255"
+       y="-97.660172"
        id="text985-1-4"><tspan
          sodipodi:role="line"
          id="tspan983-8-7"
-         x="655.8537"
-         y="-99.370628"
+         x="654.99255"
+         y="-97.660172"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';fill:#fffffa;fill-opacity:1;stroke-width:0.10495497">OP 2</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.79879975px;line-height:1.25;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.10495497"
-       x="665.75024"
-       y="-99.219284"
+       x="664.8891"
+       y="-97.508827"
        id="text985-7-0"><tspan
          sodipodi:role="line"
          id="tspan983-9-7"
-         x="665.75024"
-         y="-99.219284"
+         x="664.8891"
+         y="-97.508827"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';fill:#ffffff;fill-opacity:1;stroke-width:0.10495497">OP 3</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.79879975px;line-height:1.25;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';letter-spacing:0px;word-spacing:0px;fill:#e0dedf;fill-opacity:1;stroke:none;stroke-width:0.10495497"
-       x="674.91962"
-       y="-99.370628"
+       x="674.05847"
+       y="-97.660172"
        id="text985-2-4"><tspan
          sodipodi:role="line"
          id="tspan983-0-5"
-         x="674.91962"
-         y="-99.370628"
+         x="674.05847"
+         y="-97.660172"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';fill:#e0dedf;fill-opacity:1;stroke-width:0.10495497">OP 4</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.79879975px;line-height:1.25;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';letter-spacing:0px;word-spacing:0px;fill:#e0dedf;fill-opacity:1;stroke:none;stroke-width:0.10495497"
-       x="684.46576"
-       y="-99.370628"
+       x="683.60461"
+       y="-97.660172"
        id="text985-23-3"><tspan
          sodipodi:role="line"
          id="tspan983-7-0"
-         x="684.46576"
-         y="-99.370628"
+         x="683.60461"
+         y="-97.660172"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';fill:#e0dedf;fill-opacity:1;stroke-width:0.10495497">OP 5</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.79879975px;line-height:1.25;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';letter-spacing:0px;word-spacing:0px;fill:#e0dedf;fill-opacity:1;stroke:none;stroke-width:0.10495497"
-       x="694.01202"
-       y="-99.370628"
+       x="693.15088"
+       y="-97.660172"
        id="text985-5-7"><tspan
          sodipodi:role="line"
          id="tspan983-92-2"
-         x="694.01202"
-         y="-99.370628"
+         x="693.15088"
+         y="-97.660172"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';fill:#e0dedf;fill-opacity:1;stroke-width:0.10495497">OP 6</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.79879975px;line-height:1.25;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';letter-spacing:0px;word-spacing:0px;fill:#e0dedf;fill-opacity:1;stroke:none;stroke-width:0.10495497"
-       x="703.6142"
-       y="-99.370628"
+       x="702.75305"
+       y="-97.660172"
        id="text985-5-2-9"><tspan
          sodipodi:role="line"
          id="tspan983-92-8-9"
-         x="703.6142"
-         y="-99.370628"
+         x="702.75305"
+         y="-97.660172"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';fill:#e0dedf;fill-opacity:1;stroke-width:0.10495497">OUT</tspan></text>
     <g
        id="g2560"
-       transform="matrix(0,1.0406574,-1.2597293,0,621.90749,-151.80173)">
+       transform="matrix(0,1.0406574,-1.2597293,0,621.04637,-150.0913)">
       <rect
          y="-18.868069"
          x="50.890827"
@@ -929,53 +944,53 @@
        id="rect2790"
        width="9.0013065"
        height="62.716938"
-       x="645.67731"
-       y="-98.841835" />
+       x="644.81616"
+       y="-97.131378" />
     <rect
        style="opacity:1;fill:#5d5d60;fill-opacity:1;stroke:none;stroke-width:0.44444504;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
        id="rect2790-7"
        width="9.0013065"
        height="63.775272"
-       x="654.67871"
-       y="-98.841835" />
+       x="653.81757"
+       y="-97.131378" />
     <rect
        style="opacity:1;fill:#717174;fill-opacity:1;stroke:none;stroke-width:0.44444504;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
        id="rect2790-4"
        width="9.0013065"
        height="63.775272"
-       x="663.67999"
-       y="-98.841835" />
+       x="662.81885"
+       y="-97.131378" />
     <rect
        style="opacity:1;fill:#5d5d60;fill-opacity:1;stroke:none;stroke-width:0.44444507;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
        id="rect2790-7-7"
        width="9.0013065"
        height="63.775272"
-       x="672.68127"
-       y="-98.841835" />
+       x="671.82013"
+       y="-97.131378" />
     <rect
        style="opacity:1;fill:#717174;fill-opacity:1;stroke:none;stroke-width:0.44444504;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
        id="rect2790-6"
        width="9.0013065"
        height="63.775272"
-       x="681.68256"
-       y="-98.841835" />
+       x="680.82141"
+       y="-97.131378" />
     <rect
        style="opacity:1;fill:#5d5d60;fill-opacity:1;stroke:none;stroke-width:0.44536605;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
        id="rect2790-7-73"
        width="9.0013065"
        height="64.039856"
-       x="690.6839"
-       y="-98.841835" />
+       x="689.82275"
+       y="-97.131378" />
     <rect
        style="opacity:1;fill:#717174;fill-opacity:1;stroke:none;stroke-width:0.44352219;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
        id="rect2790-4-2"
        width="9.0013065"
        height="63.510689"
-       x="699.68536"
-       y="-98.841835" />
+       x="698.82422"
+       y="-97.131378" />
     <g
        id="g2959"
-       transform="matrix(0,-1.2597293,1.089399,0,831.28809,836.98274)"
+       transform="matrix(0,-1.2597293,1.089399,0,830.42697,838.69317)"
        style="opacity:0.79000005">
       <rect
          y="-170.22104"
@@ -1029,297 +1044,768 @@
     </g>
     <circle
        r="3.03547"
-       cy="-85.574715"
-       cx="658.80383"
+       cy="-83.864258"
+       cx="657.94269"
        id="path1625-3-6-0-7-4-0-8"
        style="opacity:1;fill:#525353;fill-opacity:1;stroke:#8e908e;stroke-width:0.19791846;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
     <circle
        r="3.03547"
-       cy="-94.499374"
-       cx="668.00525"
+       cy="-92.788918"
+       cx="667.1441"
        id="path1625-3-6-0-7-4-0-8-0"
        style="opacity:1;fill:#525353;fill-opacity:1;stroke:#8e908e;stroke-width:0.19791846;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
     <circle
        r="3.03547"
-       cy="-94.776138"
-       cx="658.87299"
+       cy="-93.065681"
+       cx="658.01184"
        id="path1625-3-6-0-7-4-0-8-8"
        style="opacity:1;fill:#525353;fill-opacity:1;stroke:#8e908e;stroke-width:0.19791846;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
     <circle
        r="3.03547"
-       cy="-85.505531"
-       cx="667.45178"
+       cy="-83.795074"
+       cx="666.59064"
        id="path1625-3-6-0-7-4-0-8-8-6"
        style="opacity:1;fill:#525353;fill-opacity:1;stroke:#8e908e;stroke-width:0.19791846;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
     <circle
        r="3.03547"
-       cy="-94.706924"
-       cx="677.41412"
+       cy="-92.996468"
+       cx="676.55298"
        id="path1625-3-6-0-7-4-0-8-0-9"
        style="opacity:1;fill:#525353;fill-opacity:1;stroke:#8e908e;stroke-width:0.19791846;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
     <circle
        r="3.03547"
-       cy="-85.713081"
-       cx="676.86066"
+       cy="-84.002625"
+       cx="675.99951"
        id="path1625-3-6-0-7-4-0-8-8-6-3"
        style="opacity:1;fill:#525353;fill-opacity:1;stroke:#8e908e;stroke-width:0.19791846;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
     <circle
        r="3.03547"
-       cy="-85.228798"
-       cx="686.51178"
+       cy="-83.518341"
+       cx="685.65063"
        id="path1625-3-6-0-7-4-0-8-3"
        style="opacity:1;fill:#525353;fill-opacity:1;stroke:#8e908e;stroke-width:0.19791846;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
     <circle
        r="3.03547"
-       cy="-94.153458"
-       cx="695.7132"
+       cy="-92.443001"
+       cx="694.85205"
        id="path1625-3-6-0-7-4-0-8-0-7"
        style="opacity:1;fill:#525353;fill-opacity:1;stroke:#8e908e;stroke-width:0.19791846;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
     <circle
        r="3.03547"
-       cy="-94.430214"
-       cx="686.58087"
+       cy="-92.719757"
+       cx="685.71973"
        id="path1625-3-6-0-7-4-0-8-8-4"
        style="opacity:1;fill:#525353;fill-opacity:1;stroke:#8e908e;stroke-width:0.19791846;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
     <circle
        r="3.03547"
-       cy="-85.159592"
-       cx="695.15961"
+       cy="-83.449135"
+       cx="694.29846"
        id="path1625-3-6-0-7-4-0-8-8-6-37"
        style="opacity:1;fill:#525353;fill-opacity:1;stroke:#8e908e;stroke-width:0.19791846;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
     <circle
        r="3.03547"
-       cy="-94.361015"
-       cx="705.12213"
+       cy="-92.650558"
+       cx="704.26099"
        id="path1625-3-6-0-7-4-0-8-0-9-1"
        style="opacity:1;fill:#525353;fill-opacity:1;stroke:#8e908e;stroke-width:0.19791846;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
     <circle
        r="3.03547"
-       cy="-85.367165"
-       cx="704.56854"
+       cy="-83.656708"
+       cx="703.7074"
        id="path1625-3-6-0-7-4-0-8-8-6-3-3"
        style="opacity:1;fill:#525353;fill-opacity:1;stroke:#8e908e;stroke-width:0.19791846;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
     <circle
        r="3.03547"
-       cy="-67.275681"
-       cx="658.12933"
+       cy="-65.565224"
+       cx="657.26819"
        id="path1625-3-6-0-7-4-0-8-9"
        style="opacity:1;fill:#525353;fill-opacity:1;stroke:#8e908e;stroke-width:0.19791846;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
     <circle
        r="3.03547"
-       cy="-76.200325"
-       cx="667.33075"
+       cy="-74.489868"
+       cx="666.4696"
        id="path1625-3-6-0-7-4-0-8-0-6"
        style="opacity:1;fill:#525353;fill-opacity:1;stroke:#8e908e;stroke-width:0.19791846;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
     <circle
        r="3.03547"
-       cy="-76.477104"
-       cx="658.19843"
+       cy="-74.766647"
+       cx="657.33728"
        id="path1625-3-6-0-7-4-0-8-8-42"
        style="opacity:1;fill:#525353;fill-opacity:1;stroke:#8e908e;stroke-width:0.19791846;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
     <circle
        r="3.03547"
-       cy="-67.206474"
-       cx="666.77716"
+       cy="-65.496017"
+       cx="665.91602"
        id="path1625-3-6-0-7-4-0-8-8-6-0"
        style="opacity:1;fill:#525353;fill-opacity:1;stroke:#8e908e;stroke-width:0.19791846;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
     <circle
        r="3.03547"
-       cy="-76.407898"
-       cx="676.73956"
+       cy="-74.697441"
+       cx="675.87842"
        id="path1625-3-6-0-7-4-0-8-0-9-2"
        style="opacity:1;fill:#525353;fill-opacity:1;stroke:#8e908e;stroke-width:0.19791846;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
     <circle
        r="3.03547"
-       cy="-67.41404"
-       cx="676.1861"
+       cy="-65.703583"
+       cx="675.32495"
        id="path1625-3-6-0-7-4-0-8-8-6-3-9"
        style="opacity:1;fill:#525353;fill-opacity:1;stroke:#8e908e;stroke-width:0.19791846;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
     <circle
        r="3.03547"
-       cy="-66.929771"
-       cx="685.83722"
+       cy="-65.219315"
+       cx="684.97607"
        id="path1625-3-6-0-7-4-0-8-3-5"
        style="opacity:1;fill:#525353;fill-opacity:1;stroke:#8e908e;stroke-width:0.19791846;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
     <circle
        r="3.03547"
-       cy="-75.854424"
-       cx="695.03864"
+       cy="-74.143967"
+       cx="694.17749"
        id="path1625-3-6-0-7-4-0-8-0-7-7"
        style="opacity:1;fill:#525353;fill-opacity:1;stroke:#8e908e;stroke-width:0.19791846;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
     <circle
        r="3.03547"
-       cy="-76.131172"
-       cx="685.90631"
+       cy="-74.420715"
+       cx="685.04517"
        id="path1625-3-6-0-7-4-0-8-8-4-4"
        style="opacity:1;fill:#525353;fill-opacity:1;stroke:#8e908e;stroke-width:0.19791846;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
     <circle
        r="3.03547"
-       cy="-66.860558"
-       cx="694.48517"
+       cy="-65.150101"
+       cx="693.62402"
        id="path1625-3-6-0-7-4-0-8-8-6-37-6"
        style="opacity:1;fill:#525353;fill-opacity:1;stroke:#8e908e;stroke-width:0.19791846;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
     <circle
        r="3.03547"
-       cy="-76.061974"
-       cx="704.44757"
+       cy="-74.351517"
+       cx="703.58643"
        id="path1625-3-6-0-7-4-0-8-0-9-1-4"
        style="opacity:1;fill:#525353;fill-opacity:1;stroke:#8e908e;stroke-width:0.19791846;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
     <circle
        r="3.03547"
-       cy="-67.068115"
-       cx="703.8941"
+       cy="-65.357658"
+       cx="703.03296"
        id="path1625-3-6-0-7-4-0-8-8-6-3-3-9"
        style="opacity:1;fill:#525353;fill-opacity:1;stroke:#8e908e;stroke-width:0.19791846;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
     <circle
        r="3.03547"
-       cy="-49.564697"
-       cx="658.26764"
+       cy="-47.85424"
+       cx="657.40649"
        id="path1625-3-6-0-7-4-0-8-9-1"
        style="opacity:1;fill:#525353;fill-opacity:1;stroke:#8e908e;stroke-width:0.19791846;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
     <circle
        r="3.03547"
-       cy="-58.489357"
-       cx="667.46906"
+       cy="-56.7789"
+       cx="666.60791"
        id="path1625-3-6-0-7-4-0-8-0-6-2"
        style="opacity:1;fill:#525353;fill-opacity:1;stroke:#8e908e;stroke-width:0.19791846;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
     <circle
        r="3.03547"
-       cy="-58.766121"
-       cx="658.33679"
+       cy="-57.055664"
+       cx="657.47565"
        id="path1625-3-6-0-7-4-0-8-8-42-3"
        style="opacity:1;fill:#525353;fill-opacity:1;stroke:#8e908e;stroke-width:0.19791846;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
     <circle
        r="3.03547"
-       cy="-49.495506"
-       cx="666.91553"
+       cy="-47.785049"
+       cx="666.05438"
        id="path1625-3-6-0-7-4-0-8-8-6-0-1"
        style="opacity:1;fill:#525353;fill-opacity:1;stroke:#8e908e;stroke-width:0.19791846;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
     <circle
        r="3.03547"
-       cy="-58.696899"
-       cx="676.87787"
+       cy="-56.986443"
+       cx="676.01672"
        id="path1625-3-6-0-7-4-0-8-0-9-2-8"
        style="opacity:1;fill:#525353;fill-opacity:1;stroke:#8e908e;stroke-width:0.19791846;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
     <circle
        r="3.03547"
-       cy="-49.703049"
-       cx="676.3244"
+       cy="-47.992592"
+       cx="675.46326"
        id="path1625-3-6-0-7-4-0-8-8-6-3-9-1"
        style="opacity:1;fill:#525353;fill-opacity:1;stroke:#8e908e;stroke-width:0.19791846;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
     <circle
        r="3.03547"
-       cy="-49.218765"
-       cx="685.97552"
+       cy="-47.508308"
+       cx="685.11438"
        id="path1625-3-6-0-7-4-0-8-3-5-3"
        style="opacity:1;fill:#525353;fill-opacity:1;stroke:#8e908e;stroke-width:0.19791846;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
     <circle
        r="3.03547"
-       cy="-58.14344"
-       cx="695.17694"
+       cy="-56.432983"
+       cx="694.3158"
        id="path1625-3-6-0-7-4-0-8-0-7-7-8"
        style="opacity:1;fill:#525353;fill-opacity:1;stroke:#8e908e;stroke-width:0.19791846;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
     <circle
        r="3.03547"
-       cy="-58.420189"
-       cx="686.04462"
+       cy="-56.709732"
+       cx="685.18347"
        id="path1625-3-6-0-7-4-0-8-8-4-4-9"
        style="opacity:1;fill:#525353;fill-opacity:1;stroke:#8e908e;stroke-width:0.19791846;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
     <circle
        r="3.03547"
-       cy="-49.14959"
-       cx="694.6236"
+       cy="-47.439133"
+       cx="693.76245"
        id="path1625-3-6-0-7-4-0-8-8-6-37-6-2"
        style="opacity:1;fill:#525353;fill-opacity:1;stroke:#8e908e;stroke-width:0.19791846;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
     <circle
        r="3.03547"
-       cy="-58.35099"
-       cx="704.58588"
+       cy="-56.640533"
+       cx="703.72473"
        id="path1625-3-6-0-7-4-0-8-0-9-1-4-4"
        style="opacity:1;fill:#525353;fill-opacity:1;stroke:#8e908e;stroke-width:0.19791846;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
     <circle
        r="3.03547"
-       cy="-49.35714"
-       cx="704.03241"
+       cy="-47.646683"
+       cx="703.17126"
        id="path1625-3-6-0-7-4-0-8-8-6-3-3-9-5"
        style="opacity:1;fill:#525353;fill-opacity:1;stroke:#8e908e;stroke-width:0.19791846;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
     <circle
        r="3.03547"
-       cy="-40.36327"
-       cx="667.46906"
+       cy="-38.652813"
+       cx="666.60791"
        id="path1625-3-6-0-7-4-0-8-0-6-2-0"
        style="opacity:1;fill:#525353;fill-opacity:1;stroke:#8e908e;stroke-width:0.19791846;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
     <circle
        r="3.03547"
-       cy="-40.640026"
-       cx="658.33679"
+       cy="-38.929569"
+       cx="657.47565"
        id="path1625-3-6-0-7-4-0-8-8-42-3-0"
        style="opacity:1;fill:#525353;fill-opacity:1;stroke:#8e908e;stroke-width:0.19791846;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
     <circle
        r="3.03547"
-       cy="-40.570805"
-       cx="676.87799"
+       cy="-38.860348"
+       cx="676.01685"
        id="path1625-3-6-0-7-4-0-8-0-9-2-8-3"
        style="opacity:1;fill:#525353;fill-opacity:1;stroke:#8e908e;stroke-width:0.19791846;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
     <circle
        r="3.03547"
-       cy="-40.017349"
-       cx="695.17706"
+       cy="-38.306892"
+       cx="694.31592"
        id="path1625-3-6-0-7-4-0-8-0-7-7-8-0"
        style="opacity:1;fill:#525353;fill-opacity:1;stroke:#8e908e;stroke-width:0.19791846;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
     <circle
        r="3.03547"
-       cy="-40.294106"
-       cx="686.04486"
+       cy="-38.583649"
+       cx="685.18372"
        id="path1625-3-6-0-7-4-0-8-8-4-4-9-0"
        style="opacity:1;fill:#525353;fill-opacity:1;stroke:#8e908e;stroke-width:0.19791846;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
     <circle
        r="3.03547"
-       cy="-40.224907"
-       cx="704.586"
+       cy="-38.51445"
+       cx="703.72485"
        id="path1625-3-6-0-7-4-0-8-0-9-1-4-4-2"
        style="opacity:1;fill:#525353;fill-opacity:1;stroke:#8e908e;stroke-width:0.19791846;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
     <circle
        r="3.03547"
-       cy="-94.793411"
-       cx="650.49323"
+       cy="-93.082954"
+       cx="649.63208"
        id="path1625-3-6-0-7-4-0-8-0-9-1-0"
        style="opacity:1;fill:#525353;fill-opacity:1;stroke:#8e908e;stroke-width:0.19791846;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
     <circle
        r="3.03547"
-       cy="-85.799568"
-       cx="649.9397"
+       cy="-84.089111"
+       cx="649.07855"
        id="path1625-3-6-0-7-4-0-8-8-6-3-3-6"
        style="opacity:1;fill:#525353;fill-opacity:1;stroke:#8e908e;stroke-width:0.19791846;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
     <circle
        r="3.03547"
-       cy="-76.494362"
-       cx="649.81866"
+       cy="-74.783905"
+       cx="648.95752"
        id="path1625-3-6-0-7-4-0-8-0-9-1-4-43"
        style="opacity:1;fill:#525353;fill-opacity:1;stroke:#8e908e;stroke-width:0.19791846;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
     <circle
        r="3.03547"
-       cy="-67.500519"
-       cx="649.2652"
+       cy="-65.790062"
+       cx="648.40405"
        id="path1625-3-6-0-7-4-0-8-8-6-3-3-9-7"
        style="opacity:1;fill:#525353;fill-opacity:1;stroke:#8e908e;stroke-width:0.19791846;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
     <circle
        r="3.03547"
-       cy="-58.783386"
-       cx="649.95697"
+       cy="-57.072929"
+       cx="649.09583"
        id="path1625-3-6-0-7-4-0-8-0-9-1-4-4-5"
        style="opacity:1;fill:#525353;fill-opacity:1;stroke:#8e908e;stroke-width:0.19791846;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
     <circle
        r="3.03547"
-       cy="-49.789536"
-       cx="649.4035"
+       cy="-48.079079"
+       cx="648.54236"
        id="path1625-3-6-0-7-4-0-8-8-6-3-3-9-5-81"
        style="opacity:1;fill:#525353;fill-opacity:1;stroke:#8e908e;stroke-width:0.19791846;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
     <circle
        r="3.03547"
-       cy="-40.657299"
-       cx="649.95703"
+       cy="-38.946842"
+       cx="649.09589"
        id="path1625-3-6-0-7-4-0-8-0-9-1-4-4-2-0"
        style="opacity:1;fill:#525353;fill-opacity:1;stroke:#8e908e;stroke-width:0.19791846;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
+    <g
+       transform="translate(-56.582813,-47.919124)"
+       id="g5239-3">
+      <rect
+         inkscape:transform-center-y="-0.13461445"
+         inkscape:transform-center-x="7.2752212"
+         y="-183.39569"
+         x="576.87213"
+         height="6.349999"
+         width="16.555315"
+         id="rect1092-6-67"
+         style="opacity:1;fill:#525252;fill-opacity:1;stroke:#383835;stroke-width:0;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+         inkscape:export-filename="/home/iurie/projects/whalesynth/src/gui/resources/operator_button_on.png"
+         inkscape:export-xdpi="96.657753"
+         inkscape:export-ydpi="96.657753" />
+      <text
+         transform="scale(1.0114618,0.98866809)"
+         id="text985-7-5"
+         y="-180.46143"
+         x="572.81134"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.6505723px;line-height:1.25;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.21189646"
+         xml:space="preserve"
+         inkscape:export-filename="/home/iurie/projects/whalesynth/src/gui/resources/operator_button_on.png"
+         inkscape:export-xdpi="96.657753"
+         inkscape:export-ydpi="96.657753"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';fill:#ffffff;fill-opacity:1;stroke-width:0.21189646"
+           y="-180.46143"
+           x="572.81134"
+           id="tspan983-9-3"
+           sodipodi:role="line">OP 1</tspan></text>
+    </g>
+    <g
+       id="g5244-5"
+       transform="translate(-56.084855,-47.919124)">
+      <rect
+         inkscape:transform-center-y="-0.13461445"
+         inkscape:transform-center-x="7.2752212"
+         y="-183.39569"
+         x="604.63385"
+         height="6.349999"
+         width="16.555315"
+         id="rect1092-6-3-6"
+         style="opacity:1;fill:#323232;fill-opacity:1;stroke:#383835;stroke-width:0;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+         inkscape:export-filename="/home/iurie/projects/whalesynth/src/gui/resources/operator_button.png"
+         inkscape:export-xdpi="96.657753"
+         inkscape:export-ydpi="96.657753" />
+      <text
+         transform="scale(1.0114618,0.98866809)"
+         id="text985-5-2"
+         y="-180.46143"
+         x="600.25848"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.6505723px;line-height:1.25;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';letter-spacing:0px;word-spacing:0px;fill:#e0dedf;fill-opacity:1;stroke:none;stroke-width:0.21189646"
+         xml:space="preserve"
+         inkscape:export-filename="/home/iurie/projects/whalesynth/src/gui/resources/operator_button.png"
+         inkscape:export-xdpi="96.657753"
+         inkscape:export-ydpi="96.657753"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';fill:#e0dedf;fill-opacity:1;stroke-width:0.21189646"
+           y="-180.46143"
+           x="600.25848"
+           id="tspan983-92-9"
+           sodipodi:role="line">OP 1</tspan></text>
+    </g>
+    <g
+       transform="translate(-56.582813,-47.919124)"
+       id="g5249-1">
+      <rect
+         inkscape:transform-center-y="-0.13461445"
+         inkscape:transform-center-x="7.2752212"
+         y="-183.39569"
+         x="633.39142"
+         height="6.349999"
+         width="16.555315"
+         id="rect1092-6-6-2"
+         style="opacity:1;fill:#464646;fill-opacity:1;stroke:#383835;stroke-width:0;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+         inkscape:export-filename="/home/iurie/projects/whalesynth/src/gui/resources/operator_button_hover.png"
+         inkscape:export-xdpi="96.657753"
+         inkscape:export-ydpi="96.657753" />
+      <text
+         transform="scale(1.0114618,0.98866809)"
+         id="text985-7-7-7"
+         y="-180.46143"
+         x="628.69019"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.6505723px;line-height:1.25;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';letter-spacing:0px;word-spacing:0px;fill:#f0f0f0;fill-opacity:1;stroke:none;stroke-width:0.21189646"
+         xml:space="preserve"
+         inkscape:export-filename="/home/iurie/projects/whalesynth/src/gui/resources/operator_button_hover.png"
+         inkscape:export-xdpi="96.657753"
+         inkscape:export-ydpi="96.657753"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';fill:#f0f0f0;fill-opacity:1;stroke-width:0.21189646"
+           y="-180.46143"
+           x="628.69019"
+           id="tspan983-9-5-0"
+           sodipodi:role="line">OP 1</tspan></text>
+    </g>
+    <g
+       transform="translate(-56.582813,-35.305146)"
+       id="g5239-9">
+      <rect
+         inkscape:transform-center-y="-0.13461445"
+         inkscape:transform-center-x="7.2752212"
+         y="-183.39569"
+         x="576.87213"
+         height="6.349999"
+         width="16.555315"
+         id="rect1092-6-36"
+         style="opacity:1;fill:#525252;fill-opacity:1;stroke:#383835;stroke-width:0;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+         inkscape:export-filename="/home/iurie/projects/whalesynth/src/gui/resources/operator_button_on.png"
+         inkscape:export-xdpi="96.657753"
+         inkscape:export-ydpi="96.657753" />
+      <text
+         transform="scale(1.0114618,0.98866809)"
+         id="text985-7-06"
+         y="-180.46143"
+         x="572.81134"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.6505723px;line-height:1.25;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.21189646"
+         xml:space="preserve"
+         inkscape:export-filename="/home/iurie/projects/whalesynth/src/gui/resources/operator_button_on.png"
+         inkscape:export-xdpi="96.657753"
+         inkscape:export-ydpi="96.657753"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';fill:#ffffff;fill-opacity:1;stroke-width:0.21189646"
+           y="-180.46143"
+           x="572.81134"
+           id="tspan983-9-2"
+           sodipodi:role="line">OP 2</tspan></text>
+    </g>
+    <g
+       id="g5244-6"
+       transform="translate(-56.084854,-35.305146)">
+      <rect
+         inkscape:transform-center-y="-0.13461445"
+         inkscape:transform-center-x="7.2752212"
+         y="-183.39569"
+         x="604.63385"
+         height="6.349999"
+         width="16.555315"
+         id="rect1092-6-3-1"
+         style="opacity:1;fill:#323232;fill-opacity:1;stroke:#383835;stroke-width:0;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+         inkscape:export-filename="/home/iurie/projects/whalesynth/src/gui/resources/operator_button.png"
+         inkscape:export-xdpi="96.657753"
+         inkscape:export-ydpi="96.657753" />
+      <text
+         transform="scale(1.0114618,0.98866809)"
+         id="text985-5-8"
+         y="-180.46143"
+         x="600.25848"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.6505723px;line-height:1.25;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';letter-spacing:0px;word-spacing:0px;fill:#e0dedf;fill-opacity:1;stroke:none;stroke-width:0.21189646"
+         xml:space="preserve"
+         inkscape:export-filename="/home/iurie/projects/whalesynth/src/gui/resources/operator_button.png"
+         inkscape:export-xdpi="96.657753"
+         inkscape:export-ydpi="96.657753"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';fill:#e0dedf;fill-opacity:1;stroke-width:0.21189646"
+           y="-180.46143"
+           x="600.25848"
+           id="tspan983-92-7"
+           sodipodi:role="line">OP 2</tspan></text>
+    </g>
+    <g
+       transform="translate(-56.582813,-35.305146)"
+       id="g5249-9">
+      <rect
+         inkscape:transform-center-y="-0.13461445"
+         inkscape:transform-center-x="7.2752212"
+         y="-183.39569"
+         x="633.39142"
+         height="6.349999"
+         width="16.555315"
+         id="rect1092-6-6-20"
+         style="opacity:1;fill:#464646;fill-opacity:1;stroke:#383835;stroke-width:0;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+         inkscape:export-filename="/home/iurie/projects/whalesynth/src/gui/resources/operator_button_hover.png"
+         inkscape:export-xdpi="96.657753"
+         inkscape:export-ydpi="96.657753" />
+      <text
+         transform="scale(1.0114618,0.98866809)"
+         id="text985-7-7-2"
+         y="-180.46143"
+         x="628.69019"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.6505723px;line-height:1.25;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';letter-spacing:0px;word-spacing:0px;fill:#f0f0f0;fill-opacity:1;stroke:none;stroke-width:0.21189646"
+         xml:space="preserve"
+         inkscape:export-filename="/home/iurie/projects/whalesynth/src/gui/resources/operator_button_hover.png"
+         inkscape:export-xdpi="96.657753"
+         inkscape:export-ydpi="96.657753"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';fill:#f0f0f0;fill-opacity:1;stroke-width:0.21189646"
+           y="-180.46143"
+           x="628.69019"
+           id="tspan983-9-5-3"
+           sodipodi:role="line">OP 2</tspan></text>
+    </g>
+    <g
+       transform="translate(-56.582813,-23.852982)"
+       id="g5239-7">
+      <rect
+         inkscape:transform-center-y="-0.13461445"
+         inkscape:transform-center-x="7.2752212"
+         y="-183.39569"
+         x="576.87213"
+         height="6.349999"
+         width="16.555315"
+         id="rect1092-6-5"
+         style="opacity:1;fill:#525252;fill-opacity:1;stroke:#383835;stroke-width:0;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+         inkscape:export-filename="/home/iurie/projects/whalesynth/src/gui/resources/operator_button_on.png"
+         inkscape:export-xdpi="96.657753"
+         inkscape:export-ydpi="96.657753" />
+      <text
+         transform="scale(1.0114618,0.98866809)"
+         id="text985-7-9"
+         y="-180.46143"
+         x="572.81134"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.6505723px;line-height:1.25;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.21189646"
+         xml:space="preserve"
+         inkscape:export-filename="/home/iurie/projects/whalesynth/src/gui/resources/operator_button_on.png"
+         inkscape:export-xdpi="96.657753"
+         inkscape:export-ydpi="96.657753"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';fill:#ffffff;fill-opacity:1;stroke-width:0.21189646"
+           y="-180.46143"
+           x="572.81134"
+           id="tspan983-9-22"
+           sodipodi:role="line">OP 3</tspan></text>
+    </g>
+    <g
+       id="g5244-8"
+       transform="translate(-56.084855,-23.852982)">
+      <rect
+         inkscape:transform-center-y="-0.13461445"
+         inkscape:transform-center-x="7.2752212"
+         y="-183.39569"
+         x="604.63385"
+         height="6.349999"
+         width="16.555315"
+         id="rect1092-6-3-9"
+         style="opacity:1;fill:#323232;fill-opacity:1;stroke:#383835;stroke-width:0;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+         inkscape:export-filename="/home/iurie/projects/whalesynth/src/gui/resources/operator_button.png"
+         inkscape:export-xdpi="96.657753"
+         inkscape:export-ydpi="96.657753" />
+      <text
+         transform="scale(1.0114618,0.98866809)"
+         id="text985-5-73"
+         y="-180.46143"
+         x="600.25848"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.6505723px;line-height:1.25;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';letter-spacing:0px;word-spacing:0px;fill:#e0dedf;fill-opacity:1;stroke:none;stroke-width:0.21189646"
+         xml:space="preserve"
+         inkscape:export-filename="/home/iurie/projects/whalesynth/src/gui/resources/operator_button.png"
+         inkscape:export-xdpi="96.657753"
+         inkscape:export-ydpi="96.657753"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';fill:#e0dedf;fill-opacity:1;stroke-width:0.21189646"
+           y="-180.46143"
+           x="600.25848"
+           id="tspan983-92-6"
+           sodipodi:role="line">OP 3</tspan></text>
+    </g>
+    <g
+       transform="translate(-56.582813,-23.852982)"
+       id="g5249-12">
+      <rect
+         inkscape:transform-center-y="-0.13461445"
+         inkscape:transform-center-x="7.2752212"
+         y="-183.39569"
+         x="633.39142"
+         height="6.349999"
+         width="16.555315"
+         id="rect1092-6-6-9"
+         style="opacity:1;fill:#464646;fill-opacity:1;stroke:#383835;stroke-width:0;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+         inkscape:export-filename="/home/iurie/projects/whalesynth/src/gui/resources/operator_button_hover.png"
+         inkscape:export-xdpi="96.657753"
+         inkscape:export-ydpi="96.657753" />
+      <text
+         transform="scale(1.0114618,0.98866809)"
+         id="text985-7-7-3"
+         y="-180.46143"
+         x="628.69019"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.6505723px;line-height:1.25;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';letter-spacing:0px;word-spacing:0px;fill:#f0f0f0;fill-opacity:1;stroke:none;stroke-width:0.21189646"
+         xml:space="preserve"
+         inkscape:export-filename="/home/iurie/projects/whalesynth/src/gui/resources/operator_button_hover.png"
+         inkscape:export-xdpi="96.657753"
+         inkscape:export-ydpi="96.657753"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';fill:#f0f0f0;fill-opacity:1;stroke-width:0.21189646"
+           y="-180.46143"
+           x="628.69019"
+           id="tspan983-9-5-1"
+           sodipodi:role="line">OP 3</tspan></text>
+    </g>
+    <g
+       transform="translate(-56.582813,-13.230685)"
+       id="g5239-94">
+      <rect
+         inkscape:transform-center-y="-0.13461445"
+         inkscape:transform-center-x="7.2752212"
+         y="-183.39569"
+         x="576.87213"
+         height="6.349999"
+         width="16.555315"
+         id="rect1092-6-7"
+         style="opacity:1;fill:#525252;fill-opacity:1;stroke:#383835;stroke-width:0;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+         inkscape:export-filename="/home/iurie/projects/whalesynth/src/gui/resources/operator_button_on.png"
+         inkscape:export-xdpi="96.657753"
+         inkscape:export-ydpi="96.657753" />
+      <text
+         transform="scale(1.0114618,0.98866809)"
+         id="text985-7-8"
+         y="-180.46143"
+         x="572.81134"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.6505723px;line-height:1.25;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.21189646"
+         xml:space="preserve"
+         inkscape:export-filename="/home/iurie/projects/whalesynth/src/gui/resources/operator_button_on.png"
+         inkscape:export-xdpi="96.657753"
+         inkscape:export-ydpi="96.657753"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';fill:#ffffff;fill-opacity:1;stroke-width:0.21189646"
+           y="-180.46143"
+           x="572.81134"
+           id="tspan983-9-4"
+           sodipodi:role="line">OP 4</tspan></text>
+    </g>
+    <g
+       id="g5244-50"
+       transform="translate(-56.084855,-13.230685)">
+      <rect
+         inkscape:transform-center-y="-0.13461445"
+         inkscape:transform-center-x="7.2752212"
+         y="-183.39569"
+         x="604.63385"
+         height="6.349999"
+         width="16.555315"
+         id="rect1092-6-3-3"
+         style="opacity:1;fill:#323232;fill-opacity:1;stroke:#383835;stroke-width:0;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+         inkscape:export-filename="/home/iurie/projects/whalesynth/src/gui/resources/operator_button.png"
+         inkscape:export-xdpi="96.657753"
+         inkscape:export-ydpi="96.657753" />
+      <text
+         transform="scale(1.0114618,0.98866809)"
+         id="text985-5-6"
+         y="-180.46143"
+         x="600.25848"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.6505723px;line-height:1.25;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';letter-spacing:0px;word-spacing:0px;fill:#e0dedf;fill-opacity:1;stroke:none;stroke-width:0.21189646"
+         xml:space="preserve"
+         inkscape:export-filename="/home/iurie/projects/whalesynth/src/gui/resources/operator_button.png"
+         inkscape:export-xdpi="96.657753"
+         inkscape:export-ydpi="96.657753"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';fill:#e0dedf;fill-opacity:1;stroke-width:0.21189646"
+           y="-180.46143"
+           x="600.25848"
+           id="tspan983-92-1"
+           sodipodi:role="line">OP 4</tspan></text>
+    </g>
+    <g
+       transform="translate(-56.582813,-13.230685)"
+       id="g5249-0">
+      <rect
+         inkscape:transform-center-y="-0.13461445"
+         inkscape:transform-center-x="7.2752212"
+         y="-183.39569"
+         x="633.39142"
+         height="6.349999"
+         width="16.555315"
+         id="rect1092-6-6-6"
+         style="opacity:1;fill:#464646;fill-opacity:1;stroke:#383835;stroke-width:0;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+         inkscape:export-filename="/home/iurie/projects/whalesynth/src/gui/resources/operator_button_hover.png"
+         inkscape:export-xdpi="96.657753"
+         inkscape:export-ydpi="96.657753" />
+      <text
+         transform="scale(1.0114618,0.98866809)"
+         id="text985-7-7-32"
+         y="-180.46143"
+         x="628.69019"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.6505723px;line-height:1.25;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';letter-spacing:0px;word-spacing:0px;fill:#f0f0f0;fill-opacity:1;stroke:none;stroke-width:0.21189646"
+         xml:space="preserve"
+         inkscape:export-filename="/home/iurie/projects/whalesynth/src/gui/resources/operator_button_hover.png"
+         inkscape:export-xdpi="96.657753"
+         inkscape:export-ydpi="96.657753"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';fill:#f0f0f0;fill-opacity:1;stroke-width:0.21189646"
+           y="-180.46143"
+           x="628.69019"
+           id="tspan983-9-5-06"
+           sodipodi:role="line">OP 4</tspan></text>
+    </g>
+    <g
+       transform="translate(-56.582813,14.652846)"
+       id="g5239-1"
+       inkscape:export-filename="/home/iurie/projects/whalesynth/src/gui/resources/operator6_button_on.png"
+       inkscape:export-xdpi="96.657753"
+       inkscape:export-ydpi="96.657753">
+      <rect
+         inkscape:transform-center-y="-0.13461445"
+         inkscape:transform-center-x="7.2752212"
+         y="-183.39569"
+         x="576.87213"
+         height="6.349999"
+         width="16.555315"
+         id="rect1092-6-55"
+         style="opacity:1;fill:#525252;fill-opacity:1;stroke:#383835;stroke-width:0;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+         inkscape:export-filename="/home/iurie/projects/whalesynth/src/gui/resources/operator_button_on.png"
+         inkscape:export-xdpi="96.657753"
+         inkscape:export-ydpi="96.657753" />
+      <text
+         transform="scale(1.0114618,0.98866809)"
+         id="text985-7-4"
+         y="-180.46143"
+         x="572.81134"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.6505723px;line-height:1.25;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.21189646"
+         xml:space="preserve"
+         inkscape:export-filename="/home/iurie/projects/whalesynth/src/gui/resources/operator_button_on.png"
+         inkscape:export-xdpi="96.657753"
+         inkscape:export-ydpi="96.657753"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';fill:#ffffff;fill-opacity:1;stroke-width:0.21189646"
+           y="-180.46143"
+           x="572.81134"
+           id="tspan983-9-76"
+           sodipodi:role="line">OP 6</tspan></text>
+    </g>
+    <g
+       id="g5244-56"
+       transform="translate(-56.084854,14.652846)"
+       inkscape:export-filename="/home/iurie/projects/whalesynth/src/gui/resources/operator6_button.png"
+       inkscape:export-xdpi="96.657753"
+       inkscape:export-ydpi="96.657753">
+      <rect
+         inkscape:transform-center-y="-0.13461445"
+         inkscape:transform-center-x="7.2752212"
+         y="-183.39569"
+         x="604.63385"
+         height="6.349999"
+         width="16.555315"
+         id="rect1092-6-3-93"
+         style="opacity:1;fill:#323232;fill-opacity:1;stroke:#383835;stroke-width:0;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+         inkscape:export-filename="/home/iurie/projects/whalesynth/src/gui/resources/operator_button.png"
+         inkscape:export-xdpi="96.657753"
+         inkscape:export-ydpi="96.657753" />
+      <text
+         transform="scale(1.0114618,0.98866809)"
+         id="text985-5-74"
+         y="-180.46143"
+         x="600.25848"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.6505723px;line-height:1.25;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';letter-spacing:0px;word-spacing:0px;fill:#e0dedf;fill-opacity:1;stroke:none;stroke-width:0.21189646"
+         xml:space="preserve"
+         inkscape:export-filename="/home/iurie/projects/whalesynth/src/gui/resources/operator_button.png"
+         inkscape:export-xdpi="96.657753"
+         inkscape:export-ydpi="96.657753"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';fill:#e0dedf;fill-opacity:1;stroke-width:0.21189646"
+           y="-180.46143"
+           x="600.25848"
+           id="tspan983-92-5"
+           sodipodi:role="line">OP 6</tspan></text>
+    </g>
+    <g
+       transform="translate(-56.582813,14.652846)"
+       id="g5249-2">
+      <rect
+         inkscape:transform-center-y="-0.13461445"
+         inkscape:transform-center-x="7.2752212"
+         y="-183.39569"
+         x="633.39142"
+         height="6.349999"
+         width="16.555315"
+         id="rect1092-6-6-5"
+         style="opacity:1;fill:#464646;fill-opacity:1;stroke:#383835;stroke-width:0;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+         inkscape:export-filename="/home/iurie/projects/whalesynth/src/gui/resources/operator_button_hover.png"
+         inkscape:export-xdpi="96.657753"
+         inkscape:export-ydpi="96.657753" />
+      <text
+         transform="scale(1.0114618,0.98866809)"
+         id="text985-7-7-4"
+         y="-180.46143"
+         x="628.69019"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.6505723px;line-height:1.25;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';letter-spacing:0px;word-spacing:0px;fill:#f0f0f0;fill-opacity:1;stroke:none;stroke-width:0.21189646"
+         xml:space="preserve"
+         inkscape:export-filename="/home/iurie/projects/whalesynth/src/gui/resources/operator_button_hover.png"
+         inkscape:export-xdpi="96.657753"
+         inkscape:export-ydpi="96.657753"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';fill:#f0f0f0;fill-opacity:1;stroke-width:0.21189646"
+           y="-180.46143"
+           x="628.69019"
+           id="tspan983-9-5-7"
+           sodipodi:role="line">OP 6</tspan></text>
+    </g>
   </g>
 </svg>
