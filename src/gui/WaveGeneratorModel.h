@@ -25,18 +25,25 @@
 #define WAVE_GENERATOR_MODEL_H
 
 #include "WhaleSynth.h"
+#include "WaveGenerator.h"
 
 #include <RkObject.h>
 
-class SynthesizerProxy;
+class OperatorModel;
 
 class WaveGeneratorModel: public RkObject {
  public:
-        WaveGeneratorModel(RkObject* parent, SynthesizerProxy *proxy);
+        WaveGeneratorModel(OperatorModel* parent);
         ~WaveGeneratorModel()= default;
+        WaveGenerator::WaveFunctionType waveFunction() const;
+        void setWaveFunction(WaveGenerator::WaveFunctionType type);
+        RK_DECL_ACT(waveFunctionChanged,
+                    waveFunctionChanged(WaveGenerator::WaveFunctionType type),
+                    RK_ARG_TYPE(WaveGenerator::WaveFunctionType),
+                    RK_ARG_VAL(type));
 
  private:
-        SynthesizerProxy *synthProxy;
+        OperatorModel *operatorModel;
 };
 
 #endif // WAVE_GENERATOR_MODEL_H

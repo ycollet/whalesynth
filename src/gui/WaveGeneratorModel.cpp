@@ -22,9 +22,21 @@
  */
 
 #include "WaveGeneratorModel.h"
+#include "OperatorModel.h"
 
-WaveGeneratorModel::WaveGeneratorModel(RkObject* parent, SynthesizerProxy *proxy)
+WaveGeneratorModel::WaveGeneratorModel(OperatorModel *parent)
         : RkObject(parent)
-        , synthProxy{proxy}
+        , operatorModel{parent}
 {
 }
+
+WaveGenerator::WaveFunctionType WaveGeneratorModel::waveFunction() const
+{
+        return WaveGenerator::WaveFunctionType::WaveFunctionSawtooth;
+}
+
+void WaveGeneratorModel::setWaveFunction(WaveGenerator::WaveFunctionType type)
+{
+        RK_UNUSED(type);
+}
+

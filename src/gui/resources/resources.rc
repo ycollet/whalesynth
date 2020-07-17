@@ -1,4 +1,14 @@
 set(whale_rc_png_files
+
+# Top Menu
 operator_button.png
 operator_button_hover.png
-operator_button_on.png)
+operator_button_on.png
+
+# Wave Generator
+wave_sine.png
+wave_square.png
+wave_triangle.png
+wave_sawtooth.png
+
+)

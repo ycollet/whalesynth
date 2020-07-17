@@ -43,7 +43,7 @@ TopMenu::TopMenu(WhaleWidget* parent, SynthesizerModel *model)
         menuContiner->setSize({width(), height() - 3});
         menuContiner->setPosition({0, 3});
 
-        for (const auto &op: synthModel->operators()) {
+        for (const auto op: synthModel->operators()) {
                 auto button = new RkButton(this);
                 button->setSize({63, 24});
                 button->setImage(RkImage(button->size(), RK_IMAGE_RC(operator_button)),
@@ -57,8 +57,7 @@ TopMenu::TopMenu(WhaleWidget* parent, SynthesizerModel *model)
                 button->show();
                 menuContiner->addWidget(button);
                 menuContiner->addSpace(5);
-                OperatorModel *m = op.get();
-                RK_ACT_BIND(button, pressed, RK_ACT_ARGS(), this, showOperator(button, m));
+                RK_ACT_BIND(button, pressed, RK_ACT_ARGS(), this, showOperator(button, op));
                 menuButtons.push_back(button);
         }
 

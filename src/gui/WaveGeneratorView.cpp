@@ -24,10 +24,19 @@
 #include "WaveGeneratorView.h"
 #include "WaveGeneratorModel.h"
 
+RK_DECLARE_IMAGE_RC(wave_sine);
+RK_DECLARE_IMAGE_RC(wave_square);
+RK_DECLARE_IMAGE_RC(wave_triangle);
+RK_DECLARE_IMAGE_RC(wave_sawtooth);
+
 WaveGeneratorView::WaveGeneratorView(WhaleWidget* parent,
                                      WaveGeneratorModel *model)
         : WhaleWidget(parent)
         , waveGeneratorModel{model}
+        , sineImage(RkImage(175, 38, RK_IMAGE_RC(wave_sine)))
+        , squareImage(RkImage(175, 38, RK_IMAGE_RC(wave_square)))
+        , triangleImage(RkImage(175, 38, RK_IMAGE_RC(wave_triangle)))
+        , sawtoothImage(RkImage(175, 38, RK_IMAGE_RC(wave_sawtooth)))
 {
         setSize({214, 71});
         setBackgroundColor({141, 158, 74});
@@ -50,9 +59,21 @@ void WaveGeneratorView::updateView()
 
 void WaveGeneratorView::paintEvent(RkPaintEvent *event)
 {
-        // RkPainter painter(this);
-        // painter.fillRect(rect, {background()});
-        // painter.drawImage(sineImage);
+        RkPainter painter(this);
+        painter.fillRect(rect(), background());
+        if (waveGeneratorModel->waveFunction() == WaveFunction::WaveFunctionSine) {
+                painter.drawImage(sineImage, (width() - sineImage.width()) / 2,
+                                  (height() - sineImage.height()) / 2);
+        } else if (waveGeneratorModel->waveFunction() == WaveFunction::WaveFunctionSquare) {
+                painter.drawImage(squareImage, (width() - squareImage.width()) / 2,
+                                  (height() - squareImage.height()) / 2);
+        } else if (waveGeneratorModel->waveFunction() == WaveFunction::WaveFunctionTriangle) {
+                painter.drawImage(triangleImage, (width() - triangleImage.width()) / 2,
+                                  (height() - triangleImage.height()) / 2);
+        } else if (waveGeneratorModel->waveFunction() == WaveFunction::WaveFunctionSawtooth) {
+                painter.drawImage(sawtoothImage, (width() - sawtoothImage.width()) / 2,
+                                  (height() - sawtoothImage.height()) / 2);
+        }
 }
 
 void WaveGeneratorView::mouseDoubleClickEvent(RkMouseEvent *event)

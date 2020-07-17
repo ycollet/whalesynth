@@ -22,13 +22,14 @@
  */
 
 #include "OperatorModel.h"
-#include "SynthesizerProxy.h"
+#include "SynthesizerModel.h"
 #include "WaveGeneratorModel.h"
 
-OperatorModel::OperatorModel(RkObject* parent, SynthesizerProxy *proxy)
+OperatorModel::OperatorModel(SynthesizerModel* parent, OperatorIndex index)
         : RkObject(parent)
-        , synthProxy{proxy}
-        , generatorModel{new WaveGeneratorModel(this, synthProxy)}
+        , synthModel{parent}
+        , operatorIndex{index}
+        , generatorModel{new WaveGeneratorModel(this)}
 {
 }
 

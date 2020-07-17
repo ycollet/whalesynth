@@ -30,7 +30,7 @@ SynthesizerModel::SynthesizerModel(RkObject *parent, SynthesizerProxy *proxy)
         , synthProxy{proxy}
 {
         for (size_t i = 0; i < WhaleSynth::NumberOfOperators; i++)
-                operatorsModels.push_back(std::make_unique<OperatorModel>(this, proxy));
+                operatorsModels.push_back(new OperatorModel(this, i));
 }
 
 SynthesizerModel::~SynthesizerModel()
@@ -41,11 +41,11 @@ SynthesizerModel::~SynthesizerModel()
 OperatorModel* SynthesizerModel::getOperator(OperatorIndex index) const
 {
         if (index < operatorsModels.size())
-                return operatorsModels[index].get();
+                return operatorsModels[index];
         return nullptr;
 }
 
-const std::vector<std::unique_ptr<OperatorModel>>& SynthesizerModel::operators() const
+const std::vector<OperatorModel*>& SynthesizerModel::operators() const
 {
         return operatorsModels;
 }

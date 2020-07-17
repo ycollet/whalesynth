@@ -26,13 +26,17 @@
 
 #include "WhaleSynth.h"
 #include "WhaleWidget.h"
+#include "WaveGenerator.h"
 
 #include <RkPainter.h>
+#include <RkImage.h>
 
 class WaveGeneratorModel;
 
 class WaveGeneratorView: public WhaleWidget {
  public:
+        using WaveFunction = WaveGenerator::WaveFunctionType;
+
         WaveGeneratorView(WhaleWidget* parent, WaveGeneratorModel *model);
         void setModel(WaveGeneratorModel *model);
         WaveGeneratorModel* model() const;
@@ -46,6 +50,10 @@ class WaveGeneratorView: public WhaleWidget {
 
  private:
         WaveGeneratorModel *waveGeneratorModel;
+        RkImage sineImage;
+        RkImage squareImage;
+        RkImage triangleImage;
+        RkImage sawtoothImage;
 };
 
 #endif // WAVE_GENERATOR_VIEW_H

@@ -35,12 +35,12 @@ class SynthesizerModel: public RkObject {
  public:
         SynthesizerModel(RkObject* parent, SynthesizerProxy *proxy);
         ~SynthesizerModel();
-        const std::vector<std::unique_ptr<OperatorModel>>& operators() const;
+        const std::vector<OperatorModel*>& operators() const;
         OperatorModel* getOperator(OperatorIndex index) const;
 
  private:
         SynthesizerProxy *synthProxy;
-        std::vector<std::unique_ptr<OperatorModel>> operatorsModels;
+        std::vector<OperatorModel*> operatorsModels;
 };
 
 #endif // WHALESYNT_SYNTHESIZER_MODEL_H
