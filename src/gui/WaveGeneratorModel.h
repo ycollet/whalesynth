@@ -1,5 +1,5 @@
 /**
- * File name: OperatorModel.cpp
+ * File name: WaveGeneratorModel.h
  * Project: WhaleSynth (A software synthesizer)
  *
  * Copyright (C) 2020 Iurie Nistor <http://iuriepage.wordpress.com>
@@ -21,20 +21,22 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-#include "OperatorModel.h"
-#include "SynthesizerProxy.h"
-#include "WaveGeneratorModel.h"
+#ifndef WAVE_GENERATOR_MODEL_H
+#define WAVE_GENERATOR_MODEL_H
 
-OperatorModel::OperatorModel(RkObject* parent, SynthesizerProxy *proxy)
-        : RkObject(parent)
-        , synthProxy{proxy}
-        , generatorModel{new WaveGeneratorModel(this, synthProxy)}
-{
-}
+#include "WhaleSynth.h"
 
-WaveGeneratorModel* OperatorModel::waveGeneratorModel() const
-{
-        return generatorModel;
-}
+#include <RkObject.h>
 
+class SynthesizerProxy;
 
+class WaveGeneratorModel: public RkObject {
+ public:
+        WaveGeneratorModel(RkObject* parent, SynthesizerProxy *proxy);
+        ~WaveGeneratorModel()= default;
+
+ private:
+        SynthesizerProxy *synthProxy;
+};
+
+#endif // WAVE_GENERATOR_MODEL_H

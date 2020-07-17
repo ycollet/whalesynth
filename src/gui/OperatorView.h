@@ -29,6 +29,7 @@
 #include "SynthesizerModel.h"
 
 class OperatorModel;
+class WaveGeneratorView;
 
 class OperatorView: public WhaleWidget {
  public:
@@ -43,6 +44,7 @@ class OperatorView: public WhaleWidget {
 
  private:
         OperatorModel *operatorModel;
+        WaveGeneratorView *waveGeneratorView;
 };
 
 #endif // WHALESYNT_OPERATOR_VIEW_H

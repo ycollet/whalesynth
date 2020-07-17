@@ -22,12 +22,16 @@
  */
 
 #include "WaveGeneratorView.h"
-#include "WaveGeneratorModel.h";
+#include "WaveGeneratorModel.h"
 
-class WaveGeneratorView::WaveGeneratorView(WhaleWidget* parent, WaveGeneratorModel *model)
+WaveGeneratorView::WaveGeneratorView(WhaleWidget* parent,
+                                     WaveGeneratorModel *model)
         : WhaleWidget(parent)
-                       , waveGeneratorModel{model}
+        , waveGeneratorModel{model}
 {
+        setSize({214, 71});
+        setBackgroundColor({141, 158, 74});
+        show();
 }
 
 void WaveGeneratorView::setModel(WaveGeneratorModel *model)
@@ -41,6 +45,17 @@ WaveGeneratorModel* WaveGeneratorView::model() const
 }
 
 void WaveGeneratorView::updateView()
+{
+}
+
+void WaveGeneratorView::paintEvent(RkPaintEvent *event)
+{
+        // RkPainter painter(this);
+        // painter.fillRect(rect, {background()});
+        // painter.drawImage(sineImage);
+}
+
+void WaveGeneratorView::mouseDoubleClickEvent(RkMouseEvent *event)
 {
 }
 

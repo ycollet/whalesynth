@@ -27,6 +27,8 @@
 #include "WhaleSynth.h"
 #include "WhaleWidget.h"
 
+#include <RkPainter.h>
+
 class WaveGeneratorModel;
 
 class WaveGeneratorView: public WhaleWidget {
@@ -37,6 +39,8 @@ class WaveGeneratorView: public WhaleWidget {
         void updateView();
 
  protected:
+        void paintEvent(RkPaintEvent *event) override;
+        void mouseDoubleClickEvent(RkMouseEvent *event) override;
         void bindModel();
         void unbindModel();
 

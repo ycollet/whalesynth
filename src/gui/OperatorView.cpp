@@ -25,6 +25,8 @@
 #include "OperatorModel.h"
 #include "WaveGeneratorView.h"
 
+#include <RkContainer.h>
+
 OperatorView::OperatorView(WhaleWidget* parent, OperatorModel *model)
         : WhaleWidget(parent)
         , operatorModel{model}
@@ -33,12 +35,14 @@ OperatorView::OperatorView(WhaleWidget* parent, OperatorModel *model)
         setBackgroundColor({82, 82, 82});
         setFixedSize(parent->width(), 168);
 
-        auto mainContiner = new RkContiner(this);
-        mainContiner->setSize(size());
-        auto leftContiner = new RkContiner(this, Rk::Orientation::Vertical)
-        leftContiner->setSize({waveGeneratorView->width(), mainContiner->height()});
-        mainContiner->addContainer(leftContiner);
-        leftContiner->addWidget(waveGeneratorView);
+        auto mainContainer = new RkContainer(this);
+        mainContainer->addSpace(10);
+        mainContainer->setSize(size());
+        auto leftContainer = new RkContainer(this, Rk::Orientation::Vertical);
+        leftContainer->addSpace(10);
+        leftContainer->setSize({waveGeneratorView->width(), mainContainer->height()});
+        mainContainer->addContainer(leftContainer);
+        leftContainer->addWidget(waveGeneratorView);
 
         bindModel();
         updateView();

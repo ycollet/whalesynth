@@ -29,14 +29,17 @@
 #include <RkObject.h>
 
 class SynthesizerProxy;
+class WaveGeneratorModel;
 
 class OperatorModel: public RkObject {
  public:
         OperatorModel(RkObject* parent, SynthesizerProxy *proxy);
         ~OperatorModel()= default;
+        WaveGeneratorModel* waveGeneratorModel() const;
 
  private:
         SynthesizerProxy *synthProxy;
+        WaveGeneratorModel *generatorModel;
 };
 
 #endif // OPERATOR_MODEL_H
