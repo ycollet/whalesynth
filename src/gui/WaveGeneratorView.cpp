@@ -33,10 +33,12 @@ WaveGeneratorView::WaveGeneratorView(WhaleWidget* parent,
                                      WaveGeneratorModel *model)
         : WhaleWidget(parent)
         , waveGeneratorModel{model}
-        , sineImage(RkImage(175, 38, RK_IMAGE_RC(wave_sine)))
-        , squareImage(RkImage(175, 38, RK_IMAGE_RC(wave_square)))
-        , triangleImage(RkImage(175, 38, RK_IMAGE_RC(wave_triangle)))
-        , sawtoothImage(RkImage(175, 38, RK_IMAGE_RC(wave_sawtooth)))
+        , waveFunctionImages {
+                {static_cast<int>(WaveFunction::WaveFunctionSine), RkImage(175, 38, RK_IMAGE_RC(wave_sine))},
+                {static_cast<int>(WaveFunction::WaveFunctionSquare), RkImage(175, 38, RK_IMAGE_RC(wave_square))},
+                {static_cast<int>(WaveFunction::WaveFunctionTriangle), RkImage(175, 38, RK_IMAGE_RC(wave_triangle))},
+                {static_cast<int>(WaveFunction::WaveFunctionSawtooth), RkImage(175, 38, RK_IMAGE_RC(wave_sawtooth))}}
+        , currentFunctionIndex{static_cast<int>(waveGeneratorModel->waveFunction())}
 {
         setSize({214, 71});
         setBackgroundColor({141, 158, 74});
@@ -46,6 +48,7 @@ WaveGeneratorView::WaveGeneratorView(WhaleWidget* parent,
 void WaveGeneratorView::setModel(WaveGeneratorModel *model)
 {
         waveGeneratorModel = model;
+        currentFunctionIndex = static_cast<int>(waveGeneratorModel->waveFunction());
 }
 
 WaveGeneratorModel* WaveGeneratorView::model() const
@@ -55,29 +58,27 @@ WaveGeneratorModel* WaveGeneratorView::model() const
 
 void WaveGeneratorView::updateView()
 {
+        update();
 }
 
 void WaveGeneratorView::paintEvent(RkPaintEvent *event)
 {
         RkPainter painter(this);
         painter.fillRect(rect(), background());
-        if (waveGeneratorModel->waveFunction() == WaveFunction::WaveFunctionSine) {
-                painter.drawImage(sineImage, (width() - sineImage.width()) / 2,
-                                  (height() - sineImage.height()) / 2);
-        } else if (waveGeneratorModel->waveFunction() == WaveFunction::WaveFunctionSquare) {
-                painter.drawImage(squareImage, (width() - squareImage.width()) / 2,
-                                  (height() - squareImage.height()) / 2);
-        } else if (waveGeneratorModel->waveFunction() == WaveFunction::WaveFunctionTriangle) {
-                painter.drawImage(triangleImage, (width() - triangleImage.width()) / 2,
-                                  (height() - triangleImage.height()) / 2);
-        } else if (waveGeneratorModel->waveFunction() == WaveFunction::WaveFunctionSawtooth) {
-                painter.drawImage(sawtoothImage, (width() - sawtoothImage.width()) / 2,
-                                  (height() - sawtoothImage.height()) / 2);
+        auto res = waveFunctionImages.find(static_cast<int>(waveGeneratorModel->waveFunction()));
+        if (res != waveFunctionImages.end()) {
+                painter.drawImage(res->second, (width() - res->second.width()) / 2,
+                                  (height() - res->second.height()) / 2);
         }
 }
 
 void WaveGeneratorView::mouseDoubleClickEvent(RkMouseEvent *event)
 {
+        currentFunctionIndex++;
+        if (currentFunctionIndex > static_cast<int>(WaveFunction::WaveFunctionSawtooth))
+                currentFunctionIndex = static_cast<int>(WaveFunction::WaveFunctionSine);
+        WHALE_LOG_DEBUG("called");
+        waveGeneratorModel->setWaveFunction(static_cast<WaveFunction>(currentFunctionIndex));
 }
 
 void WaveGeneratorView::bindModel()

@@ -25,6 +25,7 @@
 #define OPERATOR_MODEL_H
 
 #include "WhaleSynth.h"
+#include "WaveGenerator.h"
 
 #include <RkObject.h>
 
@@ -36,6 +37,9 @@ class OperatorModel: public RkObject {
         OperatorModel(SynthesizerModel* parent, OperatorIndex index);
         ~OperatorModel()= default;
         WaveGeneratorModel* waveGeneratorModel() const;
+        void setWaveFunction(WaveGenerator::WaveFunctionType waveType);
+        WaveGenerator::WaveFunctionType waveFunction() const;
+        OperatorIndex index() const;
 
  private:
         SynthesizerModel *synthModel;

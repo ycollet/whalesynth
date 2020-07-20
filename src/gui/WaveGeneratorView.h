@@ -50,10 +50,8 @@ class WaveGeneratorView: public WhaleWidget {
 
  private:
         WaveGeneratorModel *waveGeneratorModel;
-        RkImage sineImage;
-        RkImage squareImage;
-        RkImage triangleImage;
-        RkImage sawtoothImage;
+        std::unordered_map<int, RkImage> waveFunctionImages;
+        int currentFunctionIndex;
 };
 
 #endif // WAVE_GENERATOR_VIEW_H

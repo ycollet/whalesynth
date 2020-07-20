@@ -27,7 +27,7 @@ Operator::Operator(float pitch)
         : operatorPitch{pitch}
         , operatorPhase{0.0f}
         , operatorStarted{false}
-        , isEnabled{true}
+        , isEnabled{false}
 {
 }
 
@@ -68,9 +68,9 @@ float Operator::getValue() const
 
 void Operator::incrementPhase()
 {
-        operatorPhase += (2.0f * M_PI * operatorPitch) / WhaleSynth::defaultSampleRate;
-        if (operatorPhase > 2.0f * M_PI)
-                operatorPhase -= 2.0f * M_PI;
+        operatorPhase += (WhaleSynth::M2Pi * operatorPitch) / WhaleSynth::defaultSampleRate;
+        if (operatorPhase > WhaleSynth::M2Pi)
+                operatorPhase -= WhaleSynth::M2Pi;
 }
 
 void Operator::enable(bool b)

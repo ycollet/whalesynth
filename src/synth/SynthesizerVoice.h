@@ -37,13 +37,15 @@ class SynthesizerVoice {
         MIDIKeyId midiKeyId() const;
         void setNote(const Note &note);
         void process(float** out, size_t size);
-        void setWave(WaveGenerator::WaveFunctionType type);
-
+        void setWave(OperatorIndex index, WaveGenerator::WaveFunctionType type);
+        bool isActive() const;
+        void setActive(bool b);
 
  private:
         MIDIKeyId midiKey;
         float voicePitch;
         std::vector<std::unique_ptr<Operator>> operatorsList;
+        bool voiceIsActive;
 };
 
 #endif // SYNTHESIZER_VOICE_H

@@ -39,15 +39,15 @@
 class SynthesizerProxyLv2: public SynthesizerProxy {
  public:
         enum class CommandType: int {
-                SetWave = 0
+                SetWaveFunction = 1
         };
 
         SynthesizerProxyLv2(LV2UI_Write_Function function,
                             LV2UI_Controller controller,
                             LV2_URID_Map* uridmap);
         ~SynthesizerProxyLv2() = default;
-        void setOperatorWaveFunction(const OperatorIndex &index, WaveGenerator::WaveFunctionType type);
-        WaveGenerator::WaveFunctionType operatorWaveFunction(const OperatorIndex &index) const;
+        void setOperatorWaveFunction(const OperatorIndex &index, WaveGenerator::WaveFunctionType type) override;
+        WaveGenerator::WaveFunctionType operatorWaveFunction(const OperatorIndex &index) const override;
 
  protected:
         void writeMessage(LV2_Atom *message);

@@ -37,7 +37,7 @@ class Synthesizer {
         size_t numberOfChannels() const;
         void setNote(const Note &note);
         void process(float** out, size_t size);
-        void setWave(WaveGenerator::WaveFunctionType type);
+        void setWave(OperatorIndex index, WaveGenerator::WaveFunctionType type);
 
  protected:
         void addVoice(std::unique_ptr<SynthesizerVoice> voice);

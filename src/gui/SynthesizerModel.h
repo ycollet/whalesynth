@@ -25,6 +25,7 @@
 #define WHALESYNT_SYNTHESIZER_MODEL_H
 
 #include "WhaleSynth.h"
+#include "WaveGenerator.h"
 
 #include <RkObject.h>
 
@@ -37,6 +38,8 @@ class SynthesizerModel: public RkObject {
         ~SynthesizerModel();
         const std::vector<OperatorModel*>& operators() const;
         OperatorModel* getOperator(OperatorIndex index) const;
+        void setOperatorWaveFunction(OperatorIndex index, WaveGenerator::WaveFunctionType waveType);
+        WaveGenerator::WaveFunctionType operatorWaveFunction(OperatorIndex index) const;
 
  private:
         SynthesizerProxy *synthProxy;

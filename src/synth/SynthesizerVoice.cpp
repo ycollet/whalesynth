@@ -27,12 +27,15 @@
 SynthesizerVoice::SynthesizerVoice(MIDIKeyId keyId)
         : midiKey{keyId}
         , voicePitch{440.0f * pow(2.0f, static_cast<float>(midiKey - 69) / 12.0f)}
+        , voiceIsActive{true}
 {
         size_t n = WhaleSynth::NumberOfOperators;
         while (n--) {
                 auto op = std::make_unique<Operator>(voicePitch);
-                if (n == 1)
+                if (n == 1) {
+                        op->enable(true);
                         op->setWave(WaveGenerator::WaveFunctionType::WaveFunctionSawtooth);
+                }
                 operatorsList.push_back(std::move(op));
         }
 }
@@ -59,8 +62,9 @@ void SynthesizerVoice::process(float** out, size_t size)
         }
 }
 
-void SynthesizerVoice::setWave(WaveGenerator::WaveFunctionType type)
+void SynthesizerVoice::setWave(OperatorIndex index, WaveGenerator::WaveFunctionType type)
 {
+        WHALE_UNUSED(index);
         for (size_t i = 0; i < operatorsList.size(); i++) {
                 if (operatorsList[i]->enabled())
                         operatorsList[i]->setWave(type);

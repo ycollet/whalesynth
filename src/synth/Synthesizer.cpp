@@ -59,8 +59,8 @@ void Synthesizer::addVoice(std::unique_ptr<SynthesizerVoice> voice)
                 synthVoices.push_back(std::move(voice));
 }
 
-void Synthesizer::setWave(WaveGenerator::WaveFunctionType type)
+void Synthesizer::setWave(OperatorIndex index, WaveGenerator::WaveFunctionType type)
 {
         for (size_t i = 0; i < synthVoices.size(); i++)
-                synthVoices[i]->setWave(type);
+                synthVoices[i]->setWave(index, type);
 }

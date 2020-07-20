@@ -24,6 +24,7 @@
 #include "Synthesizer.h"
 #include "Note.h"
 #include "UridMap.h"
+#include "SynthesizerProxyLv2.h"
 
 #include <vector>
 #include <memory>
@@ -32,6 +33,7 @@
 class WhaleSynthLv2DSPPlugin
 {
   public:
+        using CommandType = SynthesizerProxyLv2::CommandType;
         WhaleSynthLv2DSPPlugin()
                 : whalesynth{new Synthesizer}
                 , midiInPort{nullptr}
@@ -134,32 +136,25 @@ class WhaleSynthLv2DSPPlugin
                 auto it = lv2_atom_sequence_begin(&eventsInPort->body);
                 while (!lv2_atom_sequence_is_end(&eventsInPort->body, eventsInPort->atom.size, it)) {
                         auto obj = (LV2_Atom_Object*)(&it->body);
-
-                        const LV2_Atom* id = NULL;
                         const LV2_Atom* command  = NULL;
-                        const LV2_Atom* setWave = NULL;
-                        const LV2_Atom* val  = NULL;
-                        lv2_atom_object_get(obj,
-                                            64, &id,
-                                            65, &command,
-                                            66, &setWave,
-                                            67, &val,
-                                            0);
-
-                        WHALE_LOG_DEBUG("id:" << ((const LV2_Atom_Int*)id)->body);
-                        WHALE_LOG_DEBUG("command:" << ((const LV2_Atom_Int*)command)->body);
-                        if (setWave) {
-                                WHALE_LOG_DEBUG("setWave:" << ((const LV2_Atom_Int*)setWave)->body);
+                        lv2_atom_object_get(obj, uridIdMap.command, &command, 0);
+                        if (command) {
+                                WHALE_LOG_DEBUG("new command: ");
+                                auto commandType = reinterpret_cast<const LV2_Atom_Int*>(command)->body;
+                                if (CommandType::SetWaveFunction == static_cast<CommandType>(commandType)) {
+                                        WHALE_LOG_DEBUG("set wave function");
+                                        const LV2_Atom* operatorId  = NULL;
+                                        const LV2_Atom* waveType    = NULL;
+                                        lv2_atom_object_get(obj, uridIdMap.id, &operatorId,
+                                                            uridIdMap.waveType, &waveType, 0);
+                                        if (operatorId && waveType) {
+                                                auto id   = reinterpret_cast<const LV2_Atom_Int*>(operatorId)->body;
+                                                auto wave = reinterpret_cast<const LV2_Atom_Int*>(waveType)->body;
+                                                whalesynth->setWave(id, static_cast<WaveGenerator::WaveFunctionType>(wave));
+                                        }
+                                }
                         }
-                        WHALE_LOG_DEBUG("val:" << ((const LV2_Atom_Int*)val)->body);
 
-                        // //auto objBody = (LV2_Atom*)LV2_ATOM_BODY(obj);
-                        // auto prop = (LV2_Atom_Property*)LV2_ATOM_BODY(obj);
-                        // WHALE_LOG_DEBUG("IN: ID :" << ((LV2_Atom_Int*)(&prop->body.value))->body);
-                        // prop += prop->atom.size;
-                        // WHALE_LOG_DEBUG("IN: ID :" << ((LV2_Atom_Int*)(&prop->body.value))->body);
-                        // // WHALE_LOG_DEBUG("IN: body :" << *vv);
-                        // whalesynth->setWave(static_cast<WaveGenerator::WaveFunctionType>(*vv));
                         it = lv2_atom_sequence_next(it);
                 }
 

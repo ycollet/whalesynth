@@ -33,9 +33,25 @@ OperatorModel::OperatorModel(SynthesizerModel* parent, OperatorIndex index)
 {
 }
 
+OperatorIndex OperatorModel::index() const
+{
+        return operatorIndex;
+}
+
 WaveGeneratorModel* OperatorModel::waveGeneratorModel() const
 {
         return generatorModel;
 }
+
+void OperatorModel::setWaveFunction(WaveGenerator::WaveFunctionType waveType)
+{
+        synthModel->setOperatorWaveFunction(index(), waveType);
+}
+
+WaveGenerator::WaveFunctionType OperatorModel::waveFunction() const
+{
+        return synthModel->operatorWaveFunction(index());
+}
+
 
 

@@ -32,11 +32,11 @@ WaveGeneratorModel::WaveGeneratorModel(OperatorModel *parent)
 
 WaveGenerator::WaveFunctionType WaveGeneratorModel::waveFunction() const
 {
-        return WaveGenerator::WaveFunctionType::WaveFunctionSawtooth;
+        return operatorModel->waveFunction();
 }
 
 void WaveGeneratorModel::setWaveFunction(WaveGenerator::WaveFunctionType type)
 {
-        RK_UNUSED(type);
+        operatorModel->setWaveFunction(type);
 }
 

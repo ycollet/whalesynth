@@ -72,17 +72,17 @@ float WaveGenerator::squareFunction(float phase) const
 float WaveGenerator::triangleFunction(float phase) const
 {
 	if (phase < M_PI)
-		return -1.0f + (2.0f / M_PI) * phase;
+		return -1.0f + M_2_PI * phase;
 	else
-		return 3.0f - (2.0f / M_PI) * phase;
+		return 3.0f - M_2_PI * phase;
 }
 
 float WaveGenerator::sawtoothFunction(float phase) const
 {
         if (phase < M_PI)
-                return (1.0f / M_PI) * phase;
+                return M_1_PI * phase;
         else
-                return (1.0f / M_PI) * phase - 2.0f;
+                return M_1_PI * phase - 2.0f;
 }
 
 float WaveGenerator::noiseFunction() const

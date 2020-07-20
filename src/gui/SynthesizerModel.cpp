@@ -50,3 +50,15 @@ const std::vector<OperatorModel*>& SynthesizerModel::operators() const
         return operatorsModels;
 }
 
+void SynthesizerModel::setOperatorWaveFunction(OperatorIndex index, WaveGenerator::WaveFunctionType waveType)
+{
+        WHALE_LOG_DEBUG("called");
+        synthProxy->setOperatorWaveFunction(index, waveType);
+}
+
+WaveGenerator::WaveFunctionType SynthesizerModel::operatorWaveFunction(OperatorIndex index) const
+{
+        return synthProxy->operatorWaveFunction(index);
+}
+
+

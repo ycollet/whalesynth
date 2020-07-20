@@ -46,21 +46,22 @@ void SynthesizerProxyLv2::setOperatorWaveFunction(const OperatorIndex &index,
         // Start operator object.
         LV2_Atom *message = (LV2_Atom*)lv2_atom_forge_object(&atomForge, &frame, 0, uridMapId.operatorId);
 
+        // Add set command.
+        lv2_atom_forge_key(&atomForge, uridMapId.command);
+        lv2_atom_forge_int(&atomForge, static_cast<int>(CommandType::SetWaveFunction));
+
         // Add operator ID.
         lv2_atom_forge_key(&atomForge, uridMapId.id);
-        lv2_atom_forge_int(&atomForge, 2);
+        lv2_atom_forge_int(&atomForge, 0);
 
-        // Add set wave type command.
-        lv2_atom_forge_key(&atomForge, uridMapId.command);
-        lv2_atom_forge_int(&atomForge, static_cast<int>(0));
-
-        // Add generator wave type.
+        // Add generator wave function type.
         lv2_atom_forge_key(&atomForge, uridMapId.waveType);
         lv2_atom_forge_int(&atomForge, static_cast<int>(type));
 
         lv2_atom_forge_pop(&atomForge, &frame);
 
         writeMessage(message);
+        WHALE_LOG_DEBUG("called");
 }
 
 WaveGenerator::WaveFunctionType

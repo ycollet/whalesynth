@@ -50,6 +50,7 @@ using OperatorIndex = size_t;
 using ChannelId = int;
 
 namespace WhaleSynth {
+        constexpr float M2Pi = 2.0f * M_PI;
         constexpr AudioFrame NoAudioFrame = -1;
         constexpr ChannelId AllChannels = -1;
         constexpr MIDIKeyId MaxMidiKeyId = 127;
@@ -68,7 +69,7 @@ namespace WhaleSynth {
         constexpr OperatorIndex invalidOperatorIndex = -1;
 };
 
-#ifdef GEONSYNTH_DEBUG
+#ifdef WHALESYNTH_DEBUG
 #define WHALE_LOG_INFO(msg) std::cout << __PRETTY_FUNCTION__ << "[INFO] " << msg << std::endl;
 #define WHALE_LOG_ERROR(msg) std::cout << __PRETTY_FUNCTION__ << "[ERROR] " << msg << std::endl;
 #define WHALE_LOG_DEBUG(msg) std::cout << __PRETTY_FUNCTION__ << "[DEBUG] " << msg << std::endl;
