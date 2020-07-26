@@ -66,7 +66,7 @@ class WhaleSynthLv2DSPPlugin
 
         void setAudioChannelPort(float *data, size_t channel)
         {
-                if (channel < 2 * WhaleSynth::defaultChannelsNumber)
+                if (channel < 2)
                         outputChannels[channel] = data;
         }
 
@@ -160,11 +160,15 @@ class WhaleSynthLv2DSPPlugin
 
                 it = lv2_atom_sequence_begin(&midiInPort->body);
                 size_t currentFrame = 0;
+                size_t offset = 0;
                 while (!lv2_atom_sequence_is_end(&midiInPort->body, midiInPort->atom.size, it)) {
                         auto eventFrame = it->time.frames;
                         auto size = eventFrame - currentFrame;
-                        if (size > 0)
-                                whalesynth->process(outputChannels, size);
+                        if (size > 0) {
+                                float *buff[2] = {outputChannels[0] + offset,  outputChannels[1] + offset};
+                                whalesynth->process(buff, size);
+                                offset += size;
+                        }
 
                         const uint8_t* const msg = (const uint8_t*)(it + 1);
                         if (isNote(msg))
@@ -173,8 +177,10 @@ class WhaleSynthLv2DSPPlugin
                         it = lv2_atom_sequence_next(it);
                 }
 
-                if (currentFrame < static_cast<decltype(currentFrame)>(nsamples))
-                        whalesynth->process(outputChannels, nsamples - currentFrame);
+                if (currentFrame < static_cast<decltype(currentFrame)>(nsamples)) {
+                        float *buff[2] = {outputChannels[0] + offset,  outputChannels[1] + offset};
+                        whalesynth->process(buff, nsamples - currentFrame);
+                }
         }
 
         void notifyHost() const
